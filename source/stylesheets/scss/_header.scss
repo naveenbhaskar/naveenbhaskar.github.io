@@ -1,0 +1,154 @@
+//header
+
+header.top {
+	background: $header-bg;
+	@include clearfix;
+	position: fixed;
+	z-index: $header-top;
+	width:100%;
+	top:0;
+	transition: all 0.5s ease;
+	&.scroll-on{
+		background:rgba(134, 86, 154, 0.95); 
+		transition: all 0.5s ease;
+		-webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.48);
+		-moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.48);
+		box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.48);
+	}
+	&:hover{
+		background: $header-bg;
+		transition: all 0.5s ease;
+	}
+}
+
+.logo {
+	margin: 10px 0;
+	float: left;
+}
+
+
+//banner
+
+.banner {
+	background: transparent url('../images/go-banner.jpg') no-repeat 0 0;
+	background-size: cover;
+	background-attachment: fixed;
+	height: 700px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+
+	.caption {
+		span {
+			margin: 0 10px;
+			color: #fff;
+			font-size: 40px;
+			text-transform: uppercase;
+			font-weight: 700;
+			background: #000;
+			display: inline-block;
+			padding: 5px 10px;
+
+			@media (min-width:$screen-tablet) {
+				font-size: 60px;
+			}
+
+		}
+
+	}
+
+	.subcaption {
+		color: #fff;
+		font-size: 18px;
+		font-weight: 400;
+		display: inline-block;
+
+
+		@media (min-width:$screen-tablet) {
+			font-size: 50px;
+		}
+
+	}
+
+}
+
+.btn-download {
+	color: #fff;
+	@include button-bg($primary-color);
+	width: 150px;
+	margin: 20px auto 0;
+	padding: 10px;
+	font-size: 18px;
+
+	&:hover,
+	&:active,
+	&:focus,
+	&:visited {
+		color: #fff;
+	}
+	@media (min-width:$screen-tablet) {
+	width: 200px;
+	font-size: 25px;
+		}
+
+}
+
+.btn-readmore{
+	    border: 1px solid #ccc;
+    padding: 5px 15px;
+    border-radius: 3px;
+}
+
+//go features
+
+.go-features {
+	margin-bottom: 50px;
+
+	.btn{
+		margin-bottom: 30px;
+
+	}
+
+	.readmore{
+		    background: #86569a;
+    color: #fff;
+	}
+}
+
+.bigtxt {
+    font-size: 20px;
+    width: 100%;
+    margin: 0 auto 30px auto;
+    text-align: center;
+    background: #f5f5f5;
+    color: #333333;
+    padding: 20px 10%;
+		color: $heading;
+	@media (min-width:$screen-tablet) {
+    margin: 0 auto 30px auto;
+	padding: 70px 15%;
+	font-size: 40px;
+	max-width:100%;
+
+	}
+}
+
+.go-features {
+
+	figure {
+	text-align: center;
+		margin-bottom: 30px;
+	@media (min-width:$screen-tablet) {
+		margin-bottom: 50px;
+
+	}
+
+	}
+
+	h3 {
+		font-size: 20px;
+		margin: 20px 0;
+	}
+
+}

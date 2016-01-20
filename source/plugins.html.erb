@@ -1,0 +1,56 @@
+---
+title: GO.CD plugins
+---
+<%
+def github_star(url)
+  content_tag(:iframe, '', src: url, allowtransparency: 'true', frameborder: 0, scrolling: 0, width:75, height:20,class:'github-star-button' )   
+end 
+%>
+
+<div class="inner-banner plugins">
+	<div class="container">
+		<h1 class="caption"><span>Plugins</span></h1>
+		<span class="subcaption">Bundled and community contributed plugins</span>
+	</div>
+	
+</div>
+<main>
+<div class="container">
+	<p>Go publishes a list of extension points for which plugins can be provided. An extension point defines the interface and the lifecycle that governs the respective plugin. At present only java based extension points and plugins are supported by Go. Details about available extension points and their lifecycle can be obtained from <a href="http://www.go.cd/documentation/developer/writing_go_plugins/go_plugins_basics.html" >plugins documentation</a> along with the <a href="http://www.go.cd/documentation/developer/resources/javadoc/14.4.0/index.html">Go plugin API reference</a>.
+</p>
+<p>
+	Below is the listing of bundled as well as other available plugins contributed by the community (that are not bundled with the Go Server as yet).  Please refer the <a href="http://www.go.cd/documentation/user/current/extension_points/plugin_user_guide.html">plugin user guide</a> to know more about plugin installation etc.
+</p>
+<p class="note">
+	<strong>Note:</strong> As a general matter, plugins for Go are distributed under license from the copyright holder.  In addition, notwithstanding who the copyright holder is, all plugins on this page are made available for download “as is and as available” without support or warranties of any kind, either express or implied, including but not limited to the implied warranties of merchantability, satisfactory quality, and fitness for a particular purpose.
+</p>
+<h3 class="page-headings">Package Repository plugins <span class="plugin-info">&gt;= Go v13.3</span></h3>
+<em>Officially maintained ThoughtWorks plugins are tagged with a <%= image_tag "go-logo-small.png" , :class => "go-tag" %> icon.</em>
+
+<div class="plugins-container">
+	
+	
+	<ul class="plugins-list">
+		<% data.task_plugins.each do |p| %>
+		<li class="go">
+			<%= image_tag "go-logo-small.png" , :class => "go-logo" %>
+			<h5 class="name"> <%= p.name %> </h5>
+			<p class="more-details">
+				<%= p.description %>
+				<%= link_to('Read more', p.readmore_url) %>
+			</p>
+			<span class="created-by">by <%= link_to(p.author_name, p.author_url) %>
+		</span>
+		<div class="actions">
+			<span class="with-go">
+			<%= link_to('Download', p.releases_url) %>
+				
+			</span>
+		<%= github_star(p.github_stars) %>
+		</div>
+	</li>
+	<% end %>
+</ul>
+</div>
+</div>
+</main>
