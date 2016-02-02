@@ -688,12 +688,12 @@ header.top {
 
 /* line 19, scss/_homepage.scss */
 .go-support {
-  padding: 30px;
   color: #fff;
   background: #1abc9c;
   overflow: hidden;
   width: 100%;
-  margin: 0 auto; }
+  margin: 0 auto;
+  padding: 20px; }
   @media (min-width: 992px) {
     /* line 19, scss/_homepage.scss */
     .go-support {
@@ -703,14 +703,17 @@ header.top {
     font-weight: 400;
     font-size: 18px;
     margin-bottom: 0; }
-  @media (min-width: 768px) {
-    /* line 35, scss/_homepage.scss */
-    .go-support a {
-      margin-top: 16px; } }
-  @media (min-width: 992px) {
-    /* line 35, scss/_homepage.scss */
-    .go-support a {
-      margin-top: 4px; } }
+  /* line 35, scss/_homepage.scss */
+  .go-support a {
+    margin-top: 20px; }
+    @media (min-width: 768px) {
+      /* line 35, scss/_homepage.scss */
+      .go-support a {
+        margin-top: 16px; } }
+    @media (min-width: 992px) {
+      /* line 35, scss/_homepage.scss */
+      .go-support a {
+        margin-top: 4px; } }
 
 /* line 7, scss/_innerpages.scss */
 .inner-banner {
