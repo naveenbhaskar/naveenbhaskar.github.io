@@ -82,7 +82,14 @@ $menu-color:#fff;
     position: absolute;
     top:100%;
     display:none;
-     border-top:2px solid  #fff;
+     // border-top:2px solid  #fff;
+    @media (min-width:$screen-tablet) {
+
+     -webkit-box-shadow: 1px 5px 5px -3px rgba(-1, 0, 0, 0.75);
+-moz-box-shadow: 1px 5px 5px -3px rgba(-1, 0, 0, 0.75);
+box-shadow: 1px 5px 5px -3px rgba(-1, 0, 0, 0.75);
+}
+
     li{
       a{
         text-decoration:none;
@@ -110,7 +117,7 @@ $menu-color:#fff;
       }
       ul{
         display:block;
-       border-top:2px solid  $primary-color;
+       // border-top:2px solid  $primary-color;
       }
     }
 }

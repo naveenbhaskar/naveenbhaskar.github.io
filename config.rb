@@ -5,6 +5,8 @@
 # Per-page layout changes:
 #
 # With no layout
+require 'middleman-deploy'
+
 page '/*.xml', layout: false
 page '/*.json', layout: false
 page '/*.txt', layout: false
