@@ -118,37 +118,38 @@ ul.tabs {
 body {
   font-family: 'Open Sans', sans-serif;
   color: #555555;
-  margin-top: 58px; }
+  margin-top: 58px;
+  font-size: 16px; }
 
-/* line 7, scss/_general.scss */
+/* line 8, scss/_general.scss */
 h1, h2, h3, h4, h5, h6 {
   color: #333333; }
 
-/* line 10, scss/_general.scss */
+/* line 11, scss/_general.scss */
 h3 {
   font-size: 18px; }
 
-/* line 14, scss/_general.scss */
+/* line 15, scss/_general.scss */
 a {
   color: #337ab7; }
-  /* line 16, scss/_general.scss */
+  /* line 17, scss/_general.scss */
   a:hover, a:active, a:focus {
     text-decoration: none; }
 
-/* line 24, scss/_general.scss */
+/* line 25, scss/_general.scss */
 main {
   padding: 30px 0; }
 
-/* line 27, scss/_general.scss */
+/* line 28, scss/_general.scss */
 .note {
   background: #f5f5f5;
   padding: 20px; }
 
-/* line 31, scss/_general.scss */
+/* line 32, scss/_general.scss */
 figure {
   text-align: center; }
 
-/* line 35, scss/_general.scss */
+/* line 36, scss/_general.scss */
 img {
   max-width: 100%; }
 
@@ -805,12 +806,17 @@ header.top {
 /* line 90, scss/_innerpages.scss */
 .go-features figure {
   text-align: center; }
-  /* line 92, scss/_innerpages.scss */
-  .go-features figure img {
-    width: 120px; }
 /* line 96, scss/_innerpages.scss */
 .go-features .features__title {
+  font-weight: 300;
+  font-size: 30px;
   margin-bottom: 20px; }
+/* line 104, scss/_innerpages.scss */
+.go-features hr {
+  border-top: 1px dashed #ccc;
+  position: relative;
+  top: 48px;
+  clear: both; }
 
 /* line 4, scss/_plugins.scss */
 .plugins .note {
