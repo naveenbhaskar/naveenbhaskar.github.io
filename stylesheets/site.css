@@ -1209,11 +1209,17 @@ footer {
     clear: both; }
 
 /* line 51, scss/help.scss */
-.help-row.gocd-community {
+.gocd-community {
   clear: both;
   border: 0; }
+  /* line 54, scss/help.scss */
+  .gocd-community .sub-title {
+    margin-bottom: 10px; }
+  /* line 57, scss/help.scss */
+  .gocd-community .desc {
+    margin-bottom: 50px; }
 
-/* line 56, scss/help.scss */
+/* line 62, scss/help.scss */
 .cta {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1230,12 +1236,12 @@ footer {
   margin: 30px 0 0px;
   padding: 0; }
   @media only screen and (min-width: 768px) {
-    /* line 56, scss/help.scss */
+    /* line 62, scss/help.scss */
     .cta {
       -webkit-flex-wrap: nowrap;
       -ms-flex-wrap: nowrap;
       flex-wrap: nowrap; } }
-  /* line 78, scss/help.scss */
+  /* line 84, scss/help.scss */
   .cta a {
     width: 330px;
     height: 230px;
@@ -1268,41 +1274,41 @@ footer {
     margin-bottom: 30px;
     border-radius: 20px; }
     @media only screen and (min-width: 768px) {
-      /* line 78, scss/help.scss */
+      /* line 84, scss/help.scss */
       .cta a {
         width: 400px;
         height: 275px; } }
     @media only screen and (min-width: 768px) {
-      /* line 115, scss/help.scss */
+      /* line 121, scss/help.scss */
       .cta a:first-child {
         margin-right: 40px;
         margin-bottom: 0; } }
-    /* line 123, scss/help.scss */
+    /* line 129, scss/help.scss */
     .cta a:hover {
       -webkit-transition: all 0.2s ease-in-out;
       transition: all 0.2s ease-in-out;
       text-decoration: none;
       box-shadow: 0px 0px 2px 2px #E0E0E0; }
-  /* line 132, scss/help.scss */
+  /* line 138, scss/help.scss */
   .cta p {
     margin: 0;
     font-size: 18px; }
-  /* line 137, scss/help.scss */
+  /* line 143, scss/help.scss */
   .cta h3 {
     font-size: 18px;
     line-height: 28px;
     margin: 0;
     text-transform: uppercase; }
     @media only screen and (min-width: 768px) {
-      /* line 137, scss/help.scss */
+      /* line 143, scss/help.scss */
       .cta h3 {
         font-size: 20px; } }
 
-/* line 151, scss/help.scss */
+/* line 157, scss/help.scss */
 .cta a.padded {
   padding: 40px 20px; }
 
-/* line 155, scss/help.scss */
+/* line 161, scss/help.scss */
 .get-support {
   background: url(../images/help-bg.jpg) no-repeat center top;
   background-size: cover;
@@ -1312,40 +1318,40 @@ footer {
     content: "";
     display: table;
     clear: both; }
-  /* line 161, scss/help.scss */
+  /* line 167, scss/help.scss */
   .get-support .sub-title {
     color: #fff;
     margin-bottom: 10px; }
-  /* line 167, scss/help.scss */
+  /* line 173, scss/help.scss */
   .get-support .numbering:before {
     border-bottom: 1px solid rgba(238, 238, 238, 0.38); }
-  /* line 173, scss/help.scss */
+  /* line 179, scss/help.scss */
   .get-support ul {
     list-style-type: circle;
     font-weight: 300; }
-  /* line 178, scss/help.scss */
+  /* line 184, scss/help.scss */
   .get-support a {
     color: #86569a; }
-    /* line 181, scss/help.scss */
+    /* line 187, scss/help.scss */
     .get-support a:hover, .get-support a:visited {
       color: #86569a; }
   @media only screen and (min-width: 768px) {
-    /* line 189, scss/help.scss */
+    /* line 195, scss/help.scss */
     .get-support .left {
       padding-right: 30px;
       float: left;
       width: 50%;
       text-align: right;
       direction: rtl; }
-    /* line 197, scss/help.scss */
+    /* line 203, scss/help.scss */
     .get-support .right {
       width: 50%;
       float: left; } }
-  /* line 204, scss/help.scss */
+  /* line 210, scss/help.scss */
   .get-support h3 {
     color: #fff; }
 
-/* line 210, scss/help.scss */
+/* line 216, scss/help.scss */
 .points {
   width: 100%;
   margin: 30px auto; }
@@ -1355,39 +1361,39 @@ footer {
     display: table;
     clear: both; }
   @media only screen and (min-width: 768px) {
-    /* line 210, scss/help.scss */
+    /* line 216, scss/help.scss */
     .points {
       width: 77%; } }
 
-/* line 221, scss/help.scss */
+/* line 227, scss/help.scss */
 .actions {
   clear: both;
   text-align: center;
   margin: 20px 0 50px; }
-  /* line 226, scss/help.scss */
+  /* line 232, scss/help.scss */
   .actions a {
-    text-transform: uppercase;
     text-decoration: underline;
     font-size: 12px;
     color: #fff; }
-    /* line 231, scss/help.scss */
+    /* line 237, scss/help.scss */
     .actions a:visited, .actions a:hover {
       color: #fff; }
     @media only screen and (min-width: 768px) {
-      /* line 226, scss/help.scss */
+      /* line 232, scss/help.scss */
       .actions a {
         font-size: 15px; } }
 
-/* line 243, scss/help.scss */
+/* line 249, scss/help.scss */
 .btn-cta {
   clear: both;
   display: block;
-  background: #8A549B;
+  background: transparent;
   border: 0;
   color: #fff;
+  border: 1px solid #fff;
   width: 215px;
   height: 54px;
-  line-height: 54px;
+  line-height: 49px;
   text-align: center;
   text-decoration: none;
   margin: 0px auto 10px;
@@ -1396,34 +1402,34 @@ footer {
   text-transform: uppercase; }
 
 @media only screen and (min-width: 715px) {
-  /* line 261, scss/help.scss */
+  /* line 268, scss/help.scss */
   .btn-cta {
     width: 240px; } }
-/* line 267, scss/help.scss */
+/* line 274, scss/help.scss */
 #support_form_submit_failure {
   max-width: 500px;
   margin: 40px auto;
   border: 1px solid #f00;
   padding: 30px; }
 
-/* line 274, scss/help.scss */
+/* line 281, scss/help.scss */
 #support_form_submit_failure p {
   color: #f00;
   margin-bottom: 0; }
 
-/* line 279, scss/help.scss */
+/* line 286, scss/help.scss */
 #support_form_submit_success {
   max-width: 500px;
   margin: 40px auto;
   border: 1px solid #419041;
   padding: 30px; }
 
-/* line 286, scss/help.scss */
+/* line 293, scss/help.scss */
 #support_form_submit_success p {
   color: #419041;
   margin-bottom: 0; }
 
-/* line 291, scss/help.scss */
+/* line 298, scss/help.scss */
 .signup {
   clear: both;
   border: 1px solid #ccc;
@@ -1433,7 +1439,7 @@ footer {
   position: relative;
   text-align: center; }
 
-/* line 301, scss/help.scss */
+/* line 308, scss/help.scss */
 .signup:before {
   content: "";
   position: absolute;
@@ -1446,7 +1452,7 @@ footer {
   top: -1px;
   transform: translateX(-50%); }
 
-/* line 314, scss/help.scss */
+/* line 321, scss/help.scss */
 .signup .close {
   position: absolute;
   right: 20px;
@@ -1459,27 +1465,27 @@ footer {
   border-radius: 50%;
   line-height: 31px; }
 
-/* line 327, scss/help.scss */
+/* line 334, scss/help.scss */
 .signup h3 {
   text-align: center;
   margin: 0 0 10px 0;
   font-size: 22px; }
 
 @media only screen and (min-width: 715px) {
-  /* line 334, scss/help.scss */
+  /* line 341, scss/help.scss */
   .signup h3 {
     font-size: 30px; } }
-/* line 340, scss/help.scss */
+/* line 347, scss/help.scss */
 .signup p {
   text-align: center;
   max-width: 400px;
   margin: 0 auto 30px; }
 
-/* line 346, scss/help.scss */
+/* line 353, scss/help.scss */
 .subsection {
   clear: both;
   text-align: center; }
-  /* line 350, scss/help.scss */
+  /* line 357, scss/help.scss */
   .subsection h3 {
     font-size: 15px;
     text-transform: uppercase;
@@ -1488,15 +1494,15 @@ footer {
     font-weight: 400; }
 
 @media only screen and (min-width: 715px) {
-  /* line 361, scss/help.scss */
+  /* line 368, scss/help.scss */
   .subsection h3 {
     font-size: 20px; } }
-/* line 367, scss/help.scss */
+/* line 374, scss/help.scss */
 .subsection p {
   font-size: 15px;
   font-weight: 300; }
 
-/* line 372, scss/help.scss */
+/* line 379, scss/help.scss */
 .desc {
   font-size: 15px;
   font-weight: 300;
@@ -1504,37 +1510,38 @@ footer {
   text-align: center;
   margin: auto; }
 
-/* line 380, scss/help.scss */
+/* line 387, scss/help.scss */
 .foo-links {
-  margin-top: 30px; }
+  margin-top: 50px; }
 
 @media only screen and (min-width: 960px) {
-  /* line 385, scss/help.scss */
+  /* line 392, scss/help.scss */
   .foo-links {
     margin: 30px auto;
     width: 70%; } }
-/* line 392, scss/help.scss */
+/* line 399, scss/help.scss */
 .foo-links h5 {
   font-size: 15px;
   text-transform: uppercase;
-  text-align: center; }
+  text-align: center;
+  margin-bottom: 30px; }
 
-/* line 398, scss/help.scss */
+/* line 406, scss/help.scss */
 .foo-links .footer-links a {
   text-decoration: underline;
   font-size: 14px; }
 
-/* line 403, scss/help.scss */
+/* line 411, scss/help.scss */
 .foo-links .footer-links a {
   color: #86569a;
   /*margin-right: 20px;*/ }
 
-/* line 407, scss/help.scss */
+/* line 415, scss/help.scss */
 .foo-links .footer-links a:hover,
 .foo-links .footer-links a:visited {
   color: #86569a; }
 
-/* line 412, scss/help.scss */
+/* line 420, scss/help.scss */
 .foo-links .footer-links ul {
   display: -webkit-box;
   display: -webkit-flex;
@@ -1552,20 +1559,20 @@ footer {
   flex-wrap: wrap; }
 
 @media only screen and (min-width: 715px) {
-  /* line 430, scss/help.scss */
+  /* line 438, scss/help.scss */
   .foo-links .footer-links ul {
     -webkit-flex-wrap: nowrap;
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap; } }
-/* line 438, scss/help.scss */
+/* line 446, scss/help.scss */
 .foo-links .footer-links ul li {
   width: 100%; }
 
 @media only screen and (min-width: 715px) {
-  /* line 443, scss/help.scss */
+  /* line 451, scss/help.scss */
   .foo-links .footer-links ul li {
     width: auto; } }
-/* line 449, scss/help.scss */
+/* line 457, scss/help.scss */
 .signup #support_form input[type="text"] {
   border: 1px solid #ccc;
   height: 30px;
@@ -1574,11 +1581,11 @@ footer {
   padding: 5px 10px; }
 
 @media only screen and (min-width: 715px) {
-  /* line 458, scss/help.scss */
+  /* line 466, scss/help.scss */
   .signup #support_form input[type="text"] {
     width: 250px;
     margin-bottom: 15px; } }
-/* line 465, scss/help.scss */
+/* line 473, scss/help.scss */
 .signup #support_form textarea {
   border: 1px solid #ccc;
   height: 70px;
@@ -1587,11 +1594,11 @@ footer {
   padding: 5px 10px; }
 
 @media only screen and (min-width: 715px) {
-  /* line 474, scss/help.scss */
+  /* line 482, scss/help.scss */
   .signup #support_form textarea {
     width: 250px;
     margin-bottom: 30px; } }
-/* line 481, scss/help.scss */
+/* line 489, scss/help.scss */
 .signup #support_form button {
   display: block;
   background: #8A549B;
@@ -1608,49 +1615,49 @@ footer {
   text-transform: uppercase; }
 
 @media only screen and (min-width: 715px) {
-  /* line 498, scss/help.scss */
+  /* line 506, scss/help.scss */
   .signup #support_form button {
     width: 240px; } }
-/* line 504, scss/help.scss */
+/* line 512, scss/help.scss */
 .hide-by-default {
   display: none; }
 
 /* START Don't show "Need Professional Support?" header on this page. */
-/* line 509, scss/help.scss */
+/* line 517, scss/help.scss */
 .need_help .header {
   height: 90px; }
 
-/* line 513, scss/help.scss */
+/* line 521, scss/help.scss */
 .need_help .header .support-header {
   display: none; }
 
-/* line 517, scss/help.scss */
+/* line 525, scss/help.scss */
 .need_help .header .social-icons,
 .need_help .header .navigation {
   margin-top: 20px; }
 
-/* line 522, scss/help.scss */
+/* line 530, scss/help.scss */
 .need_help .header .title .logo {
   margin-top: 6px; }
 
-/* line 526, scss/help.scss */
+/* line 534, scss/help.scss */
 .need_help .page-title {
   margin: 0px;
   border: none; }
 
 @media only screen and (min-width: 1200px) {
-  /* line 532, scss/help.scss */
+  /* line 540, scss/help.scss */
   .need_help .container-12 {
     width: auto; }
 
-  /* line 536, scss/help.scss */
+  /* line 544, scss/help.scss */
   .need_help .container_12 {
     margin-left: auto;
     margin-right: auto;
     width: 1020px;
     position: relative; }
 
-  /* line 543, scss/help.scss */
+  /* line 551, scss/help.scss */
   .need_help .container_12:after {
     content: "";
     display: table;
