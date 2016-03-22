@@ -4,55 +4,55 @@
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta charset="utf-8">
     <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
-    <!-- Use title if it's in the page YAML frontmatter -->
-    <title>Middleman</title>
-    <link href='//fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+    <title>GoCD</title>
+    <link href="/images/favicon.ico" rel="shortcut icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
     <link href="/stylesheets/site.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="/javascripts/all.js"></script>
     <script src="/javascripts/main.js"></script>
+  </head>
 
-      </head>
   <body class="getting-started getting-started_part-2 getting-started_part-2_index">
     <header class="top">
-	<div class="container">
-		<a href="/" class="logo"><img src="/images/Go_logo.png" /></a>
-		<nav class="mainnav">
-			<ul class="level0">
-				<li class="dropdown">
-					<a href="/features">Features</a>
-					<ul>
-						<li><a href="/plugins">Plugins</a></li>
-						<li><a href="/roadmap">Roadmap</a></li>
-						<li><a href="/subscribe">Subscribe to updates</a></li>
-					</ul>
-				</li>
-				<li class="dropdown">
-					<a href="/community">Community</a>
-					<ul>
-						<li><a href="/contribute">Contribute</a></li>
-						<li><a href="/cla">CLA</a></li>
-						<li><a href="/open-issues">Open Issues</a></li>
-						<li><a href="/events">Events</a></li>
-						<li><a href="/partners">Partners</a></li>
-					</ul>
-				</li>
-				<li><a href="#">Blog</a></li>
-				<li class="dropdown">
-					<a href="/help">Help</a>
-					<ul>
-						<li><a href="/getting-started/part-1">Getting started</a></li>
-						<li><a href="/download">Download</a></li>
-					</ul>
-				</li>
-			</ul>
-		</nav>
-		<button class="navbtn menu collapse">
-		<span></span>
-		</button>
-	</div>
+  <div class="container">
+    <a href="/" class="logo"><img src="/images/Go_logo.png" /></a>
+    <nav class="mainnav">
+      <ul class="level0">
+        <li class="dropdown">
+          <a href="/features">Features</a>
+          <ul>
+            <li><a href="/plugins">Plugins</a></li>
+            <li><a href="/roadmap">Roadmap</a></li>
+            <li><a href="/subscribe">Subscribe to updates</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="/community">Community</a>
+          <ul>
+            <li><a href="/contribute">Contribute</a></li>
+            <li><a href="/cla">CLA</a></li>
+            <li><a href="/open-issues">Open Issues</a></li>
+            <li><a href="/events">Events</a></li>
+            <li><a href="/partners">Partners</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Blog</a></li>
+        <li class="dropdown">
+          <a href="/help">Help</a>
+          <ul>
+            <li><a href="/getting-started/part-1">Getting started</a></li>
+            <li><a href="/download">Download</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <button class="navbtn menu collapse">
+    <span></span>
+    </button>
+  </div>
 </header>
 <span id="top"></span>
     <div class="inner-banner">
@@ -62,54 +62,56 @@
 </div>
 <div class="container">
 	<div class="row">
-		<div class="col-sm-3 sidebar">
-			<nav class="getting-started-nav">
-				<h5>Getting started</h5>
-				<ul class="verticalnav">
-					<li class="dropdown  dropdown-menu">
-						<a href="#" class="active">Part 1</a>
-						<ul>
-							<li><a href="/getting-started/part-1#installation">Installation</a></li>
-							<li><a href="/getting-started/part-1#concept1" class="active">
-								<strong>Concept 1:</strong>
-							Server and agents </a></li>
-							<li><a href="/getting-started/part-1#concept2">
-								<strong>Concept 2:</strong>
-							Pipelines and materials </a></li>
-							<li><a href="/getting-started/part-1#concept3">
-								<strong>Concept 3:</strong>
-							Agent prepares to do some work </a></li>
-							<li><a href="/getting-started/part-1#concept4"> <strong>Concept 4:</strong>Stages, jobs and tasks </a></li>
-						</ul>
-					</li>
-					<li class="dropdown open">
-						<a href="#">Part 2</a>
-						<ul>
-							<li><a href="#pipeline_as_material">Using a pipeline as a material</a></li>
-							<li><a href="#concept_pipeline_dependency_material"><strong>Concept 5:</strong>	Pipeline Dependency Material </a></li>
-							<li><a href="#using_artifacts">Publishing, fetching and using artifacts</a></li>
-								<li><a href="#concept_artifact"><strong>Concept 6:</strong>Artifact </a></li>
-								<li><a href="#fetching_using_artifacts">Fetching and using artifacts</a></li>
-								<li><a href="#concept_ancestor_artifacts"><strong>Concept 7:</strong>Ancestor artifacts and building artifacts only once </a></li>
-								<li><a href="#custom_tabs">Custom tabs</a></li>
-								<li><a href="#concept_custom_tab"><strong>Concept 8:</strong> Custom tab</a></li>
+    <div class="col-md-3 sidebar">
+    <button class="get-start-btn"><i class="fa fa-bars"></i></button>
+  <nav class="getting-started-nav">
+    <h5>Getting started <span class="close-nav">X</span></h5>
 
-							</ul>
-						</li>
-					<li class="dropdown dropdown-menu">
-						<a href="#">Part 3</a>
-						<ul>
-							<li><a href="/getting-started/part-3#value_stream_map">Value Stream Map (VSM)</a></li>
-							<li><a href="/getting-started/part-3#concept_vsm"><strong>Concept 9:</strong>	Value Stream Map </a></li>
-							<li><a href="/getting-started/part-3#fan_out_fan_in">Fan-Out and Fan-In</a></li>
-								<li><a href="/getting-started/part-3#concept_fan_out_fan_in"><strong>Concept 10:</strong>Fan-Out and Fan-In</a></li>
-							</ul>
-						</li>						
-					</ul>						
-					</ul>
-				</nav>
-			</div>
-			<div class="col-sm-9">
+    <ul class="verticalnav">
+      <li class="dropdown dropdown-menu">
+        <a href="#" class="active">Part 1</a>
+        <ul>
+          <li><a href="#installation" data-dest="/getting-started/part-1">Installation</a></li>
+          <li><a href="#concept1" data-dest="/getting-started/part-1" class="active">
+              <strong>Concept 1:</strong>
+              Server and agents </a></li>
+          <li><a href="#concept2" data-dest="/getting-started/part-1">
+              <strong>Concept 2:</strong>
+              Pipelines and materials </a></li>
+          <li><a href="#concept3" data-dest="/getting-started/part-1">
+              <strong>Concept 3:</strong>
+              Agent prepares to do some work </a></li>
+          <li><a href="#concept4" data-dest="/getting-started/part-1"> <strong>Concept 4:</strong>Stages, jobs and tasks </a></li>
+        </ul>
+      </li>
+      <li class="dropdown open">
+        <a href="#">Part 2</a>
+        <ul>
+          <li><a href="#pipeline_as_material" data-dest="/getting-started/part-2">Using a pipeline as a material</a></li>
+          <li><a href="#concept_pipeline_dependency_material" data-dest="/getting-started/part-2"><strong>Concept 5:</strong>  Pipeline Dependency Material </a></li>
+          <li><a href="#using_artifacts" data-dest="/getting-started/part-2">Publishing, fetching and using artifacts</a></li>
+          <li><a href="#concept_artifact" data-dest="/getting-started/part-2"><strong>Concept 6:</strong>Artifact </a></li>
+          <li><a href="#fetching_using_artifacts" data-dest="/getting-started/part-2">Fetching and using artifacts</a></li>
+          <li><a href="#concept_ancestor_artifacts" data-dest="/getting-started/part-2"><strong>Concept 7:</strong>Ancestor artifacts and building artifacts only once </a></li>
+          <li><a href="#custom_tabs" data-dest="/getting-started/part-2">Custom tabs</a></li>
+          <li><a href="#concept_custom_tab" data-dest="/getting-started/part-2"><strong>Concept 8:</strong> Custom tab</a></li>
+
+        </ul>
+      </li>
+      <li class="dropdown dropdown-menu">
+        <a href="#">Part 3</a>
+        <ul>
+          <li><a href="#value_stream_map" data-dest="/getting-started/part-3">Value Stream Map (VSM)</a></li>
+          <li><a href="#concept_vsm" data-dest="/getting-started/part-3"><strong>Concept 9:</strong>  Value Stream Map </a></li>
+          <li><a href="#fan_out_fan_in" data-dest="/getting-started/part-3">Fan-Out and Fan-In</a></li>
+          <li><a href="#concept_fan_out_fan_in" data-dest="/getting-started/part-3"><strong>Concept 10:</strong>Fan-Out and Fan-In</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+      <div class="col-md-9">
 				<div class="getting-started-content">
 					
 
@@ -414,6 +416,9 @@
 			</div>
 		</div>
 	</div>
+
+<script src="/javascripts/getting_started.js"></script>
+
     <footer>
 	<div class="join-community">
 		<div class="container">
@@ -459,7 +464,7 @@
 </footer>
 <a href="#top">top</a>
 <script src="/vendor/bootstrap-sass-3.3.6/assets/javascripts/bootstrap.min.js"></script>
-<!-- <script src="/vendor/bootstrap-sass-3.3.6/assets/javascripts/bootstrap/scrollspy.js"></script> -->
+<script src="/vendor/enquire.min.js"></script>
 <!-- <script src="/vendor/bootstrap-sass-3.3.6/assets/javascripts/bootstrap/affix.js"></script> -->
   </body>
 </html>

@@ -4,55 +4,55 @@
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta charset="utf-8">
     <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
-    <!-- Use title if it's in the page YAML frontmatter -->
     <title>GoCD Download</title>
-    <link href='//fonts.googleapis.com/css?family=Lato:300,400' rel='stylesheet' type='text/css'>
+    <link href="/images/favicon.ico" rel="shortcut icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
     <link href="/stylesheets/site.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="/javascripts/all.js"></script>
     <script src="/javascripts/main.js"></script>
+  </head>
 
-      </head>
   <body class="download download_index">
     <header class="top">
-	<div class="container">
-		<a href="/" class="logo"><img src="/images/Go_logo.png" /></a>
-		<nav class="mainnav">
-			<ul class="level0">
-				<li class="dropdown">
-					<a href="/features">Features</a>
-					<ul>
-						<li><a href="/plugins">Plugins</a></li>
-						<li><a href="/roadmap">Roadmap</a></li>
-						<li><a href="/subscribe">Subscribe to updates</a></li>
-					</ul>
-				</li>
-				<li class="dropdown">
-					<a href="/community">Community</a>
-					<ul>
-						<li><a href="/contribute">Contribute</a></li>
-						<li><a href="/cla">CLA</a></li>
-						<li><a href="/open-issues">Open Issues</a></li>
-						<li><a href="/events">Events</a></li>
-						<li><a href="/partners">Partners</a></li>
-					</ul>
-				</li>
-				<li><a href="#">Blog</a></li>
-				<li class="dropdown">
-					<a href="/help">Help</a>
-					<ul>
-						<li><a href="/getting-started/part-1">Getting started</a></li>
-						<li><a href="/download">Download</a></li>
-					</ul>
-				</li>
-			</ul>
-		</nav>
-		<button class="navbtn menu collapse">
-		<span></span>
-		</button>
-	</div>
+  <div class="container">
+    <a href="/" class="logo"><img src="/images/Go_logo.png" /></a>
+    <nav class="mainnav">
+      <ul class="level0">
+        <li class="dropdown">
+          <a href="/features">Features</a>
+          <ul>
+            <li><a href="/plugins">Plugins</a></li>
+            <li><a href="/roadmap">Roadmap</a></li>
+            <li><a href="/subscribe">Subscribe to updates</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="/community">Community</a>
+          <ul>
+            <li><a href="/contribute">Contribute</a></li>
+            <li><a href="/cla">CLA</a></li>
+            <li><a href="/open-issues">Open Issues</a></li>
+            <li><a href="/events">Events</a></li>
+            <li><a href="/partners">Partners</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Blog</a></li>
+        <li class="dropdown">
+          <a href="/help">Help</a>
+          <ul>
+            <li><a href="/getting-started/part-1">Getting started</a></li>
+            <li><a href="/download">Download</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <button class="navbtn menu collapse">
+    <span></span>
+    </button>
+  </div>
 </header>
 <span id="top"></span>
     <div class="inner-banner plugins">
@@ -72,7 +72,7 @@
     </p>
 
     <p>
-      Scripting GoCD installations gets easier now. Both GoCD server and agent are now available on
+      Scripting GoCD installations gets easier now. Both GoCD Server and Agent are now available on
       public <a href="https://docs.go.cd/current/installation/install/server/linux.html#rpm-based-distributions-ie-redhat-centos-fedora">YUM</a>
       and <a href="https://docs.go.cd/current/installation/install/server/linux.html#debian-based-distributions-ie-ubuntu">APT</a> repositories!
     </p>
@@ -86,14 +86,130 @@
 
     <p class="note">New! <a href="/subscribe">Subscribe to updates</a> on new GoCD releases and more.</p>
 
-    <h3 class="page-headings">
-      Latest supported release (v<span id="latestVersion"></span>)
-      <small>
-        (<a href="/releases/#latest">What's new</a>)
-      </small>
-    </h3>
+    <div id="downloads"></div>
+
+    <script id="download-revisions-template" type="text/x-handlebars-template">
+      {{#*inline "show-for-installer-type"}}
+        <div class="{{{installer-type}}} files">
+          {{> show-file server type="server"}}
+          {{> show-file agent type="agent"}}
+        </div>
+      {{/inline}}
+
+      {{#*inline "show-file"}}
+        <div class="{{{type}}} file">
+          <div class="name"><a href="{{{url}}}">{{{file}}}</a></div>
+          <div class="sha256sum"><small>{{{sha256sum}}}</small></div>
+          <div class="md5sum"><small>{{{md5sum}}}</small></div>
+        </div>
+      {{/inline}}
+
+      <h3 class="page-headings">
+        Latest supported release (<span id="latest-version">{{latest_version}}</span>)
+        <small>(<a href="/releases/#latest">What's new</a>)</small>
+      </h3>
+
+      NOT DONE YET
+      <select id="release-selector">
+        {{#each releases}}
+        <option value="{{go_version}}">{{go_version}}</option>
+        {{/each}}
+      </select>
+      NOT DONE YET
+
+      <div class="releases">
+        {{#each releases}}
+        <div class="release {{go_version}}">
+          <span class="revision">{{go_version}}</span>
+
+          {{#with win}}     {{> show-for-installer-type . installer-type="win"}}     {{/with}}
+          {{#with osx}}     {{> show-for-installer-type . installer-type="osx"}}     {{/with}}
+          {{#with deb}}     {{> show-for-installer-type . installer-type="deb"}}     {{/with}}
+          {{#with rpm}}     {{> show-for-installer-type . installer-type="rpm"}}     {{/with}}
+          {{#with solaris}} {{> show-for-installer-type . installer-type="solaris"}} {{/with}}
+          {{#with generic}} {{> show-for-installer-type . installer-type="package"}} {{/with}}
+        </div>
+        {{/each}}
+      </div>
+    </script>
   </div>
 </main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.19.1/ramda.min.js"></script>
+<script src="/javascripts/download.js"></script>
+
+<script>
+ jQuery(document).ready(function($) {
+   showDownloadLinks();
+ });
+</script>
+
+<div class="download-area">
+  <div class="container">
+    <h2 class="sub-title">Choose your OS & download</h3>
+    <p class="info">Latest supported release (<span id="latestVersion"></span>) |
+      <a href="/releases/#latest">What's new</a>
+    </p>
+    <ul class="tabs os">
+      
+      <li class="active" rel="tab1">
+        <span class="os-logo"> <img src="/images/download/windows.png" alt=""></span>
+        <span class="desc"> Windows</span>
+      </li>
+      <li  rel="tab2">
+        <span class="os-logo"> <img src="/images/download/osx.png" alt=""></span>
+        <span class="desc"> OSX</span>
+      </li>
+      <li  rel="tab3">
+        <span class="os-logo"> <img src="/images/download/debian.png" alt=""></span>
+        <span class="desc"> Debian</span>
+      </li>
+      <li  rel="tab4">
+        <span class="os-logo"> <img src="/images/download/linux.png" alt=""></span>
+        <span class="desc"> Linux</span>
+      </li>
+      <li  rel="tab5">
+        <span class="os-logo"> <img src="/images/download/solaris.png" alt=""></span>
+        <span class="desc"> Solaris</span>
+      </li>
+      <li  rel="tab6">
+        <span class="os-logo"> <img src="/images/download/package.png" alt=""></span>
+        <span class="desc"> Package</span>
+      </li>
+    </ul>
+  </div>
+</div>
+  <div class="os-tab-content">
+  <div class="container">
+            <div class="tab_container">
+            <h3 class="d_active tab-accordion_heading" rel="tab1"> Windows </h3>
+            <div id="tab1" class="tab_content"> 
+              <p>tab 1</p>
+            </div>
+            <h3 class="tab-accordion_heading" rel="tab2"> OSX </h3>
+            <div id="tab2" class="tab_content"> 
+               <p>tab 2</p>
+            </div> 
+            <h3 class="tab-accordion_heading" rel="tab3"> Debian </h3>
+            <div id="tab3" class="tab_content"> 
+              <p>tab 3</p>
+            </div> 
+            <h3 class="tab-accordion_heading" rel="tab4"> Linux </h3>
+            <div id="tab4" class="tab_content"> 
+              <p>tab 4</p>
+            </div> 
+            <h3 class="tab-accordion_heading" rel="tab5"> Solaris </h3>
+            <div id="tab5" class="tab_content"> 
+              <p>tab 5</p>
+            </div> 
+            <h3 class="tab-accordion_heading" rel="tab6"> Package </h3>
+            <div id="tab6" class="tab_content"> 
+              <p>tab 6</p>
+            </div>                                     
+          </div>
+          </div>
+  </div>
 
     <footer>
 	<div class="join-community">
@@ -140,7 +256,7 @@
 </footer>
 <a href="#top">top</a>
 <script src="/vendor/bootstrap-sass-3.3.6/assets/javascripts/bootstrap.min.js"></script>
-<!-- <script src="/vendor/bootstrap-sass-3.3.6/assets/javascripts/bootstrap/scrollspy.js"></script> -->
+<script src="/vendor/enquire.min.js"></script>
 <!-- <script src="/vendor/bootstrap-sass-3.3.6/assets/javascripts/bootstrap/affix.js"></script> -->
   </body>
 </html>
