@@ -1,0 +1,324 @@
+<!doctype html>
+<html>
+  <head>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <title>Guest post: Using Windows PowerShell tasks</title>
+    <link href="/assets/images/favicon.ico" rel="shortcut icon">
+    <link href="/assets/vendor/stylesheets/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/assets/stylesheets/site.css" rel="stylesheet" />
+    <script src="/assets/vendor/javascripts/jquery/1.12.0/jquery.min.js"></script>
+    <script src="/assets/javascripts/all.js"></script>
+    <script src="/assets/javascripts/main.js"></script>
+
+    <link rel="alternate" type="application/atom+xml" title="GoCD blog feed" href="/feed.xml" />
+  </head>
+
+  <body class="x2015 x2015_06 x2015_06_13 x2015_06_13_using-windows-powershell-tasks x2015_06_13_using-windows-powershell-tasks_index">
+    <header class="top">
+  <div class="container">
+    <a href="/" class="logo"><img src="/assets/images/Go_logo.png" /></a>
+    <nav class="mainnav">
+      <ul class="level0">
+        <li class="dropdown">
+          <a href="/features">Features</a>
+          <ul>
+            <li><a href="/plugins">Plugins</a></li>
+            <li><a href="/roadmap">Roadmap</a></li>
+            <li><a href="/subscribe">Subscribe to updates</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="/community">Community</a>
+          <ul>
+            <li><a href="/contribute">Contribute</a></li>
+            <li><a href="/cla">CLA</a></li>
+            <li><a href="/open-issues">Open Issues</a></li>
+            <li><a href="/events">Events</a></li>
+            <li><a href="/partners">Partners</a></li>
+          </ul>
+        </li>
+        <li><a href="/blog">Blog</a></li>
+        <li class="dropdown">
+          <a href="/help">Help</a>
+          <ul>
+            <li><a href="/getting-started/part-1">Getting started</a></li>
+            <li><a href="/download">Download</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <button class="navbtn menu collapse">
+    <span></span>
+    </button>
+  </div>
+</header>
+<span id="top"></span>
+
+    <!-- <div class="post-banner">
+  
+</div> -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+      <main id="main" role="main">
+      <p>Some things to be aware of when using Windows PowerShell tasks.</p>
+
+<h3 id="go-agent-default-installation">Go Agent default installation</h3>
+
+<p>The <a href="http://www.go.cd/documentation/user/current/installation/installing_go_agent.html">default</a> installation of a Go
+agent will use a 32-bit JRE unless you indicate otherwise. This JRE is embedded in the Go agent installer.</p>
+
+<p>If you want to use an alternative JRE (must satisfy Go's JRE requirements) after the initial installation, you can alter
+the "wrapper.java.command" key's value in the <code>[InstallDirectory]\config\wrapper-agent.conf</code> file  to point to a
+different JRE. You will then need to restart the Go agent service to start using the alternative JRE.</p>
+
+<p>The <code>[InstallDirectory]</code> refers to the Go agents installation directory which by default is <code>"C:\Program Files (x86)\Go Agent"</code>.</p>
+
+<h3 id="pre-requisites-for-running-powershell-task-commands">Pre-requisites for running PowerShell task commands</h3>
+
+<ul>
+  <li>You can only run on Windows based agents</li>
+  <li>You should tag the agents if your are also using linux agents</li>
+  <li>You probably want to ensure your agents all have the same version of PowerShell</li>
+</ul>
+
+<h4 id="bit-go-agent">32-bit Go agent</h4>
+
+<p>If you are running a default Go agent installation then you will be running a 32-bit JRE.</p>
+
+<p>The 32-bit JRE will try to run PowerShell tasks in the 32-bit version of PowerShell, even if you give the full path to
+the 64-bit PowerShell executable in the task. If you need to execute a PowerShell script then you will need to alter the
+execution policy as follows:</p>
+
+<ul>
+  <li>Open 32-bit version of PowerShell as an administrator: Start -&gt; All Programs -&gt; Accessories -&gt; Windows Powershell -&gt; Windows Powershell (x86) and type:</li>
+</ul>
+
+<p><code>powershell
+# Alter execution policy
+set-executionpolicy remotesigned -force  
+</code></p>
+
+<p>This will allow you to run local scripts on the Windows Go agent box.</p>
+
+<h4 id="bit-go-agent-1">64-bit Go agent</h4>
+
+<p>If you are running a Go agent using a 64-bit JRE, it will run PowerShell tasks in the 64-bit version of PowerShell.</p>
+
+<p>If you need to execute a PowerShell script, then you will need to alter the execution policy as follows:</p>
+
+<ul>
+  <li>Open 64-bit version of PowerShell as an administrator: Start -&gt; All Programs -&gt; Accessories -&gt; Windows Powershell -&gt;
+Windows Powershell and type:</li>
+</ul>
+
+<p><code>powershell
+# Alter execution policy
+set-executionpolicy remotesigned -force  
+</code></p>
+
+<p>This will allow you to run local scripts on the Windows Go agent box.</p>
+
+<h3 id="powershell-task-commands">PowerShell task commands</h3>
+
+<p>You can configure the task as follows:</p>
+
+<p><code>
+command: powershell  
+arg: .\run.ps1 arg1value  
+</code></p>
+
+<p>This assumes that the <code>run.ps1</code> script is in the task's working directory.</p>
+
+<p>If you create the <code>run.ps1</code> file with the following content you can see details of the execution context in the console log for the pipeline:</p>
+
+<p><code>powershell
+param
+(
+	[string] $arg1
+)
+write-host "Script:            " $MyInvocation.MyCommand.Path
+write-host "Pid:               " $pid
+write-host "Host.Version:      " $host.version
+write-host "Is 64-bit process: " $([Environment]::Is64BitProcess)
+write-host "Execution policy:  " $(get-executionpolicy)
+write-host "Arg1:              " $arg1
+</code></p>
+
+<h3 id="propagating-failures">Propagating failures</h3>
+
+<p>You need to ensure that PowerShell exits with an exit code that is not 0 in the event of a failure, this needs to cater to:</p>
+
+<ul>
+  <li>Script errors</li>
+  <li>External process calls that indicate failure</li>
+</ul>
+
+<p>You will need to decide how to handle these failures and if they should indicate the PowerShell task has been successful
+or not. This may mean that some script errors and external process calls failing is okay in your context.</p>
+
+<p>The following script demonstrates a strategy I use where I exit with a non zero code if any script error was encountered
+or an external process call fails:</p>
+
+<p>```powershell
+set-strictmode -version latest
+$ErrorActionPreference = 'Stop'</p>
+
+<p>function execute-externaltool
+(
+	[string] $context,
+	[scriptblock] $actionBlock
+)
+{
+	# This function exists to check the exit code for the external tool called within the script block, so we don't have to do this for each call
+	&amp; $actionBlock
+	if ($LastExitCode -gt 0) { throw "$context : External tool call failed" }
+}</p>
+
+<p>try
+{
+	write-host "Script:            " $MyInvocation.MyCommand.Path
+	write-host "Pid:               " $pid
+	write-host "Host.Version:      " $host.version
+	write-host "Execution policy:  " $(get-executionpolicy)</p>
+
+<pre><code># Query a service that does not exist, sc.exe will return with a non 0 exit code
+execute-externaltool "Query a non existent service, will return with exit code != 0" { c:\windows\system32\sc.exe query service_does_not_exist }  } catch {
+write-host "$pid : Error caught - $_"
+if ($? -and (test-path variable:LastExitCode) -and ($LastExitCode -gt 0)) { exit $LastExitCode }
+else { exit 1 } } ``` - This script uses a try catch block to handle all errors
+- The $? and $LastExitCode caters to both script and external process calls
+- We fall back on an exit code of 1 if we do not have an external process exit code - This script uses an execute-externaltool function which takes a script block argument
+- The script will invoke the script block
+- It will then check for a non zero exit code (Assumes the script block just calls an external process), if so it will throw an exception.
+</code></pre>
+
+<h3 id="see-also">See also</h3>
+
+<p><a href="https://technet.microsoft.com/en-us/library/hh849812.aspx">PowerShell execution policy</a><br />
+<a href="https://blog.netspi.com/15-ways-to-bypass-the-powershell-execution-policy/">Bypassing PowerShell execution policy</a><br />
+<a href="https://codelucidate.wordpress.com/powershell/change-execution-policy-in-the-registry/">Setting execution policy directly in the registry</a><br />
+<a href="https://github.com/manojlds/gocd-powershell-runner">Go PowerShell runner plugin</a> - I believe it can only be configured on Windows based Go servers</p>
+
+<h3 id="about-the-author">About the author</h3>
+
+<p><em>This is a guest post by Pat Mc Grath. You can find Pat <a href="https://github.com/pmcgrath">on GitHub</a>.</em></p>
+
+
+      </main>
+    </div>
+    <div class="col-md-3">
+      <aside class="post-sidebar">
+      <section  class="recent-ariticles">
+        <h2 class="section-title">Recent Articles</h2>
+        <ol>
+          <li>
+          <span class="post-date">Mar 17</span>
+          <a href="/2016/03/17/writing-long-lived-code/">Writing long-lived Code</a> 
+          </li>
+          <li>
+          <span class="post-date">Mar 15</span>
+          <a href="/2016/03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops/">Are you ready for Continuous Delivery? Part 2: Feedback loops</a> 
+          </li>
+          <li>
+          <span class="post-date">Feb  8</span>
+          <a href="/2016/02/08/not-done-unless-its-done-security/">Add Security Testing to Your Deployment Pipelines</a> 
+          </li>
+          <li>
+          <span class="post-date">Jan 25</span>
+          <a href="/2016/01/25/are-you-ready-for-continuous-delivery/">Are you ready for Continuous Delivery?</a> 
+          </li>
+          <li>
+          <span class="post-date">Jan 17</span>
+          <a href="/2016/01/17/not-done-unless-its-done/">It’s not Continuous Delivery if you can’t deploy right now.</a> 
+          </li>
+          <li>
+          <span class="post-date">Dec 28</span>
+          <a href="/2015/12/28/gocd-continuous-delivery-through-pipelines/">Guest post: Go CD - Continuous delivery through pipelines</a> 
+          </li>
+          <li>
+          <span class="post-date">Dec 22</span>
+          <a href="/2015/12/22/gocd-in-2016/">GoCD in 2016</a> 
+          </li>
+          <li>
+          <span class="post-date">Nov 18</span>
+          <a href="/2015/11/18/Open-Source-Tests/">Open Source Tests - The GoCD way</a> 
+          </li>
+          <li>
+          <span class="post-date">Nov  9</span>
+          <a href="/2015/11/09/deserialization-vulnerability-commons-collections/">[Action needed] [Patch available] Vulnerability in GoCD - Java deserialization and Apache commons-collections</a> 
+          </li>
+          <li>
+          <span class="post-date">Oct 29</span>
+          <a href="/2015/10/29/go-webinar-recording/">Continuous Delivery with Go - Webinar Recording</a> 
+          </li>
+        </ol>
+        </section>
+        <section>
+        <h2 class="section-title">Tags</h2>
+        <ol>
+        </ol>
+        </section>
+        <section>
+         <h2 class="section-title">By Year</h2>
+        <ol>
+          <li><a href="/2016/">2016 (5)</a></li>
+          <li><a href="/2015/">2015 (22)</a></li>
+          <li><a href="/2014/">2014 (26)</a></li>
+        </ol>
+        </section>
+      </aside>
+    </div>
+  </div>
+</div>
+
+    <footer>
+	<div class="join-community">
+		<div class="container">
+			<h3>Join our community</h3>
+			<ul>
+				<li>
+					<a href="#">
+						<i class="fa fa-user-plus"></i>
+						join us
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="fa fa-wechat"></i>
+						Talk to us
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="fa fa-binoculars"></i>
+						watch us
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="fa fa-twitter"></i>
+						follow us
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="page-footer">
+		<div class="container">
+			<p class="help-us-improve">Make this place better, <a href="https://github.com/gocd/gocd.github.io/fork">fork</a>
+			it or <a href="https://github.com/gocd/gocd.github.io/issues">suggest</a> something.</p>
+			<p>
+				GoCD is an open-source project, sponsored by <a target="_blank" href="http://www.thoughtworks.com">ThoughtWorks Inc.</a>
+				under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank" title="Apache 2.0 License">Apache License, Version 2.0</a>
+			</p>
+		</div>
+	</div>
+</footer>
+<a href="#top">top</a>
+<script src="/assets/vendor/bootstrap-sass-3.3.6/assets/javascripts/bootstrap.min.js"></script>
+<script src="/assets/vendor/javascripts/enquire/2.1.2/enquire.min.js"></script>
+  </body>
+</html>

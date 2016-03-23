@@ -5,20 +5,20 @@
     <meta charset="utf-8">
     <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
     <title>GoCD plugins</title>
-    <link href="/images/favicon.ico" rel="shortcut icon">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="/stylesheets/site.css" rel="stylesheet" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="/javascripts/all.js"></script>
-    <script src="/javascripts/main.js"></script>
+    <link href="/assets/images/favicon.ico" rel="shortcut icon">
+    <link href="/assets/vendor/stylesheets/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/assets/stylesheets/site.css" rel="stylesheet" />
+    <script src="/assets/vendor/javascripts/jquery/1.12.0/jquery.min.js"></script>
+    <script src="/assets/javascripts/all.js"></script>
+    <script src="/assets/javascripts/main.js"></script>
+
+    <link rel="alternate" type="application/atom+xml" title="GoCD blog feed" href="/feed.xml" />
   </head>
 
   <body class="plugins plugins_index">
     <header class="top">
   <div class="container">
-    <a href="/" class="logo"><img src="/images/Go_logo.png" /></a>
+    <a href="/" class="logo"><img src="/assets/images/Go_logo.png" /></a>
     <nav class="mainnav">
       <ul class="level0">
         <li class="dropdown">
@@ -39,7 +39,7 @@
             <li><a href="/partners">Partners</a></li>
           </ul>
         </li>
-        <li><a href="#">Blog</a></li>
+        <li><a href="/blog">Blog</a></li>
         <li class="dropdown">
           <a href="/help">Help</a>
           <ul>
@@ -55,6 +55,7 @@
   </div>
 </header>
 <span id="top"></span>
+
     <div class="inner-banner plugins">
   <div class="container">
     <h1 class="caption"><span>Plugins</span></h1>
@@ -89,12 +90,12 @@
     </p>
 
     <p>
-      <em>Officially maintained ThoughtWorks plugins are tagged with a <img class="go-tag" src="/images/go-logo-small.png" /> icon.</em>
+      <em>Officially maintained ThoughtWorks plugins are tagged with a <img class="go-tag" src="/assets/images/go-logo-small.png" /> icon.</em>
     </p>
 
     <div class="all-plugins">
       <ul class="tabs">
-          <li class="active" rel="tab1">
+          <li rel="tab1">
             Package repository plugins <span class="plugin-info">>= GoCD v13.3</span>
           </li>
           <li rel="tab2">
@@ -112,7 +113,7 @@
       </ul>
 
       <div class="tab_container">
-          <h3 class="d_active tab-accordion_heading" rel="tab1">
+          <h3 class="tab-accordion_heading" rel="tab1">
             Package repository plugins <span class="plugin-info">>= GoCD v13.3</span>
           </h3>
 
@@ -123,7 +124,7 @@
                   <li>
                     <span class="logo"></span>
                     <div class="details">
-                      <img class="go-logo" src="/images/go-logo-small.png" />
+                      <img class="go-logo" src="/assets/images/go-logo-small.png" />
                       <h5 class="name"> Yum repository poller </h5>
                       <p class="more-details">
                         Bundled plugin to poll a Yum repository.
@@ -135,7 +136,6 @@
                     </div>
                     <div class="actions">
                         <span class="with-go">Bundled with GoCD</span>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=gocd&amp;repo=go-plugins&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -156,7 +156,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/gocd-contrib/deb-repo-poller/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=gocd-contrib&amp;repo=deb-repo-poller&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -177,7 +176,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/ThoughtWorksInc/go-nuget-poller-plugin/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=ThoughtWorksInc&amp;repo=go-nuget-poller-plugin&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -198,7 +196,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/aresok/go-maven-poller/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=aresok&amp;repo=go-maven-poller&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -219,7 +216,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/varchev/go-generic-artifactory-poller/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=varchev&amp;repo=go-generic-artifactory-poller&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -240,7 +236,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/drrb/go-puppet-forge-poller/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=drrb&amp;repo=go-puppet-forge-poller&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -261,7 +256,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/varchev/go-npm-poller/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=varchev&amp;repo=go-npm-poller&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -282,7 +276,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/MidVision/go-rapiddeploy/releases/">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=MidVision&amp;repo=go-rapiddeploy&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -303,7 +296,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/hammerdr/go-docker-registry-poller/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=hammerdr&amp;repo=go-docker-registry-poller&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -324,7 +316,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/decoomanj/gocd-docker-material-poller/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=decoomanj&amp;repo=gocd-docker-material-poller&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -345,7 +336,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/gocd-contrib/gem-repo-poller/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=gocd-contrib&amp;repo=gem-repo-poller&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -366,7 +356,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/ind9/gocd-s3-artifacts/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=ind9&amp;repo=gocd-s3-artifacts&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -387,7 +376,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/schibsted/gocd-s3-poller/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=schibsted&amp;repo=gocd-s3-poller&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -408,7 +396,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/Sounie/springer-gocd-cloudfoundry-plugin/releases/">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=Sounie&amp;repo=springer-gocd-cloudfoundry-plugin&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
 
@@ -449,7 +436,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/srinivasupadhya/xunit-converter-task/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=srinivasupadhya&amp;repo=xunit-converter-task&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -470,7 +456,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/manojlds/gocd-powershell-runner/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=manojlds&amp;repo=gocd-powershell-runner&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -491,7 +476,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/MidVision/go-rapiddeploy/releases/">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=MidVision&amp;repo=go-rapiddeploy&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -512,7 +496,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/MidVision/go-rapiddeploy/releases/">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=MidVision&amp;repo=go-rapiddeploy&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -533,7 +516,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/4finance/go-plugin-groovy/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=4finance&amp;repo=go-plugin-groovy&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -554,7 +536,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/ruckc/gocd-maven-plugin/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=ruckc&amp;repo=gocd-maven-plugin&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -575,7 +556,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/srinivasupadhya/script-executor-task/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=srinivasupadhya&amp;repo=script-executor-task&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -596,7 +576,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/ind9/gocd-s3-artifacts/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=ind9&amp;repo=gocd-s3-artifacts&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -617,7 +596,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/ind9/gocd-s3-artifacts/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=ind9&amp;repo=gocd-s3-artifacts&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -638,7 +616,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/manojlds/gocd-docker/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=manojlds&amp;repo=gocd-docker&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -659,7 +636,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/tusharm/go-artifactory-plugin/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=tusharm&amp;repo=go-artifactory-plugin&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -680,7 +656,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/akanyer/gocd-msbuild-taskplugin/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=akanyer&amp;repo=gocd-msbuild-taskplugin&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -701,7 +676,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/rjgarciap/ApacheBrooklyn-Task-Plugin/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=rjgarciap&amp;repo=ApacheBrooklyn-Task-Plugin&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -722,7 +696,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/tispr/gocd-opsworks-plugin/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=tispr&amp;repo=gocd-opsworks-plugin&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -743,7 +716,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/jmnarloch/gocd-gradle-plugin/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=jmnarloch&amp;repo=gocd-gradle-plugin&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -764,7 +736,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/jmnarloch/gocd-health-check-plugin/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=jmnarloch&amp;repo=gocd-health-check-plugin&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -785,7 +756,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/jmnarloch/gocd-sbt-plugin/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=jmnarloch&amp;repo=gocd-sbt-plugin&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -806,7 +776,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/Haufe-Lexware/gocd-plugins/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=Haufe-Lexware&amp;repo=gocd-plugins&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
 
@@ -847,7 +816,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/gocd-contrib/email-notifier/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=gocd-contrib&amp;repo=email-notifier&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -868,7 +836,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/ashwanthkumar/gocd-slack-build-notifier/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=ashwanthkumar&amp;repo=gocd-slack-build-notifier&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -889,7 +856,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/matt-richardson/gocd-websocket-notifier/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=matt-richardson&amp;repo=gocd-websocket-notifier&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -910,7 +876,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/gocd-contrib/gocd-build-status-notifier/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=gocd-contrib&amp;repo=gocd-build-status-notifier&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -931,7 +896,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/gocd-contrib/gocd-build-status-notifier/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=gocd-contrib&amp;repo=gocd-build-status-notifier&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -952,7 +916,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/gocd-contrib/gocd-build-status-notifier/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=gocd-contrib&amp;repo=gocd-build-status-notifier&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -973,7 +936,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/PagerDuty/gocd-hipchat-plugin/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=PagerDuty&amp;repo=gocd-hipchat-plugin&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -994,7 +956,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/gocd-contrib/gitter-notifier/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=gocd-contrib&amp;repo=gitter-notifier&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -1015,7 +976,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/rsr5/gocd-riemann-notifier/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=rsr5&amp;repo=gocd-riemann-notifier&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
 
@@ -1056,7 +1016,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/ashwanthkumar/gocd-build-github-pull-requests/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=ashwanthkumar&amp;repo=gocd-build-github-pull-requests&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -1077,7 +1036,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/ashwanthkumar/gocd-build-github-pull-requests/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=ashwanthkumar&amp;repo=gocd-build-github-pull-requests&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -1098,7 +1056,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/ashwanthkumar/gocd-build-github-pull-requests/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=ashwanthkumar&amp;repo=gocd-build-github-pull-requests&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -1119,7 +1076,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/ashwanthkumar/gocd-build-github-pull-requests/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=ashwanthkumar&amp;repo=gocd-build-github-pull-requests&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
 
@@ -1160,7 +1116,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/gocd-contrib/gocd-oauth-login/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=gocd-contrib&amp;repo=gocd-oauth-login&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
                   <li>
@@ -1181,7 +1136,6 @@
                           <i class="fa fa-download"></i>
                           <a href="https://github.com/gocd-contrib/gocd-oauth-login/releases">Download</a>
                         </div>
-                      <iframe src="http://ghbtns.com/github-btn.html?user=gocd-contrib&amp;repo=gocd-oauth-login&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="75" height="20" class="github-star-button"></iframe>
                     </div>
                   </li>
 
@@ -1200,6 +1154,14 @@
     </div>
   </div>
 </main>
+
+<script src="/assets/javascripts/tabs.js"></script>
+
+<script>
+ jQuery(document).ready(function($) {
+   startTabContainer($);
+ });
+</script>
 
     <footer>
 	<div class="join-community">
@@ -1245,8 +1207,7 @@
 	</div>
 </footer>
 <a href="#top">top</a>
-<script src="/vendor/bootstrap-sass-3.3.6/assets/javascripts/bootstrap.min.js"></script>
-<script src="/vendor/enquire.min.js"></script>
-<!-- <script src="/vendor/bootstrap-sass-3.3.6/assets/javascripts/bootstrap/affix.js"></script> -->
+<script src="/assets/vendor/bootstrap-sass-3.3.6/assets/javascripts/bootstrap.min.js"></script>
+<script src="/assets/vendor/javascripts/enquire/2.1.2/enquire.min.js"></script>
   </body>
 </html>

@@ -1,0 +1,816 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>GoCD</title>
+  <subtitle>Continuous Delivery</subtitle>
+  <id>https://go.cd/blog</id>
+  <link href="https://go.cd/blog"/>
+  <link href="https://go.cd/feed.xml" rel="self"/>
+  <updated>2016-03-17T05:30:00+05:30</updated>
+  <author>
+    <name>GoCD Team</name>
+  </author>
+  <entry>
+    <title>Writing long-lived Code</title>
+    <link rel="alternate" href="https://go.cd/2016/03/17/writing-long-lived-code/"/>
+    <id>https://go.cd/2016/03/17/writing-long-lived-code/</id>
+    <published>2016-03-17T05:30:00+05:30</published>
+    <updated>2016-03-23T10:52:19+05:30</updated>
+    <author>
+      <name>David Rice</name>
+    </author>
+    <content type="html">&lt;p&gt;ThoughtWorks has been building products for 10 years. We’ve learned some hard lessons while trying to keep fairly large codebases malleable year after year. There are many great techniques for writing long-lived code. I am going to write about what we learned from our biggest challenges. And my writing these thoughts down isn’t my saying we’ve got it down cold. Like any team, we’re struggling to get better each and every day.&lt;/p&gt;
+
+&lt;h2 id="upgrade-everything-all-the-time"&gt;Upgrade everything, all the time&lt;/h2&gt;
+
+&lt;p&gt;You should aspire to upgrade your dependencies and frameworks all the time. OK, so maybe this is almost in the realm of the obvious now. But very few people thought this way 10 years ago. And I wonder whether even teams that know this is the right thing to do actually prioritize it. It just needs to be something you do all the time and not be handled via technical debt. There are a number of reasons.&lt;/p&gt;
+
+&lt;p&gt;The first is the obvious one. &lt;a href="http://martinfowler.com/bliki/FrequencyReducesDifficulty.html"&gt;If it hurts, do it more often&lt;/a&gt;. Upgrading can be hard. There’s very often an unpredictable cascade of broken dependencies. The amount of work is mostly unknown. Do it more often and it becomes a non-issue. But there’s more to this than simple pain avoidance.&lt;/p&gt;
+
+&lt;p&gt;A primary motivator for upgrading dependencies is fixing security vulnerabilities. One of the biggest differences in building software now versus 10 years ago is the seemingly non-stop flow of vulnerability reports against our libraries, frameworks, and applications. Fixing vulnerabilities will almost always involve upgrading some of your dependencies. The upgrades must to be easy in order to quickly ship vulnerability fixes.&lt;/p&gt;
+
+&lt;p&gt;Teams that don’t upgrade regularly typically will label the activity as technical debt. Despite the industry being much more willing to talk about technical debt than 10 years ago, it’s still a very painful conversation to convince a product manager to pay down technical debt. If your team works in an upgrade everything all the time mode, you can avoid any conversation around upgrade technical debt altogether.&lt;/p&gt;
+
+&lt;h2 id="its-about-the-unit-tests"&gt;It’s about the unit tests&lt;/h2&gt;
+
+&lt;p&gt;The primary pain point for working with legacy code is how long it takes to make changes. So if you intend for you code to be long-lived you need to ensure that it will be entirely pleasurable for future developers to make changes. And there’s one thing that dominates all the others for this: an extremely fast and thorough unit test suite.&lt;/p&gt;
+
+&lt;p&gt;The cycle for adding new features, including any refactoring, is roughly: write failing test, code, get to green, make it right. If you’re doing it right, you’re executing a lot of unit tests along the way, sometimes a focused set and sometimes the entire suite. If these tests aren’t fast, the development cycle will not be enjoyable. The coding experience should not be make a couple of changes and sit around for 10 or 20 minutes while tests run. That’s a bad place to be.&lt;/p&gt;
+
+&lt;p&gt;Keeping a unit suite fast isn’t just about how you design and code. Yes, you can do a lot of things to keep tests fast such as avoiding files, databases, sockets, creation of huge graphs of objects, etc. But the other key piece is picking frameworks and languages that lend themselves to fast tests. If you find yourself subverting your framework to make your tests fast, you need to consider a different framework. And, yes, you can read this as my being unlikely to use Rails the next time I'm building a traditional multi-page application.&lt;/p&gt;
+
+&lt;p&gt;There’s also something about the size of the application. Once a codebase is a certain size, you need to figure out how to split it up. This is the only way to keep a fairly complete understanding of a piece of software in your head. Finding the seams along which to split is not an academic modeling exercise. You will spend a lot of time playing with your code, moving things around, redesigning, refactoring. Having a fast test suite to quickly validate your work along the way will make this work several orders of magnitude easier.&lt;/p&gt;
+
+&lt;p&gt;Actually, several orders of magnitude is likely underselling it. If you need to split up a monolith and have a painfully slow unit test suite, well… you just might be stuck. That’s learning a lesson the hard way. So do everything in your power to keep your unit tests extremely fast and able to run in a single thread on a dev machine.&lt;/p&gt;
+
+&lt;h2 id="branch-by-abstraction-should-not-be-a-permanent-state"&gt;Branch by abstraction should not be a permanent state&lt;/h2&gt;
+
+&lt;p&gt;Long-lived products are going to have a number of tech leads over the years. A certain type of tech lead will come in and start making noise about what stinks in the stack and immediately want to start swapping in new stuff. And that's OK. New shiny toys aren't always bad. For a long-lived codebase, it requires some fresh energy to generate enough momentum to swap out the parts that are no longer holding their weight. That said, I want to make two important points.&lt;/p&gt;
+
+&lt;p&gt;A new tech lead should not swap out any tech until they’ve been working on the team for 2-3 months. There’s too much context to understand. The new tech lead needs to learn empathy for the team and the codebase. The team and tech lead need to build trust and a rhythm.  Better decisions will be made with an initial pause.&lt;/p&gt;
+
+&lt;p&gt;The typical means of swapping out new tech (outside the absurdity of long-lived branches) is to utilize &lt;a href="http://martinfowler.com/bliki/BranchByAbstraction.html"&gt;branch by abstraction&lt;/a&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;An abstraction is placed in front of component X.&lt;/li&gt;
+  &lt;li&gt;Component Y is introduced as a replacement for X&lt;/li&gt;
+  &lt;li&gt;The abstraction routes intelligently between X &amp;amp; Y while…&lt;/li&gt;
+  &lt;li&gt;X is gradually made obsolete&lt;/li&gt;
+  &lt;li&gt;X is removed; the abstraction is maybe removed&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I have many times seen this process stop at step 3 due to discovering how difficult it is to remove that final 20% of the old component. I cannot stress how painful it is to drag around multiple ways of doing things for multiple years. It slows everything down and is demoralizing. Branch by abstraction is a great pattern. It’s the only way I’d do this sort of component swapping. But it needs to be accompanied by complete commitment by the team to eliminate the old component within a specified timebox.&lt;/p&gt;
+
+&lt;h2 id="technical-debt-can-kill-you"&gt;Technical debt can kill you&lt;/h2&gt;
+
+&lt;p&gt;Just because we talk about technical debt more than we used to does not provide any guarantee that it will be paid down. Perversely, maintaining a backlog of technical debt makes it easy to never pay it down. It’s too easy for a manger to say “It’s OK to hold off on that. We’ve got this other pressing need over here. It’s logged. We can come back to it.”  And in that moment it’s probably a sound decision. But those pressing needs never go away. Urgent lists only grow longer.&lt;/p&gt;
+
+&lt;p&gt;And it gets worse. My experience is that there is a point when the technical debt backlog grows so large that the team will give up on wanting to pay it off. The team will feel hopeless. The developers cannot achieve flow. The business isn’t getting new value. I have a few thoughts on how to avoid insurmountable technical debt.&lt;/p&gt;
+
+&lt;p&gt;A good development team won’t play the same technical debt card over and over again. When a team realizes it’s playing the same type of technical debt card repeatedly, it must bring the pain forward and quickly assume that work into its normal everyday way of working.&lt;/p&gt;
+
+&lt;p&gt;My colleague Badri suggests that a team must agree to take on debt collectively. No one individual has the right to make the codebase worse while signing up the entire team to fix it later.&lt;/p&gt;
+
+&lt;p&gt;Most importantly, technical leaders and product leaders need to trust each other. Neither side should be able to play the “because I said so” card. Good technical leaders understand the priorities of the business. Good product managers value being able to deliver. Both sides need to talk about risks, costs, and benefits. If you can’t ship, your technical debt has converted into a business problem and that’s bad for everyone.&lt;/p&gt;
+
+&lt;p&gt;There’s obviously much more a team can do to write long-lived code: code for the reader, don’t be clever, and always think of your future colleagues to name a few. I’d love to hear what you think should be added to this list.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Are you ready for Continuous Delivery? Part 2: Feedback loops</title>
+    <link rel="alternate" href="https://go.cd/2016/03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops/"/>
+    <id>https://go.cd/2016/03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops/</id>
+    <published>2016-03-15T05:30:00+05:30</published>
+    <updated>2016-03-23T10:52:19+05:30</updated>
+    <author>
+      <name>David Rice</name>
+    </author>
+    <content type="html">&lt;figure&gt;
+  &lt;img src="/assets/images/blog/are-you-ready-for-continuous-delivery/feedback_loops.jpg" alt="Ready for Continuous Delivery?" /&gt;
+  &lt;span class="attribution"&gt;
+    &lt;a target="_blank" href="https://www.flickr.com/photos/drainrat/14017306767/sizes/l"&gt;Attribution - Change: Cropped&lt;/a&gt;
+  &lt;/span&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;During the 10 plus years ThoughtWorks has been in the Continuous Delivery (CD) ecosystem, we've regularly come across
+people wanting to try our tools (GoCD and Snap CI) as they start their journey toward CD. Very often, in attempting to
+support teams new to CD, we suggest that they pause any tool evaluation and consider whether their organization is
+actually ready to embark on this journey. If you do not frankly assess your team's readiness, the result can be a
+massive failure. The path to CD should not start with the immediate adoption of a CD tool.&lt;/p&gt;
+
+&lt;p&gt;In &lt;a href="/2016/01/25/are-you-ready-for-continuous-delivery.html"&gt;part one&lt;/a&gt; of this series, we explored some core development
+practices that are prerequisites for CD. In this part, we'll look at a variety of feedback loops—both manual and
+automated—your organization should have in place before rolling out CD.&lt;/p&gt;
+
+&lt;h2 id="feedback-loops-and-continuous-delivery"&gt;Feedback loops and Continuous Delivery&lt;/h2&gt;
+
+&lt;p&gt;The aim of Continuous Delivery is to release software faster, more reliably, and more frequently. Given that, diagrams
+of CD typically depict a linear flow. On the surface, this is quite different from Continuous Integration, which is
+usually shown as a loop.&lt;/p&gt;
+
+&lt;figure&gt;
+  &lt;img src="/assets/images/blog/are-you-ready-for-continuous-delivery/gocd_thoughtworks_continuous_integration_feedback_loops.png" alt="Continuous Integration feedback loops GoCD ThoughtWorks" class="size_medium" /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;But CD as a linear flow is an incomplete picture. A good deployment pipeline has numerous feedback loops along the
+way. At each stage of the pipeline, verifications are run. If they pass, the pipeline continues. If they fail, the
+pipeline halts and the team responds appropriately to the feedback. The feedback along the way prevents CD from being
+chaos. Poor quality will almost never reach production in a well-designed pipeline.&lt;/p&gt;
+
+&lt;figure&gt;
+  &lt;img src="/assets/images/blog/are-you-ready-for-continuous-delivery/gocd_thoughtworks_continuous_delivery_feedback_loops.png" alt="Continuous Delivery feedback loops GoCD ThoughtWorks" class="size_medium_large" /&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Most of the feedback loops you find in a deployment pipeline are good practices in and of themselves. You might already
+be doing some or most of them. We think you should have many of these in place before moving forward with CD.&lt;/p&gt;
+
+&lt;h2 id="test-automation"&gt;Test automation&lt;/h2&gt;
+
+&lt;p&gt;The most common feedback loop in any deployment pipeline is the execution of automated tests. You must have a solid test
+automation strategy before attempting CD. Some people like the approach of the
+&lt;a href="http://martinfowler.com/bliki/TestPyramid.html"&gt;test pyramid&lt;/a&gt;. We’re actually fine with any sensible approach, as long
+as it's fast and reliable. There are myriad types of automated tests, and which ones you use will depend upon your
+circumstances. Here, we will take a look at three of the most important types: unit, regression, and performance.&lt;/p&gt;
+
+&lt;h4 id="unit-tests"&gt;Unit tests&lt;/h4&gt;
+
+&lt;p&gt;Unit tests verify your application at the most granular level, typically methods or classes. They are fast, easy to
+maintain, and support rapid change of your application. Unit tests should be the foundation of your automation
+strategy. If your teams don't value a thorough and fast unit test suite, they won’t be able to move fast or with
+confidence.&lt;/p&gt;
+
+&lt;p&gt;Some points to consider when assessing your team:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The suite must be fast. What’s fast? A few minutes on a large code base is OK. But faster is better. Slow unit tests
+result in a slow, horribly frustrating development flow.&lt;/li&gt;
+  &lt;li&gt;On a mature team, the testers will be comfortable with pushing as much of your test automation as possible into your
+unit test layer.&lt;/li&gt;
+  &lt;li&gt;Code coverage is important, but tracking metrics is generally only beneficial for a team learning the basics.&lt;/li&gt;
+  &lt;li&gt;Some frameworks and platforms are known to be slow when it comes to unit tests. Do not fight or subvert a framework to
+make tests fast. Instead, consider switching your framework or platform.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id="regression-test-suite"&gt;Regression test suite&lt;/h4&gt;
+
+&lt;p&gt;A regression test suite verifies that your entire application actually works. This suite adds a ton of value to a
+deployment pipeline. For many, the regression stage of a pipeline gives the confidence needed to deploy. We want to make
+a couple of points about this.&lt;/p&gt;
+
+&lt;p&gt;Firstly, regression tests should be 100 percent automated. They are change-detectors and do not require brain power to
+execute. A manual regression stage in your deployment process will prove painful. Work to get rid of it. Your testers
+can add more value elsewhere.&lt;/p&gt;
+
+&lt;p&gt;Secondly, we reject the notion that a regression suite must mean slow, flaky Selenium tests. Our take is, yes, it’s a
+fair reputation, but it was earned by many teams doing it wrong. How to author and maintain an automated regression
+suite is a book-worthy topic, but quickly:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Don’t couple them to small stories or tasks. Only consider them in the context of the entire application.&lt;/li&gt;
+  &lt;li&gt;Relentlessly prune the suite. Keep it tight. Err on the side of leaving something uncovered rather than accepting
+duplication.&lt;/li&gt;
+  &lt;li&gt;Treat them as production code. Keep things very clean.&lt;/li&gt;
+  &lt;li&gt;Have programmers write them. Train your testers to code if they are interested in automation. Avoid drag-and-drop
+programming.&lt;/li&gt;
+  &lt;li&gt;Do not accept flaky tests. Fix them or get rid of them.&lt;/li&gt;
+  &lt;li&gt;Even the best suites we've seen tend to be slow. Embrace using some combination of hardware, virtualization, and cloud
+to parallelize execution.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;One caveat to note: the best testers will want to do a manual regression every so often, just to help structure how they
+think about the application. That’s a good thing so long as it’s about their being thoughtful and not how you actually
+integrate regression checks into your process.&lt;/p&gt;
+
+&lt;h4 id="performance-testing"&gt;Performance testing&lt;/h4&gt;
+
+&lt;p&gt;Performance testing—verifying that your application meets specific performance criteria—is a massive topic. There’s no
+one way to do it: your approach will vary according to request volume and data size. There are many varieties: load,
+stress, soak, and spike, to name a few. It’s too big a topic for this post. That said, we do have some thinking that can
+help you assess your maturity:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Do not leave this phase for last. We cannot stress enough just how difficult this practice is and how much time we’ve
+seen sunk into failed efforts. Everything about it is difficult: modeling, standing up an environment, building the
+harness, assessing results, building it into your deployment pipeline.&lt;/li&gt;
+  &lt;li&gt;It’s critical to test against specific criteria. Don't worry about getting your criteria wrong at first. You can change
+the criteria once you have real production data.&lt;/li&gt;
+  &lt;li&gt;Don’t assume you'll reach web-scale in month two. You’ll waste huge cycles prematurely optimizing both your application
+and your tests. (Don’t read this as us saying, "Don’t consider what your actual scale might be." Just a suggestion that
+you be realistic and pragmatic.)&lt;/li&gt;
+  &lt;li&gt;Utilize production monitoring to the greatest extent possible. A canary release can go a long way toward verifying the
+performance of a new version of your application.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id="production-monitoring"&gt;Production monitoring&lt;/h2&gt;
+
+&lt;p&gt;Do you have a production monitoring strategy? Feedback loops aren’t only for pre-production phases. As much as we try to
+achieve dev/prod parity, production is truly a unique environment for most organizations and things can—and do—go wrong.&lt;/p&gt;
+
+&lt;p&gt;Here are some questions to help you assess your readiness:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;How quickly does your team know something is broken? Do they learn about it via monitoring? And then how fast can they
+respond?&lt;/li&gt;
+  &lt;li&gt;Does your team ignore alerts?&lt;/li&gt;
+  &lt;li&gt;Do your teams tend to invent an approach to monitoring as they go along? Believe it or not, we actually see this a lot
+and it’s not a good thing. Be as thoughtful about monitoring and alerts as you are with other parts or your application.&lt;/li&gt;
+  &lt;li&gt;Do you keep a database of events so that you can later query for patterns?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id="user-testing"&gt;User testing&lt;/h2&gt;
+
+&lt;p&gt;Sitting users down in front of your application and try it out is a critical feedback loop. In an enterprise setting, we
+like to see two type of user testing: usability testing and user acceptance testing. Usability testing verifies that
+users find the application easy to use. User acceptance testing verifies that users can complete transactions with the
+application in a real-world setting. There can be fair bit of overlap between the two types.&lt;/p&gt;
+
+&lt;p&gt;If you do not do user testing, you will struggle getting users to accept frequent releases of new versions. Users will
+only like rapid changes if the experience remains usable, consistent, and effective.&lt;/p&gt;
+
+&lt;p&gt;We also want to call out that these feedback loops are manual processes that often require weeks or months of elapsed
+time. They are typically not modeled into the deployment pipeline, and that’s fine. But do not leave them both batched
+up until the end. That’s a long wait period and likely an unknown amount of rework before deploying to prod. If you do
+this, your process will feel more like waterfall than CD. Run these user tests early and often, while you are writing
+the code.&lt;/p&gt;
+
+&lt;h2 id="exploratory-testing"&gt;Exploratory testing&lt;/h2&gt;
+
+&lt;p&gt;All this talk of automation does not mean your testers should retire their analytical thinking and learn to program. In
+fact, test automation should free up your testers to do what they're best at: use their
+brains. &lt;a href="http://testobsessed.com/2006/04/rigorous-exploratory-testing/"&gt;Exploratory testing&lt;/a&gt; is when a tester is
+simultaneously learning about the system, designing tests, and executing tests. It is when a tester gets into a deep
+flow, not even knowing what the next test is. This is where a good tester can really shine, doing some of their most
+valuable work.&lt;/p&gt;
+
+&lt;p&gt;For most types of applications, a test strategy should include skilled testers performing exploratory testing. This
+testing will find problems, teach you about your system, and inform your automated regression suite. As with user
+testing, this testing should be done throughout the development process and not as a gate at the end.&lt;/p&gt;
+
+&lt;h2 id="summary"&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;This list of feedback loops organizations should have in place before doing CD is not exhaustive (e.g., we didn’t
+discuss A/B testing). We have presented the more common feedback loops we see where CD has been successful. Obviously
+every situation presents different problems and has different needs.&lt;/p&gt;
+
+&lt;p&gt;You don’t need to have high marks on everything we have presented to begin your journey to CD. But if you are feeling
+only so-so against a majority of them, we’d suggest working on the individual pieces before approaching CD. Once you get
+enough of them in place, you will find that you’ve actually completed a large swath of your journey to Continuous
+Delivery.&lt;/p&gt;
+
+&lt;p&gt;In future parts of this series, we plan to explore culture, the last mile, and more.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Add Security Testing to Your Deployment Pipelines</title>
+    <link rel="alternate" href="https://go.cd/2016/02/08/not-done-unless-its-done-security/"/>
+    <id>https://go.cd/2016/02/08/not-done-unless-its-done-security/</id>
+    <published>2016-02-08T05:30:00+05:30</published>
+    <updated>2016-03-23T12:14:11+05:30</updated>
+    <author>
+      <name>Ken Mugrage</name>
+    </author>
+    <content type="html">
+&lt;div&gt;
+  &lt;figure&gt;
+    &lt;img src="/assets/images/blog/deploy-now/security-badge.png" alt="Continuous Delivery Security Testing" class="pad-left" /&gt;
+  &lt;/figure&gt;
+
+  &lt;div class="float-article float-left"&gt;
+&lt;p&gt;This is the second part of a series called &lt;a href="https://www.go.cd/2016/01/17/not-done-unless-its-done.html"&gt;It’s not Continuous Delivery if you can’t deploy right now.&lt;/a&gt; In this part, I’m going to cover some more common tools in security testing pipelines.&lt;/p&gt;
+&lt;p&gt;In my experience, automated security testing is pretty rare in CD pipelines. If the job of a pipeline is to make you confident in your release, confidence in your security is a must have. While it’s not practical to try to list them all, I’ll give a few examples of tools used for this automation. You can find more &lt;a href="https://www.owasp.org/index.php/Appendix_A:_Testing_Tools"&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Tests created by your team and run by tools like the ones in this article should be a key part of any deployment pipeline.&lt;/p&gt;
+
+  &lt;/div&gt;
+  &lt;div class="clear" /&gt;
+&lt;/div&gt;
+
+&lt;h2 id="automation-is-one-part-of-the-solution"&gt;Automation is one part of the solution&lt;/h2&gt;
+
+&lt;p&gt;Security has to be addressed in a holistic way. Automation is a way to get fast feedback on common security issues. A talented &lt;a href="http://security.stackexchange.com/a/46028"&gt;penetration tester&lt;/a&gt; will consider scenarios and methods that are not usually automated.&lt;/p&gt;
+
+&lt;p&gt;The goal of automation is to catch the “low-hanging fruit”. Are we pushing things to Git we shouldn’t be? Are we using an old, vulnerable package we shouldn’t? Are we violating our own company’s rules?&lt;/p&gt;
+
+&lt;h3 id="before-committing-code"&gt;Before committing code&lt;/h3&gt;
+
+&lt;p&gt;There is a lot you can—and should—do before your code even gets to a pipeline. Generally speaking, CD servers watch your source code repositories for changes and then act on those changes. For many issues, this is too late!&lt;/p&gt;
+
+&lt;p&gt;One of the biggest recurring stories we hear about SSH keys, auth tokens, private keys etc., being checked into source control. There was &lt;a href="http://www.securityweek.com/github-search-makes-easy-discovery-encryption-keys-passwords-source-code"&gt;a story&lt;/a&gt; a few years ago where a basic search for private id_rsa keys returned over 600 matches on GitHub alone.&lt;/p&gt;
+
+&lt;p&gt;Consider incorporating tools that check for these things before they are actually added!&lt;/p&gt;
+
+&lt;p&gt;ThoughtWorks recently created &lt;a href="https://github.com/thoughtworks/talisman"&gt;Talisman&lt;/a&gt;, a tool that is installed as a pre-push hook to Git. The idea is to catch issues before they even get into your source code repository.&lt;/p&gt;
+
+&lt;h3 id="static-application-security-testing-sast"&gt;Static Application Security Testing (SAST)&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href="http://www.gartner.com/it-glossary/static-application-security-testing-sast"&gt;Gartner&lt;/a&gt; defines SAST  as “a set of technologies designed to analyze application source code, byte code and binaries for coding and design conditions that are indicative of security vulnerabilities. SAST solutions analyze an application from the 'inside out' in a nonrunning state.”&lt;/p&gt;
+
+&lt;p&gt;This starts with having good unit test coverage. Can you authenticate as you should be able to? Are bad authentication requests refused? Are retries being limited properly? Are password policies being properly enforced?&lt;/p&gt;
+
+&lt;p&gt;Very early in your build process, your CD server can run some security-specific, source code level tests. These could look for issues ranging from bad code to policy violations.&lt;/p&gt;
+
+&lt;p&gt;For Ruby applications, this category includes tools like &lt;a href="http://brakemanscanner.org/docs/introduction/"&gt;Brakeman&lt;/a&gt; and &lt;a href="https://github.com/rubysec/bundler-audit"&gt;Bundler-audit&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Brakeman scans the application’s source code and can give out lots of different &lt;a href="http://brakemanscanner.org/docs/warning_types/"&gt;warning types&lt;/a&gt;. I particularly like what I’ll call policy checking. Someone implements basic authorization when you don’t want to allow that? Pipeline stage fails.&lt;/p&gt;
+
+&lt;p&gt;Bundler-audit does pretty much what it sounds like. It checks to see if you're using Gems that have known vulnerabilities.&lt;/p&gt;
+
+&lt;p&gt;For Java applications, &lt;a href="http://www.sonatype.com/"&gt;Sonatype&lt;/a&gt; has some impressive tools in this area. According to one Sonatype &lt;a href="http://www.sonatype.com/assessments/known-vulnerabilities"&gt;study&lt;/a&gt; “of the 106 component ‘parts’ used in a typical application, on average 24 have known cyber vulnerabilities, which are rated either critical or severe."&lt;/p&gt;
+
+&lt;h3 id="dynamic-application-security-testing-dast"&gt;Dynamic Application Security Testing (DAST)&lt;/h3&gt;
+
+&lt;p&gt;Again quoting &lt;a href="http://www.gartner.com/it-glossary/dynamic-application-security-testing-dast/"&gt;Gartner’s&lt;/a&gt; definition, these are tools which are “designed to detect conditions indicative of a security vulnerability in an application in its running state".&lt;/p&gt;
+
+&lt;p&gt;The tools that run against your code are a good start, but they aren’t accessing the application like a user. Tools such as &lt;a href="https://portswigger.net/burp/"&gt;Burp&lt;/a&gt;, &lt;a href="https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project"&gt;OWASP ZAP&lt;/a&gt;, &lt;a href="http://www.arachni-scanner.com/"&gt;Arachni&lt;/a&gt;, &lt;a href="http://w3af.org/"&gt;w3af&lt;/a&gt; and &lt;a href="https://subgraph.com/vega/index.en.html"&gt;Vega&lt;/a&gt; access the application itself, looking for exploit vectors like SQL Injection and cross-site scripting.&lt;/p&gt;
+
+&lt;h2 id="who-creates-the-tests"&gt;Who creates the tests?&lt;/h2&gt;
+
+&lt;p&gt;Normally, I’m a big proponent of tests being written by the developer as (or preferably before) they write the code. With that said, I don’t think it’s controversial to state that the average software developer isn’t very good at security testing. We should also acknowledge that developers do sometimes leave some doors open on purpose.&lt;/p&gt;
+
+&lt;p&gt;I believe security is one of the few areas where having specialists writing and executing the tests is not only acceptable, but preferable. Development teams should seek out these experts and work with them in close collaboration.&lt;/p&gt;
+
+&lt;h2 id="where-do-the-tests-go-in-the-cd-pipeline"&gt;Where do the tests go in the CD pipeline?&lt;/h2&gt;
+
+&lt;p&gt;When people ask this question, they are usually trying to decide if security pipelines or stages should be blocking, meaning that the pipeline can’t move forward on failures. I definitely think they should block, but that doesn’t mean you can’t do other types of testing on the same build.&lt;/p&gt;
+
+&lt;p&gt;If your continuous delivery server supports &lt;a href="https://www.go.cd/documentation/user/current/introduction/concepts_in_go.html#fan_in_out"&gt;fan-in / fan-out&lt;/a&gt;, you can set tests up as entirely separate pipelines that run while other pipelines (or people) are doing other things. In the example below, we’ve decided that we can go ahead with User Acceptance while the security scans are in progress. We still know that it won’t get deployed to our staging environment unless they both pass.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="/assets/images/blog/deploy-now/continuous_delivery_security_testing_pipeline.png" alt="continuous delivery security testing pipeline" /&gt;&lt;/p&gt;
+
+&lt;h2 id="reminder-tools-dont-solve-problems"&gt;Reminder: tools don’t solve problems&lt;/h2&gt;
+
+&lt;p&gt;I’ve spent the last 15 years working for makers of software development tools. There are only a few things I’m completely sure of, and one of them is that tools do not solve problems by themselves.&lt;/p&gt;
+
+&lt;p&gt;Having the right continuous delivery server (like GoCD) will make your life a lot easier, and having the right security tools will make it easier to find issues fast. None of this is a substitute for expertise.&lt;/p&gt;
+
+&lt;h2 id="how-do-you-start"&gt;How do you start?&lt;/h2&gt;
+
+&lt;p&gt;By starting. Pick an area, automate it. Pick another area, automate it. It will take time, but as that time progresses you’ll be more and more confident in the security of your application.&lt;/p&gt;
+
+&lt;h2 id="what-are-some-others"&gt;What are some others?&lt;/h2&gt;
+
+&lt;p&gt;What are some other tools you like? Add them to the comments.&lt;/p&gt;
+
+&lt;style type="text/css"&gt;
+.float-image {
+  max-width: 40%;
+}
+
+.float-image img {
+  max-width: 100%;
+}
+
+.float-image img.pad-right {
+  padding-right: 10px;
+}
+
+.float-image img.pad-left {
+  padding-left: 10px;
+}
+
+.float-article {
+  max-width: 60%;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.clear {
+  clear: both;
+}
+
+@media (max-width: 699px) {
+  .float-left, .float-right {
+    float: none;
+  }
+
+  .float-image {
+    max-width: 100%;
+  }
+
+  .float-article {
+    max-width: 100%;
+  }
+}
+&lt;/style&gt;
+
+</content>
+  </entry>
+  <entry>
+    <title>Are you ready for Continuous Delivery?</title>
+    <link rel="alternate" href="https://go.cd/2016/01/25/are-you-ready-for-continuous-delivery/"/>
+    <id>https://go.cd/2016/01/25/are-you-ready-for-continuous-delivery/</id>
+    <published>2016-01-25T05:30:00+05:30</published>
+    <updated>2016-03-23T10:52:19+05:30</updated>
+    <author>
+      <name>David Rice and Aravind SV</name>
+    </author>
+    <content type="html">&lt;figure&gt;
+  &lt;img src="/assets/images/blog/are-you-ready-for-continuous-delivery/woodline.jpeg" alt="Ready for Continuous Delivery?" /&gt;
+  &lt;span class="attribution"&gt;&lt;a target="_blank" href="https://commons.wikimedia.org/wiki/File:Wood-snake(byJamesForbes).JPG"&gt;Attribution&lt;/a&gt;&lt;/span&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;During the 10 plus years ThoughtWorks has been in the Continuous Delivery ecosystem, we've regularly come across people
+wanting to try our tools GoCD and Snap CI as they start their journey toward Continuous Delivery (CD). Very often,
+in attempting to support teams new to CD, we suggest that they pause any tool evaluation and consider whether their
+organization is actually ready to embark on this journey. If you do not frankly assess your teams' readiness, the result
+can be a massive failure. The path to CD should not start by immediately adopting a CD tool.&lt;/p&gt;
+
+&lt;p&gt;This is the first part of a series of posts about Continuous Delivery infrastructure, culture, and process. In this
+first post, we’ll present questions you need to answer honestly about your own people, teams, and organization to
+determine your readiness for Continuous Delivery.&lt;/p&gt;
+
+&lt;h2 id="part-1-practices"&gt;Part 1: Practices&lt;/h2&gt;
+
+&lt;h3 id="do-you-put-emeverythingem-into-version-control"&gt;Do you put &lt;em&gt;everything&lt;/em&gt; into version control?&lt;/h3&gt;
+
+&lt;p&gt;A foundation of CD is the ability to put a specific version of your application into a given environment at any point in
+time. CD is actually quite fussy about this. It’s a must. And this can only be done by:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Putting everything needed to make your application into a version control system&lt;/li&gt;
+  &lt;li&gt;Any time you change anything, push the changes to version control.&lt;/li&gt;
+  &lt;li&gt;Write an automated script that, given a version, checks out everything from version control and assembles your application.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;CD is impossible when software teams (or the people on a single team) work in isolation from each other. When
+development work happens in isolation, large periods of integration and testing are required at the end of the
+development phase. This results in long periods during which your application cannot be released. Avoiding these lengthy
+integration phases requires that your work be as visible to, and usable by, others as soon as possible. Our preferred
+mechanism for doing this is called trunk-based development:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Everyone regularly pulls others’ changes from version control.&lt;/li&gt;
+  &lt;li&gt;Everyone regularly pushes their changes to version control.&lt;/li&gt;
+  &lt;li&gt;Everyone works in the same place in version control, typically called "trunk" or "master".&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you are new to trunk-based development, it might sound ridiculous. But the practices of CI, unit testing, and
+trunk-based development all playing together, not only makes it reasonable, but a truly pleasant way of working.We don't
+have space here to go into the details of making trunk-based development work, but know that it cannot work without
+version control.&lt;/p&gt;
+
+&lt;p&gt;Even if you aren’t planning to do CD, start putting everything into version control now. And we mean everything. Not
+just your source code. Everything can include images, database scripts, tests, configuration, libraries, documentation,
+and more. Source code won’t be enough if you need to get back to a specific version of your application, infrastructure,
+etc. Also, this encourages your entire team—not just the developers—to collaborate.&lt;/p&gt;
+
+&lt;h3 id="do-your-developers-practice-continuous-integration-ci"&gt;Do your developers practice Continuous Integration (CI)?&lt;/h3&gt;
+
+&lt;p&gt;For CD to be successful, the entire organization must trust that your software is high quality and always in a working
+state. In terms of development team practices, CI is the fundamental building block to achieve this level of trust.&lt;/p&gt;
+
+&lt;p&gt;So what is CI? Well, &lt;a href="http://www.martinfowler.com/articles/continuousIntegration.html"&gt;much has been written about CI&lt;/a&gt;, but here’s the TL;DR version:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Developers check code into trunk/master multiple times each day.&lt;/li&gt;
+  &lt;li&gt;Developers maintain a suite of unit tests that verify the code works before merge, locally, and post merge, on an integration machine or CI server.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The end result is a development team that has high trust that the code in trunk/master actually works. This will leave
+the development team more willing to push code to testers, or even production, more regularly. With this in place, trust
+between the groups will quickly grow.&lt;/p&gt;
+
+&lt;p&gt;Our experience has been that development teams can only move quickly by combining unit testing, refactoring, and
+CI. That’s a discussion too broad for discussion here, but know that your teams will never deliver at a fast pace
+without CI.&lt;/p&gt;
+
+&lt;p&gt;If your developers are not practicing CI we would recommend putting your move to CD on hold and shift your focus
+entirely to supporting the adoption of CI.&lt;/p&gt;
+
+&lt;h3 id="do-you-automate-relentlessly"&gt;Do you automate relentlessly?&lt;/h3&gt;
+
+&lt;p&gt;CD is very dependent on automation. Automation everywhere is crucial to achieving trusted, one-click, low drama
+deployments. Manual processes are error-prone and do not lend themselves to repeatability. To practice CD, the entire
+team needs to get into the mindset of relentless automation of nearly everything.&lt;/p&gt;
+
+&lt;p&gt;This mindset means asking "Why can't this be automated?" every time anyone on the team does anything manually more than
+once. Some components and aspects of your process that need automation are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Tests at different levels, such as unit, integration, UI, regression, security and performance&lt;/li&gt;
+  &lt;li&gt;Database schema creation, data migration and rollback&lt;/li&gt;
+  &lt;li&gt;Installer creation and signing (if you have them)&lt;/li&gt;
+  &lt;li&gt;Generation of documentation for every release&lt;/li&gt;
+  &lt;li&gt;Last-mile deployment of your application to any environment&lt;/li&gt;
+  &lt;li&gt;Provisioning of infrastructure all the way from test environments to production&lt;/li&gt;
+  &lt;li&gt;Provisioning of developer workspaces&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We mentioned error reduction and repeatability. There are dozens of other compelling reasons to relentlessly automate. We have a few favorites:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Scripts codify team knowledge. This ups your bus factor. That’s a good thing.&lt;/li&gt;
+  &lt;li&gt;It encourages consistency across environments. Once you have a script working in one environment, you’ll want to use it everywhere.&lt;/li&gt;
+  &lt;li&gt;The output of these scripts provides a detailed audit trail that is hard to match manually.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Relentless automation might seem daunting, particularly if you’re focused on something that truly cannot be automated,
+such as exploratory testing. In our experience, there will be many more parts of your process that can be automated than
+those that cannot. The best approach is to figure out the manual processes you are already using, and then make a plan
+to gradually automate them. As you begin to achieve small successes, you will want to automate more and more.&lt;/p&gt;
+
+&lt;p&gt;If your team is hesitant to automate and cannot be convinced about the need, you might have to consider if there's
+enough maturity in your team to move toward CD. An automation mindset is a firm prerequisite for CD.&lt;/p&gt;
+
+&lt;h3 id="conclusion"&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;There are numerous small steps you can take early in your CD journey that will have immediate, positive impacts. Don’t
+waste time flailing around with CD tools if you’ve got a bunch of low-hanging fruit that can provide high value
+quickly. Also, this approach will set you up for success once you do feel the need to adopt an end-to-end CD tool.&lt;/p&gt;
+
+&lt;p&gt;In coming posts we will present similar sets of questions for you to consider in the areas of infrastructure,
+application design, process, and culture.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Update:&lt;/em&gt; &lt;a href="/2016/03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops.html"&gt;Part 2&lt;/a&gt; of this series, discussing feedback loops, has been published.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>It’s not Continuous Delivery if you can’t deploy right now.</title>
+    <link rel="alternate" href="https://go.cd/2016/01/17/not-done-unless-its-done/"/>
+    <id>https://go.cd/2016/01/17/not-done-unless-its-done/</id>
+    <published>2016-01-17T05:30:00+05:30</published>
+    <updated>2016-03-23T10:52:19+05:30</updated>
+    <author>
+      <name>Ken Mugrage</name>
+    </author>
+    <content type="html">
+&lt;div&gt;
+  &lt;div class="float-image float-right"&gt;
+    &lt;img src="/assets/images/blog/deploy-now/but_it_just_needs_oven.png" class="pad-left" /&gt;
+  &lt;/div&gt;
+
+  &lt;div class="float-article float-left"&gt;
+    &lt;p&gt;
+      This is the first in a series of articles that will cover the types of pipelines you should implement to ensure your software is truly ready for production at any time. The culture changes required in most organizations are incredibly important, but I’m going to focus on some technical practices in this series.
+    &lt;/p&gt;
+
+    &lt;p&gt;
+      Years ago, when I was in management, I had a favorite rule. If asked “is something done?” the answer could not include the word “except” or any of its synonyms. 
+    &lt;/p&gt;
+
+    &lt;p&gt;
+      "It’s done except for…" = "no".
+    &lt;/p&gt;
+
+    &lt;p&gt;
+      I hear people say all the time that they're practicing continuous delivery. This declaration is often followed by something like,  “I can let the security team know anytime”, or “I just have to run the performance tests". If you can't push your software to production right now, you're not done with your continuous delivery journey.
+    &lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="clear" /&gt;
+&lt;/div&gt;
+
+&lt;h2 id="some-of-the-things-you-might-not-be-running-but-should"&gt;Some of the things you might not be running but should…&lt;/h2&gt;
+
+&lt;p&gt;In this article I'm going to give an overview of some of the types of pipelines that you should be running if you want your software to be ready to ship at all times. Of course this is not an exhaustive list, there are most likely things that are specific to what you're doing that you should have, just as there are probably things that I will list that don't make sense for you. The point is that everything possible should be automated as part of your deployment pipeline.&lt;/p&gt;
+
+&lt;p&gt;Over the next several weeks I'll be writing more about each of these types of pipelines, follow me on Twitter if you would like to know when new articles come out at &lt;a href="https://twitter.com/kmugrage"&gt;@kmugrage&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id="security-testing"&gt;Security testing&lt;/h3&gt;
+
+&lt;div&gt;
+  &lt;div class="float-image float-left"&gt;
+    &lt;img src="/assets/images/blog/deploy-now/but_it_just_needs_recorded.png" class="pad-right" /&gt;
+  &lt;/div&gt;
+
+  &lt;div class="float-article float-right"&gt;
+    &lt;p&gt;
+All too often this is the primary category of tasks that don’t get run until everything else is “done”. This often results in issues that are very hard to track down since the time between tests has been very long. By writing these tests all the time you’ll have a much easier time tracking down issues before they become too hard to fix.
+    &lt;/p&gt;
+
+    &lt;p&gt;
+Many people feel it's not the greatest idea to have the same person writing the security tests who is writing the code. There’s also the question of skillset; great security people are not common. It’s important that you use a Continuous Delivery server that is capable of using more than one build material for a single pipeline. That way these tests will run whenever the code or the tests are updated.
+    &lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="clear" /&gt;
+&lt;/div&gt;
+
+&lt;h3 id="performance-testing"&gt;Performance testing&lt;/h3&gt;
+
+&lt;p&gt;This one is probably the hardest to run all the time if for no other reason than hardware costs. To properly performance test many applications takes a serious dedication of resources. Luckily public and private cloud infrastructures have made this somewhat easier. Consider having a pipeline where the first stage spins up the machines you need either as virtual machines or containers, runs the tests, and then shuts down those machines.&lt;/p&gt;
+
+&lt;p&gt;In this day of “search for a term, hit the link, wait no more than 2 seconds for the page to load” performance is critical. To make matters worse, performance issues are often very hard to track down. You want to know as soon as possible if you’ve introduced a problem.&lt;/p&gt;
+
+&lt;h3 id="management-of-the-environments"&gt;Management of the environments&lt;/h3&gt;
+
+&lt;p&gt;It’s been said many times that it’s much easier to break an application by messing up the environment that it is by doing something wrong in the source code. If something like the security advisory comes out and you need to update systems as soon as possible, you should be able to commit the change to a configuration management tool, have that change picked up by your continuous delivery system and run it through exactly the same process as a code change.&lt;/p&gt;
+
+&lt;h3 id="testing-of-the-deployment-itself"&gt;Testing of the deployment itself&lt;/h3&gt;
+
+&lt;div&gt;
+  &lt;div class="float-image float-right"&gt;
+    &lt;img src="/assets/images/blog/deploy-now/but_it_just_needs_paint.png" class="pad-left" /&gt;
+  &lt;/div&gt;
+
+  &lt;div class="float-article float-left"&gt;
+    &lt;p&gt;
+      This isn’t really a type of pipeline all by itself. This is the concept that you should be deploying the software exactly the same way in every environment that you plan to deploy in production. Unfortunately it’s still not uncommon for people to copy over files to a QA server run test and only then run the actual deployment tool that pushes the same software to a production server.
+    &lt;/p&gt;
+
+    &lt;p&gt;
+      No matter how you’re doing your actual production deployment, whether that is shell scripts, dedicated tools, configuration management tools, or others, you should be deploying in exactly the same way everywhere else. Consider using tools that can read environment specific details from environment variables or other inputs.
+    &lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="clear" /&gt;
+&lt;/div&gt;
+
+&lt;h3 id="why-wouldnt-you-do-this"&gt;Why wouldn’t you do this?&lt;/h3&gt;
+
+&lt;p&gt;One of the biggest objections I hear to running all of these types of pipelines on every change is that the pipeline will take too long to run. This is why having a continuous delivery server that’s capable of running multiple pipelines in parallel while ensuring that software doesn’t go any further if any of those pipelines fail is so important.&lt;/p&gt;
+
+&lt;p&gt;The other objection I hear the most is that people simply lack the automation around these areas. This is certainly valid, and I don’t want to pretend that any of this is easy to do. Don’t be afraid to start with what you can, and then add other things your pipeline as your capabilities grow. A continuous delivery pipeline is a bit of a living system it should be evolving along with your processes.&lt;/p&gt;
+
+&lt;h3 id="what-are-the-other-big-ones"&gt;What are the other big ones?&lt;/h3&gt;
+
+&lt;p&gt;I'm very interested in hearing other types of pipelines that you find useful.&lt;/p&gt;
+
+&lt;style type="text/css"&gt;
+.float-image {
+  max-width: 25%;
+}
+
+.float-image img {
+  max-width: 100%;
+}
+
+.float-image img.pad-right {
+  padding-right: 10px;
+}
+
+.float-image img.pad-left {
+  padding-left: 10px;
+}
+
+.float-article {
+  max-width: 75%;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.clear {
+  clear: both;
+}
+
+@media (max-width: 699px) {
+  .float-left, .float-right {
+    float: none;
+  }
+
+  .float-image {
+    max-width: 100%;
+  }
+
+  .float-article {
+    max-width: 100%;
+  }
+}
+&lt;/style&gt;
+
+</content>
+  </entry>
+  <entry>
+    <title>Guest post: Go CD - Continuous delivery through pipelines</title>
+    <link rel="alternate" href="https://go.cd/2015/12/28/gocd-continuous-delivery-through-pipelines/"/>
+    <id>https://go.cd/2015/12/28/gocd-continuous-delivery-through-pipelines/</id>
+    <published>2015-12-28T05:30:00+05:30</published>
+    <updated>2016-03-23T10:52:19+05:30</updated>
+    <author>
+      <name>Nenad Bozic</name>
+    </author>
+    <content type="html">&lt;p&gt;In order to compete in today’s IT market, you must be truly agile, you must listen
+to your customers and deliver features in a timely manner. In order to support business
+development and marketing in their lean strategies we, as developers, must leverage
+fast deliveries and deployments and test automations. Continuous Delivery makes it possible
+to continuously adapt software in line with user feedback, shifts in the market and changes
+of business strategy. Testing, support, development and operations work together as one
+delivery team to automate and streamline the build, test and release process.&lt;/p&gt;
+
+&lt;p&gt;There are a lot of quality tools out there. For a long time, we used Jenkins as the most
+widespread CD tool, with a great community and a lot of plugins and integrations with
+other tools. What we lacked was a natural pipeline flow and good visualization. We also
+lacked some more advanced features like pipeline dependencies, conditional triggering jobs
+from many pipelines, templating etc. We needed to look elsewhere and we decided to go with
+Go CD, a product by ThoughtWorks which became open source in 2014. It is a Java/Ruby on Rails
+advanced continuous integration and release management system, according to their website.
+The major reason why we chose it was that they modeled pipelines as first class citizens
+and that, in our opinion, it used right abstraction for delivery pipeline.
+But let us start from the beginning.&lt;/p&gt;
+
+&lt;h2 id="gocd-overview"&gt;GoCD overview&lt;/h2&gt;
+
+&lt;p&gt;At the highest level, Go consists of two main components, the Go Server and multiple Go Agents.
+The system works on a pull model where agents periodically poll the server for work.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="/assets/images/blog/go-cd-continuous-delivery-through-pipelines/goCD-architecture.png" alt="GoCD architecture" /&gt;&lt;/p&gt;
+
+&lt;p&gt;The main flow of Go goes through a couple of following stages:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;User adds a pipeline with material&lt;/li&gt;
+  &lt;li&gt;MDU (material update sub-system) notices a new commit&lt;/li&gt;
+  &lt;li&gt;Scheduler schedules a build&lt;/li&gt;
+  &lt;li&gt;Go agents poll for work and get assignments&lt;/li&gt;
+  &lt;li&gt;Agent does the work&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;
+Let’s talk about the main building blocks of Go. As stated before, the main abstract is a
+**pipeline** which is the highest unit of work with its inputs and outputs. The input object
+of one pipeline is called a **material** and it can be either a version control resource
+(Git, Gerrit, Subversion, Mercurial) or an output from another pipeline. The output of a
+pipeline is called an **artifact**. Since there is one server and multiple agents,
+there is no guarantee that the whole pipeline will be performed by the same Go agent.
+Artifacts are copied to Go server and picked up by agents that require them for their jobs.
+
+Each pipeline consists of one or more **stages**, where each stage has one or more **jobs** and
+each job has one or more **tasks**. Granularity to this level of details is done because of
+parallelism. Inside pipeline stages are sequential and can be triggered automatically on
+success or manually. Within each stage, jobs are parallel. The outcome of a stage is considered
+as failure if at least one job fails. Again, tasks within each job are also sequential.
+
+After installing Go server and client there is no need for an extensive configuration.
+However, it is recommended to create a separate partition on a computer’s hard disk for
+Go server artifacts (artifacts can grow over time and problems may occur). In server
+configuration, there is also an admin tab for URL configuration. We needed to get feedback
+on failing builds, so we integrated Go with LDAP so each user of Go had an email and could
+subscribe on build information based on preferred filters.
+Here is a [link](https://www.go.cd/documentation/user/current/configuration/dev_authentication.html)
+which explains the authentication process.
+
+It is worth mentioning that Go CD has a powerful API for power users where the entire
+configuration can be performed via REST. It has great documentation with examples,
+JSON requests and response. Here is a link to
+[Go CD API documentation](https://api.go.cd/current/#introduction).
+
+## Pipeline dependencies
+
+Go supports pipeline dependencies. Artifacts defined in upstream dependencies can be
+accessed by downstream dependency. Downstream pipeline can be configured either to
+be triggered automatically (for example for building on development environment) or
+manually (for example for building on production environment).
+
+Multiple pipeline dependency is called **fan-in** and it ensures that pipeline is triggered
+only when all upstream dependencies finish. Upstream dependencies consist of other
+pipelines or version control which make them powerful. If you have a client server
+application and have functional tests on the client’s side, which depend on the server
+being updated, you can make a client functional test pipeline which will trigger on commit
+on client and successful build and deploy of server side.
+
+&lt;img src="/assets/images/blog/go-cd-continuous-delivery-through-pipelines/goCD-fanIn.png" alt="GoCD fan-in" /&gt;
+
+The additional challenge here is a diamond-like dependency, where it is not enough for both
+upstream dependencies to finish but to have right versions. The following diagram depicts
+that problem. Here, configuration is really important, C1 must be set as material for both
+C2 and C3 and C2 and C3 are materials for the pipeline Package. The package will auto trigger
+when both C2 and C3 go green with the same version of code.
+
+&lt;img src="/assets/images/blog/go-cd-continuous-delivery-through-pipelines/dieamond-problem.png" alt="GoCD diamond problem" /&gt;
+
+## Pipeline templates
+
+Template engine is a great effort and time saver. Each pipeline can be promoted to template
+and, based on that template, other pipelines can be built with a few clicks. We used this
+extensively for deployment pipelines. Usually, there are multiple environments
+(development, stage, UAT, production) and deployment process is the same with only a
+few parameters which are different. You can create one deployment pipeline and test it.
+When you make sure it works, extract the template out of it and clone the deployment
+pipelines for other environments. Differences can usually be covered with a couple of
+parameters, which can be created upon pipeline creation.
+
+
+## Conclusion
+
+In the introductory part, we mentioned that pipelines are modeled in Go CD as first
+class citizens. In Jenkins, you can order a row of boxes and let the flow go through
+each one of them until it finishes. Each box here in Jenkins is equivalent to each task
+in Go CD. Moreover, in Go CD, each box is pipeline itself with its stages, jobs and tasks.
+
+Go CD is a fairly new player in the automation world with refreshing UI and a couple of
+nice concepts. The community is still growing but it is responsive. We had a couple of
+problems which we posted on StackOverflow and usually got answers pretty quickly.
+We are using [Gerrit/Github plugin](https://github.com/ashwanthkumar/gocd-build-github-pull-requests)
+to notify Github PR on failed or passed build which is being actively developed.
+New releases are pushed frequently. Documentation is great, especially API documentation.
+It’s our pleasure to use such a great UI and a couple of nice advanced features.
+You have a possibility to model your pipeline in a great variety of ways.
+There are some features missing but we in [SmartCat](https://www.smartcat.io/) are all
+about open source so, in the future, we will try to help this project and start contributing.
+
+## About the author
+
+*This is guest post by Nenad Bozic, one of Co-Founders of SmartCat. You can find out more about
+Nenad and SmartCat team on their [website](https://www.smartcat.io/).*
+&lt;/p&gt;
+</content>
+  </entry>
+</feed>
