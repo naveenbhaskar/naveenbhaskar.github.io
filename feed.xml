@@ -14,7 +14,7 @@
     <link rel="alternate" href="https://go.cd/2016/03/17/writing-long-lived-code/"/>
     <id>https://go.cd/2016/03/17/writing-long-lived-code/</id>
     <published>2016-03-17T05:30:00+05:30</published>
-    <updated>2016-03-23T10:52:19+05:30</updated>
+    <updated>2016-03-28T11:53:06+05:30</updated>
     <author>
       <name>David Rice</name>
     </author>
@@ -80,7 +80,7 @@
     <link rel="alternate" href="https://go.cd/2016/03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops/"/>
     <id>https://go.cd/2016/03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops/</id>
     <published>2016-03-15T05:30:00+05:30</published>
-    <updated>2016-03-23T10:52:19+05:30</updated>
+    <updated>2016-03-28T11:53:06+05:30</updated>
     <author>
       <name>David Rice</name>
     </author>
@@ -97,7 +97,7 @@ support teams new to CD, we suggest that they pause any tool evaluation and cons
 actually ready to embark on this journey. If you do not frankly assess your team's readiness, the result can be a
 massive failure. The path to CD should not start with the immediate adoption of a CD tool.&lt;/p&gt;
 
-&lt;p&gt;In &lt;a href="/2016/01/25/are-you-ready-for-continuous-delivery.html"&gt;part one&lt;/a&gt; of this series, we explored some core development
+&lt;p&gt;In &lt;a href="../../../01/25/are-you-ready-for-continuous-delivery/"&gt;part one&lt;/a&gt; of this series, we explored some core development
 practices that are prerequisites for CD. In this part, we'll look at a variety of feedback loops—both manual and
 automated—your organization should have in place before rolling out CD.&lt;/p&gt;
 
@@ -264,15 +264,14 @@ Delivery.&lt;/p&gt;
     <link rel="alternate" href="https://go.cd/2016/02/08/not-done-unless-its-done-security/"/>
     <id>https://go.cd/2016/02/08/not-done-unless-its-done-security/</id>
     <published>2016-02-08T05:30:00+05:30</published>
-    <updated>2016-03-23T12:14:11+05:30</updated>
+    <updated>2016-03-28T11:53:06+05:30</updated>
     <author>
       <name>Ken Mugrage</name>
     </author>
-    <content type="html">
-&lt;div&gt;
-  &lt;figure&gt;
+    <content type="html">&lt;div&gt;
+  &lt;div class="float-image float-right"&gt;
     &lt;img src="/assets/images/blog/deploy-now/security-badge.png" alt="Continuous Delivery Security Testing" class="pad-left" /&gt;
-  &lt;/figure&gt;
+  &lt;/div&gt;
 
   &lt;div class="float-article float-left"&gt;
 &lt;p&gt;This is the second part of a series called &lt;a href="https://www.go.cd/2016/01/17/not-done-unless-its-done.html"&gt;It’s not Continuous Delivery if you can’t deploy right now.&lt;/a&gt; In this part, I’m going to cover some more common tools in security testing pipelines.&lt;/p&gt;
@@ -405,7 +404,7 @@ Delivery.&lt;/p&gt;
     <link rel="alternate" href="https://go.cd/2016/01/25/are-you-ready-for-continuous-delivery/"/>
     <id>https://go.cd/2016/01/25/are-you-ready-for-continuous-delivery/</id>
     <published>2016-01-25T05:30:00+05:30</published>
-    <updated>2016-03-23T10:52:19+05:30</updated>
+    <updated>2016-03-28T11:53:06+05:30</updated>
     <author>
       <name>David Rice and Aravind SV</name>
     </author>
@@ -526,20 +525,19 @@ quickly. Also, this approach will set you up for success once you do feel the ne
 &lt;p&gt;In coming posts we will present similar sets of questions for you to consider in the areas of infrastructure,
 application design, process, and culture.&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Update:&lt;/em&gt; &lt;a href="/2016/03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops.html"&gt;Part 2&lt;/a&gt; of this series, discussing feedback loops, has been published.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Update:&lt;/em&gt; &lt;a href="../../../03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops/"&gt;Part 2&lt;/a&gt; of this series, discussing feedback loops, has been published.&lt;/p&gt;
 </content>
   </entry>
   <entry>
-    <title>It’s not Continuous Delivery if you can’t deploy right now.</title>
+    <title>It's not Continuous Delivery if you can't deploy right now.</title>
     <link rel="alternate" href="https://go.cd/2016/01/17/not-done-unless-its-done/"/>
     <id>https://go.cd/2016/01/17/not-done-unless-its-done/</id>
     <published>2016-01-17T05:30:00+05:30</published>
-    <updated>2016-03-23T10:52:19+05:30</updated>
+    <updated>2016-03-28T11:53:06+05:30</updated>
     <author>
       <name>Ken Mugrage</name>
     </author>
-    <content type="html">
-&lt;div&gt;
+    <content type="html">&lt;div&gt;
   &lt;div class="float-image float-right"&gt;
     &lt;img src="/assets/images/blog/deploy-now/but_it_just_needs_oven.png" class="pad-left" /&gt;
   &lt;/div&gt;
@@ -564,7 +562,7 @@ application design, process, and culture.&lt;/p&gt;
   &lt;div class="clear" /&gt;
 &lt;/div&gt;
 
-&lt;h2 id="some-of-the-things-you-might-not-be-running-but-should"&gt;Some of the things you might not be running but should…&lt;/h2&gt;
+&lt;h2 id="some-of-the-things-you-might-not-be-running-but-should-"&gt;Some of the things you might not be running but should …&lt;/h2&gt;
 
 &lt;p&gt;In this article I'm going to give an overview of some of the types of pipelines that you should be running if you want your software to be ready to ship at all times. Of course this is not an exhaustive list, there are most likely things that are specific to what you're doing that you should have, just as there are probably things that I will list that don't make sense for you. The point is that everything possible should be automated as part of your deployment pipeline.&lt;/p&gt;
 
@@ -679,11 +677,11 @@ Many people feel it's not the greatest idea to have the same person writing the 
 </content>
   </entry>
   <entry>
-    <title>Guest post: Go CD - Continuous delivery through pipelines</title>
+    <title>Guest post: GoCD - Continuous Delivery through pipelines</title>
     <link rel="alternate" href="https://go.cd/2015/12/28/gocd-continuous-delivery-through-pipelines/"/>
     <id>https://go.cd/2015/12/28/gocd-continuous-delivery-through-pipelines/</id>
     <published>2015-12-28T05:30:00+05:30</published>
-    <updated>2016-03-23T10:52:19+05:30</updated>
+    <updated>2016-03-28T11:53:06+05:30</updated>
     <author>
       <name>Nenad Bozic</name>
     </author>
@@ -700,7 +698,7 @@ widespread CD tool, with a great community and a lot of plugins and integrations
 other tools. What we lacked was a natural pipeline flow and good visualization. We also
 lacked some more advanced features like pipeline dependencies, conditional triggering jobs
 from many pipelines, templating etc. We needed to look elsewhere and we decided to go with
-Go CD, a product by ThoughtWorks which became open source in 2014. It is a Java/Ruby on Rails
+GoCD, a product by ThoughtWorks which became open source in 2014. It is a Java/Ruby on Rails
 advanced continuous integration and release management system, according to their website.
 The major reason why we chose it was that they modeled pipelines as first class citizens
 and that, in our opinion, it used right abstraction for delivery pipeline.
@@ -723,94 +721,91 @@ The system works on a pull model where agents periodically poll the server for w
   &lt;li&gt;Agent does the work&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;
-Let’s talk about the main building blocks of Go. As stated before, the main abstract is a
-**pipeline** which is the highest unit of work with its inputs and outputs. The input object
-of one pipeline is called a **material** and it can be either a version control resource
+&lt;p&gt;Let’s talk about the main building blocks of Go. As stated before, the main abstract is a
+&lt;strong&gt;pipeline&lt;/strong&gt; which is the highest unit of work with its inputs and outputs. The input object
+of one pipeline is called a &lt;strong&gt;material&lt;/strong&gt; and it can be either a version control resource
 (Git, Gerrit, Subversion, Mercurial) or an output from another pipeline. The output of a
-pipeline is called an **artifact**. Since there is one server and multiple agents,
+pipeline is called an &lt;strong&gt;artifact&lt;/strong&gt;. Since there is one server and multiple agents,
 there is no guarantee that the whole pipeline will be performed by the same Go agent.
-Artifacts are copied to Go server and picked up by agents that require them for their jobs.
+Artifacts are copied to Go server and picked up by agents that require them for their jobs.&lt;/p&gt;
 
-Each pipeline consists of one or more **stages**, where each stage has one or more **jobs** and
-each job has one or more **tasks**. Granularity to this level of details is done because of
+&lt;p&gt;Each pipeline consists of one or more &lt;strong&gt;stages&lt;/strong&gt;, where each stage has one or more &lt;strong&gt;jobs&lt;/strong&gt; and
+each job has one or more &lt;strong&gt;tasks&lt;/strong&gt;. Granularity to this level of details is done because of
 parallelism. Inside pipeline stages are sequential and can be triggered automatically on
 success or manually. Within each stage, jobs are parallel. The outcome of a stage is considered
-as failure if at least one job fails. Again, tasks within each job are also sequential.
+as failure if at least one job fails. Again, tasks within each job are also sequential.&lt;/p&gt;
 
-After installing Go server and client there is no need for an extensive configuration.
+&lt;p&gt;After installing Go server and client there is no need for an extensive configuration.
 However, it is recommended to create a separate partition on a computer’s hard disk for
 Go server artifacts (artifacts can grow over time and problems may occur). In server
 configuration, there is also an admin tab for URL configuration. We needed to get feedback
 on failing builds, so we integrated Go with LDAP so each user of Go had an email and could
 subscribe on build information based on preferred filters.
-Here is a [link](https://www.go.cd/documentation/user/current/configuration/dev_authentication.html)
-which explains the authentication process.
+Here is a &lt;a href="https://www.go.cd/documentation/user/current/configuration/dev_authentication.html"&gt;link&lt;/a&gt;
+which explains the authentication process.&lt;/p&gt;
 
-It is worth mentioning that Go CD has a powerful API for power users where the entire
+&lt;p&gt;It is worth mentioning that GoCD has a powerful API for power users where the entire
 configuration can be performed via REST. It has great documentation with examples,
 JSON requests and response. Here is a link to
-[Go CD API documentation](https://api.go.cd/current/#introduction).
+&lt;a href="https://api.go.cd/current/#introduction"&gt;GoCD API documentation&lt;/a&gt;.&lt;/p&gt;
 
-## Pipeline dependencies
+&lt;h2 id="pipeline-dependencies"&gt;Pipeline dependencies&lt;/h2&gt;
 
-Go supports pipeline dependencies. Artifacts defined in upstream dependencies can be
+&lt;p&gt;Go supports pipeline dependencies. Artifacts defined in upstream dependencies can be
 accessed by downstream dependency. Downstream pipeline can be configured either to
 be triggered automatically (for example for building on development environment) or
-manually (for example for building on production environment).
+manually (for example for building on production environment).&lt;/p&gt;
 
-Multiple pipeline dependency is called **fan-in** and it ensures that pipeline is triggered
+&lt;p&gt;Multiple pipeline dependency is called &lt;strong&gt;fan-in&lt;/strong&gt; and it ensures that pipeline is triggered
 only when all upstream dependencies finish. Upstream dependencies consist of other
 pipelines or version control which make them powerful. If you have a client server
 application and have functional tests on the client’s side, which depend on the server
 being updated, you can make a client functional test pipeline which will trigger on commit
-on client and successful build and deploy of server side.
+on client and successful build and deploy of server side.&lt;/p&gt;
 
-&lt;img src="/assets/images/blog/go-cd-continuous-delivery-through-pipelines/goCD-fanIn.png" alt="GoCD fan-in" /&gt;
+&lt;p&gt;&lt;img src="/assets/images/blog/go-cd-continuous-delivery-through-pipelines/goCD-fanIn.png" alt="GoCD fan-in" /&gt;&lt;/p&gt;
 
-The additional challenge here is a diamond-like dependency, where it is not enough for both
+&lt;p&gt;The additional challenge here is a diamond-like dependency, where it is not enough for both
 upstream dependencies to finish but to have right versions. The following diagram depicts
 that problem. Here, configuration is really important, C1 must be set as material for both
 C2 and C3 and C2 and C3 are materials for the pipeline Package. The package will auto trigger
-when both C2 and C3 go green with the same version of code.
+when both C2 and C3 go green with the same version of code.&lt;/p&gt;
 
-&lt;img src="/assets/images/blog/go-cd-continuous-delivery-through-pipelines/dieamond-problem.png" alt="GoCD diamond problem" /&gt;
+&lt;p&gt;&lt;img src="/assets/images/blog/go-cd-continuous-delivery-through-pipelines/dieamond-problem.png" alt="GoCD diamond problem" /&gt;&lt;/p&gt;
 
-## Pipeline templates
+&lt;h2 id="pipeline-templates"&gt;Pipeline templates&lt;/h2&gt;
 
-Template engine is a great effort and time saver. Each pipeline can be promoted to template
+&lt;p&gt;Template engine is a great effort and time saver. Each pipeline can be promoted to template
 and, based on that template, other pipelines can be built with a few clicks. We used this
 extensively for deployment pipelines. Usually, there are multiple environments
 (development, stage, UAT, production) and deployment process is the same with only a
 few parameters which are different. You can create one deployment pipeline and test it.
 When you make sure it works, extract the template out of it and clone the deployment
 pipelines for other environments. Differences can usually be covered with a couple of
-parameters, which can be created upon pipeline creation.
+parameters, which can be created upon pipeline creation.&lt;/p&gt;
 
+&lt;h2 id="conclusion"&gt;Conclusion&lt;/h2&gt;
 
-## Conclusion
-
-In the introductory part, we mentioned that pipelines are modeled in Go CD as first
+&lt;p&gt;In the introductory part, we mentioned that pipelines are modeled in GoCD as first
 class citizens. In Jenkins, you can order a row of boxes and let the flow go through
 each one of them until it finishes. Each box here in Jenkins is equivalent to each task
-in Go CD. Moreover, in Go CD, each box is pipeline itself with its stages, jobs and tasks.
+in GoCD. Moreover, in GoCD, each box is pipeline itself with its stages, jobs and tasks.&lt;/p&gt;
 
-Go CD is a fairly new player in the automation world with refreshing UI and a couple of
+&lt;p&gt;GoCD is a fairly new player in the automation world with refreshing UI and a couple of
 nice concepts. The community is still growing but it is responsive. We had a couple of
 problems which we posted on StackOverflow and usually got answers pretty quickly.
-We are using [Gerrit/Github plugin](https://github.com/ashwanthkumar/gocd-build-github-pull-requests)
+We are using &lt;a href="https://github.com/ashwanthkumar/gocd-build-github-pull-requests"&gt;Gerrit/Github plugin&lt;/a&gt;
 to notify Github PR on failed or passed build which is being actively developed.
 New releases are pushed frequently. Documentation is great, especially API documentation.
 It’s our pleasure to use such a great UI and a couple of nice advanced features.
 You have a possibility to model your pipeline in a great variety of ways.
-There are some features missing but we in [SmartCat](https://www.smartcat.io/) are all
-about open source so, in the future, we will try to help this project and start contributing.
+There are some features missing but we in &lt;a href="https://www.smartcat.io/"&gt;SmartCat&lt;/a&gt; are all
+about open source so, in the future, we will try to help this project and start contributing.&lt;/p&gt;
 
-## About the author
+&lt;h2 id="about-the-author"&gt;About the author&lt;/h2&gt;
 
-*This is guest post by Nenad Bozic, one of Co-Founders of SmartCat. You can find out more about
-Nenad and SmartCat team on their [website](https://www.smartcat.io/).*
-&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This is guest post by Nenad Bozic, one of Co-Founders of SmartCat. You can find out more about
+Nenad and SmartCat team on their &lt;a href="https://www.smartcat.io/"&gt;website&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
 </content>
   </entry>
 </feed>

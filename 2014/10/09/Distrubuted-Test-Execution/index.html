@@ -1,50 +1,52 @@
 <!doctype html>
 <html>
   <head>
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
-    <meta charset="utf-8">
-    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
-    <title>Distributed Test Execution with Go + TLB</title>
-    <link href="/assets/images/favicon.ico" rel="shortcut icon">
-    <link href="/assets/vendor/stylesheets/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="/assets/stylesheets/site.css" rel="stylesheet" />
-    <script src="/assets/vendor/javascripts/jquery/1.12.0/jquery.min.js"></script>
-    <script src="/assets/javascripts/all.js"></script>
-    <script src="/assets/javascripts/main.js"></script>
-
-    <link rel="alternate" type="application/atom+xml" title="GoCD blog feed" href="/feed.xml" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
+    <title>Distributed Test Execution with GoCD + TLB</title>
+    <link href="../../../../assets/images/favicon.ico" rel="shortcut icon" />
+    <link href="../../../../assets/vendor/stylesheets/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="../../../../assets/vendor/javascripts/jquery/1.12.0/jquery.min.js"></script>
+    <script src="../../../../assets/vendor/bootstrap-sass-3.3.6/assets/javascripts/bootstrap.min.js"></script>
+    <script src="../../../../assets/vendor/javascripts/enquire/2.1.2/enquire.min.js"></script>
+    <script src="../../../../assets/vendor/javascripts/masonry.pkgd.min.js"></script>
+    <link href="../../../../assets/stylesheets/site.css" rel="stylesheet" />
+    <script src="../../../../assets/javascripts/all.js"></script>
+    <script src="../../../../assets/javascripts/main.js"></script>
+    <link rel="alternate" type="application/atom+xml" title="GoCD blog feed" href="../../../../feed.xml" />
   </head>
 
   <body class="x2014 x2014_10 x2014_10_09 x2014_10_09_Distrubuted-Test-Execution x2014_10_09_Distrubuted-Test-Execution_index">
     <header class="top">
   <div class="container">
-    <a href="/" class="logo"><img src="/assets/images/Go_logo.png" /></a>
+    <a class="logo" href="../../../../"><img src="../../../../assets/images/Go_logo.png" /></a>
     <nav class="mainnav">
       <ul class="level0">
         <li class="dropdown">
-          <a href="/features">Features</a>
+          <a href="../../../../features/">Features</a>
           <ul>
-            <li><a href="/plugins">Plugins</a></li>
-            <li><a href="/roadmap">Roadmap</a></li>
-            <li><a href="/subscribe">Subscribe to updates</a></li>
+            <li><a href="../../../../plugins/">Plugins</a></li>
+            <li><a href="../../../../roadmap/">Roadmap</a></li>
+            <li><a href="../../../../subscribe/">Subscribe to updates</a></li>
           </ul>
         </li>
         <li class="dropdown">
-          <a href="/community">Community</a>
+          <a href="../../../../community/">Community</a>
           <ul>
-            <li><a href="/contribute">Contribute</a></li>
-            <li><a href="/cla">CLA</a></li>
-            <li><a href="/open-issues">Open Issues</a></li>
-            <li><a href="/events">Events</a></li>
-            <li><a href="/partners">Partners</a></li>
+            <li><a href="../../../../contribute/">Contribute</a></li>
+            <li><a href="../../../../cla/">CLA</a></li>
+            <li><a href="../../../../open-issues/">Open Issues</a></li>
+            <li><a href="../../../../events/">Events</a></li>
+            <li><a href="../../../../partners/">Partners</a></li>
           </ul>
         </li>
-        <li><a href="/blog">Blog</a></li>
+        <li><a href="../../../../blog/">Blog</a></li>
         <li class="dropdown">
-          <a href="/help">Help</a>
+          <a href="../../../../help/">Help</a>
           <ul>
-            <li><a href="/getting-started/part-1">Getting started</a></li>
-            <li><a href="/download">Download</a></li>
+            <li><a href="../../../../getting-started/part-1/">Getting started</a></li>
+            <li><a href="../../../../download/">Download</a></li>
           </ul>
         </li>
       </ul>
@@ -56,10 +58,14 @@
 </header>
 <span id="top"></span>
 
-    <!-- <div class="post-banner">
-  
-</div> -->
-<div class="container">
+    <div class="container blog-post">
+  <div class="post-banner">
+    <!-- pls put banner image for article here -->
+  </div>
+  <header class="blog-post-header">
+    <h2>Distributed Test Execution with GoCD + TLB</h2>
+    <h4>GoCD Team</h4>
+  </header>
   <div class="row">
     <div class="col-md-9">
       <main id="main" role="main">
@@ -67,13 +73,13 @@
 
 <p>It gets harder when teams follow XP related practices like "small commits, frequent commits" since it causes parallel builds &amp; resource starvation.</p>
 
-<p>One such example is Go's codebase. Just the "Common" &amp; "Server" components of Go which comprises of unit &amp; integration tests, together has ~6000 tests which will take about ~5 hours <em>if run serially</em>! The functional test suite is about 260+ tests with combined runtime of ~15 hours. That's close to a day &amp; we haven't even run everything for a single commit!</p>
+<p>One such example is GoCD's codebase. Just the "Common" &amp; "Server" components of GoCD which comprises of unit &amp; integration tests, together has ~6000 tests which will take about ~5 hours <em>if run serially</em>! The functional test suite is about 260+ tests with combined runtime of ~15 hours. That's close to a day &amp; we haven't even run everything for a single commit!</p>
 
 <p>Note that the number of tests is so huge that just putting in a powerful box &amp; running test in parallel will not bring it down to acceptable limits. Also, a large number of other problems surface if you start running tests in parallel on same box (without sandboxed environment) like concurrency issues etc.</p>
 
-<h2 id="solution-go--tlb">Solution [Go + TLB]</h2>
+<h2 id="solution-gocd--tlb">Solution [GoCD + TLB]</h2>
 
-<p>Go improves the cycle time of its own build by making test execution faster, distributing it across many agents (machines). After this "Common" + "Server" takes <em>20 minutes</em>. All functional tests run in <em>45 minutes</em>. Thats close to <em>an hour</em>! Still not ideal (a few minutes - constrained by resource availability), but better. :)</p>
+<p>GoCD improves the cycle time of its own build by making test execution faster, distributing it across many agents (machines). After this "Common" + "Server" takes <em>20 minutes</em>. All functional tests run in <em>45 minutes</em>. Thats close to <em>an hour</em>! Still not ideal (a few minutes - constrained by resource availability), but better. :)</p>
 
 <h3 id="test-load-balancer-tlb">Test Load Balancer (TLB)</h3>
 
@@ -87,13 +93,12 @@
 
 <p><a href="https://code.google.com/p/tlb/downloads/detail?name=tlb-complete-0.3.2.tar.gz&amp;can=2&amp;q=">Download</a> TLB</p>
 
-<p>Unzip <code>tlb-complete-0.3.2.tar.gz</code> to <code>tlb-complete-0.3.2</code></p>
+<p>Unzip <code>tlb-complete-0.3.2.tar.gz</code> to <code>tlb-complete-0.3.2</code>:</p>
 
-<p><code>sh
-$ cd tlb-complete-0.3.2/server
+<pre><code>$ cd tlb-complete-0.3.2/server
 $ chmod +x server.sh
 $ ./server.sh start
-</code></p>
+</code></pre>
 
 <p>This should start server at <code>http://host-ip-address:7019</code></p>
 
@@ -105,126 +110,125 @@ $ ./server.sh start
   <li><a href="http://test-load-balancer.github.io/doc-0_3_2/configuration.html">Configuration</a></li>
 </ul>
 
-<h3 id="go">Go</h3>
+<h3 id="gocd">GoCD</h3>
 
-<p><a href="http://www.go.cd/">Go</a> is an open-source CI/CD tool. Its well known for its powerful modelling, tracing &amp; visualization capabilities.</p>
+<p><a href="http://www.go.cd/">GoCD</a> is an open-source CI/CD tool. Its well known for its powerful modelling, tracing &amp; visualization capabilities.</p>
 
-<p>While TLB is doing all the distribution, Go does what it does best - orchestrate the parallel execution.</p>
+<p>While TLB is doing all the distribution, GoCD does what it does best - orchestrate the parallel execution.</p>
 
 <h4 id="run-x-instances">Run 'X' instances</h4>
 
-<p>Starting release 14.3 you can spawn 'x' instances of a job. So if you want to distribute your tests across 10 machines you just need to set <code>run instance count</code> to 10 &amp; Go will spawn 10 instances of the job when scheduling.</p>
+<p>Starting release 14.3 you can spawn 'x' instances of a job. So if you want to distribute your tests across 10 machines you just need to set <code>run instance count</code> to 10 &amp; GoCD will spawn 10 instances of the job when scheduling.</p>
 
 <h4 id="sample-configuration">Sample Configuration</h4>
 
 <p>Setup a pipeline with material (SCM) that contains your tests.</p>
 
-<p><img src="/assets/images/blog/run-x-instance/1.png" style="width: 100%; border: 1px solid;" /></p>
+<p><img src="../../../../assets/images/blog/run-x-instance/1.png" style="width: 100%; border: 1px solid;" /></p>
 
 <p>Setup Job to spawn required number of instances (run instance count).</p>
 
-<p><img src="/assets/images/blog/run-x-instance/3.png" style="width: 100%; border: 1px solid;" /></p>
+<p><img src="../../../../assets/images/blog/run-x-instance/3.png" style="width: 100%; border: 1px solid;" /></p>
 
 <p>Setup TLB related environment variables at Environment / Pipeline / Stage / Job level.</p>
 
-<p><img src="/assets/images/blog/run-x-instance/2.png" style="width: 100%; border: 1px solid;" /></p>
+<p><img src="../../../../assets/images/blog/run-x-instance/2.png" style="width: 100%; border: 1px solid;" /></p>
 
-<p>Setup the task to consume <code>GO_PIPELINE_NAME</code>, <code>GO_STAGE_NAME</code>, <code>GO_PIPELINE_COUNTER</code>, <code>GO_STAGE_COUNTER</code>, <code>GO_JOB_RUN_INDEX</code> &amp; <code>GO_JOB_RUN_COUNT</code> environment variables that Go exposes.</p>
+<p>Setup the task to consume <code>GO_PIPELINE_NAME</code>, <code>GO_STAGE_NAME</code>, <code>GO_PIPELINE_COUNTER</code>, <code>GO_STAGE_COUNTER</code>, <code>GO_JOB_RUN_INDEX</code> &amp; <code>GO_JOB_RUN_COUNT</code> environment variables that GoCD exposes.</p>
 
-<p><img src="/assets/images/blog/run-x-instance/4.png" style="width: 100%; border: 1px solid;" /></p>
+<p><img src="../../../../assets/images/blog/run-x-instance/4.png" style="width: 100%; border: 1px solid;" /></p>
 
 <p>Upload junit xmls as test artifacts.</p>
 
-<p><img src="/assets/images/blog/run-x-instance/4-2.png" style="width: 100%; border: 1px solid;" /></p>
+<p><img src="../../../../assets/images/blog/run-x-instance/4-2.png" style="width: 100%; border: 1px solid;" /></p>
 
 <p><strong>Sample Pipeline Configuration</strong></p>
 
-<p><code>xml
-    &lt;pipeline name="maven-project"&gt;
-      &lt;materials&gt;
-        &lt;git url="https://github.com/test-load-balancer/sample_projects.git" dest="sample_projects" /&gt;
-      &lt;/materials&gt;
-      &lt;stage name="unit-tests"&gt;
-        &lt;jobs&gt;
-          &lt;job name="test-split" runInstanceCount="3"&gt;
-            &lt;environmentvariables&gt;
-              &lt;variable name="TLB_BASE_URL"&gt;
-                &lt;value&gt;http://localhost:7019&lt;/value&gt;
-              &lt;/variable&gt;
-              &lt;variable name="TLB_TMP_DIR"&gt;
-                &lt;value&gt;/tmp&lt;/value&gt;
-              &lt;/variable&gt;
-              &lt;variable name="TLB_JOB_NAME"&gt;
-                &lt;value&gt;${GO_PIPELINE_NAME}-${GO_STAGE_NAME}-test-split&lt;/value&gt;
-              &lt;/variable&gt;
-              &lt;variable name="TLB_JOB_VERSION"&gt;
-                &lt;value&gt;${GO_PIPELINE_COUNTER}-${GO_STAGE_COUNTER}&lt;/value&gt;
-              &lt;/variable&gt;
-              &lt;variable name="TLB_PARTITION_NUMBER"&gt;
-                &lt;value&gt;${GO_JOB_RUN_INDEX}&lt;/value&gt;
-              &lt;/variable&gt;
-              &lt;variable name="TLB_TOTAL_PARTITIONS"&gt;
-                &lt;value&gt;${GO_JOB_RUN_COUNT}&lt;/value&gt;
-              &lt;/variable&gt;
-            &lt;/environmentvariables&gt;
-            &lt;tasks&gt;
-              &lt;exec command="mvn" workingdir="sample_projects/maven_junit"&gt;
-                &lt;arg&gt;clean&lt;/arg&gt;
-                &lt;arg&gt;install&lt;/arg&gt;
-                &lt;arg&gt;-DskipTests&lt;/arg&gt;
-                &lt;runif status="passed" /&gt;
-              &lt;/exec&gt;
-              &lt;exec command="mvn" workingdir="sample_projects/maven_junit"&gt;
-                &lt;arg&gt;clean&lt;/arg&gt;
-                &lt;arg&gt;test&lt;/arg&gt;
-                &lt;arg&gt;-DskipTests&lt;/arg&gt;
-                &lt;arg&gt;-Drun.tests.using.tlb=true&lt;/arg&gt;
-                &lt;runif status="passed" /&gt;
-              &lt;/exec&gt;
-            &lt;/tasks&gt;
-            &lt;artifacts&gt;
-              &lt;test src="sample_projects/maven_junit/target/reports/*.xml" dest="test-reports" /&gt;
-            &lt;/artifacts&gt;
-          &lt;/job&gt;
-        &lt;/jobs&gt;
-      &lt;/stage&gt;
-    &lt;/pipeline&gt;
-</code></p>
+<pre><code>&lt;pipeline name="maven-project"&gt;
+  &lt;materials&gt;
+    &lt;git url="https://github.com/test-load-balancer/sample_projects.git" dest="sample_projects" /&gt;
+  &lt;/materials&gt;
+  &lt;stage name="unit-tests"&gt;
+    &lt;jobs&gt;
+      &lt;job name="test-split" runInstanceCount="3"&gt;
+        &lt;environmentvariables&gt;
+          &lt;variable name="TLB_BASE_URL"&gt;
+            &lt;value&gt;http://localhost:7019&lt;/value&gt;
+          &lt;/variable&gt;
+          &lt;variable name="TLB_TMP_DIR"&gt;
+            &lt;value&gt;/tmp&lt;/value&gt;
+          &lt;/variable&gt;
+          &lt;variable name="TLB_JOB_NAME"&gt;
+            &lt;value&gt;${GO_PIPELINE_NAME}-${GO_STAGE_NAME}-test-split&lt;/value&gt;
+          &lt;/variable&gt;
+          &lt;variable name="TLB_JOB_VERSION"&gt;
+            &lt;value&gt;${GO_PIPELINE_COUNTER}-${GO_STAGE_COUNTER}&lt;/value&gt;
+          &lt;/variable&gt;
+          &lt;variable name="TLB_PARTITION_NUMBER"&gt;
+            &lt;value&gt;${GO_JOB_RUN_INDEX}&lt;/value&gt;
+          &lt;/variable&gt;
+          &lt;variable name="TLB_TOTAL_PARTITIONS"&gt;
+            &lt;value&gt;${GO_JOB_RUN_COUNT}&lt;/value&gt;
+          &lt;/variable&gt;
+        &lt;/environmentvariables&gt;
+        &lt;tasks&gt;
+          &lt;exec command="mvn" workingdir="sample_projects/maven_junit"&gt;
+            &lt;arg&gt;clean&lt;/arg&gt;
+            &lt;arg&gt;install&lt;/arg&gt;
+            &lt;arg&gt;-DskipTests&lt;/arg&gt;
+            &lt;runif status="passed" /&gt;
+          &lt;/exec&gt;
+          &lt;exec command="mvn" workingdir="sample_projects/maven_junit"&gt;
+            &lt;arg&gt;clean&lt;/arg&gt;
+            &lt;arg&gt;test&lt;/arg&gt;
+            &lt;arg&gt;-DskipTests&lt;/arg&gt;
+            &lt;arg&gt;-Drun.tests.using.tlb=true&lt;/arg&gt;
+            &lt;runif status="passed" /&gt;
+          &lt;/exec&gt;
+        &lt;/tasks&gt;
+        &lt;artifacts&gt;
+          &lt;test src="sample_projects/maven_junit/target/reports/*.xml" dest="test-reports" /&gt;
+        &lt;/artifacts&gt;
+      &lt;/job&gt;
+    &lt;/jobs&gt;
+  &lt;/stage&gt;
+&lt;/pipeline&gt;
+</code></pre>
 
 <h3 id="other-features-that-helps-with-test-parallelization">Other features that helps with Test Parallelization</h3>
 
 <h4 id="wait-for-all-jobs-to-finish">Wait for all jobs to finish</h4>
 
-<p>Go's modelling capability gives it the ability to run jobs in parallel but wait for all of them to finish before the next Stage / downstream Pipelines are triggered.</p>
+<p>GoCD's modelling capability gives it the ability to run jobs in parallel but wait for all of them to finish before the next Stage / downstream Pipelines are triggered.</p>
 
-<p><img src="/assets/images/blog/run-x-instance/6.png" style="width: 100%; border: 1px solid;" /></p>
+<p><img src="../../../../assets/images/blog/run-x-instance/6.png" style="width: 100%; border: 1px solid;" /></p>
 
 <h4 id="stop-the-downstream-flow">Stop the downstream flow</h4>
 
 <p>If any of the tests (and as a result the Job running the test) fails, the Stage is considered as failed. This causes the flow to stop as expected.</p>
 
-<p><img src="/assets/images/blog/run-x-instance/5.png" style="width: 100%; border: 1px solid;" /></p>
+<p><img src="../../../../assets/images/blog/run-x-instance/5.png" style="width: 100%; border: 1px solid;" /></p>
 
 <h4 id="consolidated-test-report">Consolidated Test Report</h4>
 
-<p>Once all the Jobs are done running, Go consolidates test reports &amp; shows the result at stage level for easy consumption.</p>
+<p>Once all the Jobs are done running, GoCD consolidates test reports &amp; shows the result at stage level for easy consumption.</p>
 
-<p><img src="/assets/images/blog/run-x-instance/7.png" style="width: 100%; border: 1px solid;" /></p>
+<p><img src="../../../../assets/images/blog/run-x-instance/7.png" style="width: 100%; border: 1px solid;" /></p>
 
 <h4 id="drill-down">Drill down</h4>
 
 <p>You can drill down at job level to know more information like 'test count', 'console output' for the Job (test) etc.</p>
 
-<p><img src="/assets/images/blog/run-x-instance/8.png" style="width: 100%; border: 1px solid;" />
-<img src="/assets/images/blog/run-x-instance/10.png" style="width: 100%; border: 1px solid;" />
-<img src="/assets/images/blog/run-x-instance/9.png" style="width: 100%; border: 1px solid;" /></p>
+<p><img src="../../../../assets/images/blog/run-x-instance/8.png" style="width: 100%; border: 1px solid;" />
+<img src="../../../../assets/images/blog/run-x-instance/10.png" style="width: 100%; border: 1px solid;" />
+<img src="../../../../assets/images/blog/run-x-instance/9.png" style="width: 100%; border: 1px solid;" /></p>
 
 <h4 id="partition-re-run">Partition re-run</h4>
 
-<p>Go also provides ability to re-run a Job of a stage. This provides ability to run the partition that could have failed due to flaky test etc. The best part is, TLB runs the exact tests that it ran the last time making sure no test is missed out!</p>
+<p>GoCD also provides ability to re-run a Job of a stage. This provides ability to run the partition that could have failed due to flaky test etc. The best part is, TLB runs the exact tests that it ran the last time making sure no test is missed out!</p>
 
-<p><img src="/assets/images/blog/run-x-instance/11-1.png" style="width: 100%; border: 1px solid;" />
-<img src="/assets/images/blog/run-x-instance/11-2.png" style="width: 100%; border: 1px solid;" /></p>
+<p><img src="../../../../assets/images/blog/run-x-instance/11-1.png" style="width: 100%; border: 1px solid;" />
+<img src="../../../../assets/images/blog/run-x-instance/11-2.png" style="width: 100%; border: 1px solid;" /></p>
 
 <h4 id="tlb-correctness-check">TLB Correctness Check</h4>
 
@@ -232,73 +236,73 @@ $ ./server.sh start
 
 <h3 id="power-of-dynamic-splitting">Power of dynamic splitting</h3>
 
-<p>Go's one knob control to amount of parallelization means that when the number of tests increase/decrease all you will need to do is change the <code>run instance count</code> based on number of tests &amp; resource availability &amp; you are done!</p>
+<p>GoCD's one knob control to amount of parallelization means that when the number of tests increase/decrease all you will need to do is change the <code>run instance count</code> based on number of tests &amp; resource availability &amp; you are done!</p>
 
 <p>–</p>
 
-<p>As always, Go questions can be asked at <a href="https://groups.google.com/forum/#!forum/go-cd">go-cd</a>.</p>
+<p>As always, GoCD questions can be asked at <a href="https://groups.google.com/forum/#!forum/go-cd">go-cd</a>.</p>
 
       </main>
     </div>
     <div class="col-md-3">
       <aside class="post-sidebar">
-      <section  class="recent-ariticles">
-        <h2 class="section-title">Recent Articles</h2>
-        <ol>
-          <li>
-          <span class="post-date">Mar 17</span>
-          <a href="/2016/03/17/writing-long-lived-code/">Writing long-lived Code</a> 
-          </li>
-          <li>
-          <span class="post-date">Mar 15</span>
-          <a href="/2016/03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops/">Are you ready for Continuous Delivery? Part 2: Feedback loops</a> 
-          </li>
-          <li>
-          <span class="post-date">Feb  8</span>
-          <a href="/2016/02/08/not-done-unless-its-done-security/">Add Security Testing to Your Deployment Pipelines</a> 
-          </li>
-          <li>
-          <span class="post-date">Jan 25</span>
-          <a href="/2016/01/25/are-you-ready-for-continuous-delivery/">Are you ready for Continuous Delivery?</a> 
-          </li>
-          <li>
-          <span class="post-date">Jan 17</span>
-          <a href="/2016/01/17/not-done-unless-its-done/">It’s not Continuous Delivery if you can’t deploy right now.</a> 
-          </li>
-          <li>
-          <span class="post-date">Dec 28</span>
-          <a href="/2015/12/28/gocd-continuous-delivery-through-pipelines/">Guest post: Go CD - Continuous delivery through pipelines</a> 
-          </li>
-          <li>
-          <span class="post-date">Dec 22</span>
-          <a href="/2015/12/22/gocd-in-2016/">GoCD in 2016</a> 
-          </li>
-          <li>
-          <span class="post-date">Nov 18</span>
-          <a href="/2015/11/18/Open-Source-Tests/">Open Source Tests - The GoCD way</a> 
-          </li>
-          <li>
-          <span class="post-date">Nov  9</span>
-          <a href="/2015/11/09/deserialization-vulnerability-commons-collections/">[Action needed] [Patch available] Vulnerability in GoCD - Java deserialization and Apache commons-collections</a> 
-          </li>
-          <li>
-          <span class="post-date">Oct 29</span>
-          <a href="/2015/10/29/go-webinar-recording/">Continuous Delivery with Go - Webinar Recording</a> 
-          </li>
-        </ol>
+        <section  class="recent-ariticles">
+          <h2 class="section-title">Recent Articles</h2>
+          <ol>
+            <li>
+              <span class="post-date">Mar 17</span>
+              <a href="../../../../2016/03/17/writing-long-lived-code/">Writing long-lived Code</a>
+            </li>
+            <li>
+              <span class="post-date">Mar 15</span>
+              <a href="../../../../2016/03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops/">Are you ready for Continuous Delivery? Part 2: Feedback loops</a>
+            </li>
+            <li>
+              <span class="post-date">Feb  8</span>
+              <a href="../../../../2016/02/08/not-done-unless-its-done-security/">Add Security Testing to Your Deployment Pipelines</a>
+            </li>
+            <li>
+              <span class="post-date">Jan 25</span>
+              <a href="../../../../2016/01/25/are-you-ready-for-continuous-delivery/">Are you ready for Continuous Delivery?</a>
+            </li>
+            <li>
+              <span class="post-date">Jan 17</span>
+              <a href="../../../../2016/01/17/not-done-unless-its-done/">It's not Continuous Delivery if you can't deploy right now.</a>
+            </li>
+            <li>
+              <span class="post-date">Dec 28</span>
+              <a href="../../../../2015/12/28/gocd-continuous-delivery-through-pipelines/">Guest post: GoCD - Continuous Delivery through pipelines</a>
+            </li>
+            <li>
+              <span class="post-date">Dec 22</span>
+              <a href="../../../../2015/12/22/gocd-in-2016/">Roadmap - GoCD in 2016</a>
+            </li>
+            <li>
+              <span class="post-date">Nov 18</span>
+              <a href="../../../../2015/11/18/Open-Source-Tests/">Open Source Tests - The GoCD way</a>
+            </li>
+            <li>
+              <span class="post-date">Nov  9</span>
+              <a href="../../../../2015/11/09/deserialization-vulnerability-commons-collections/">Vulnerability in GoCD - Java deserialization and Apache commons-collections</a>
+            </li>
+            <li>
+              <span class="post-date">Oct 29</span>
+              <a href="../../../../2015/10/29/go-webinar-recording/">Continuous Delivery with Go - Webinar Recording</a>
+            </li>
+          </ol>
         </section>
         <section>
-        <h2 class="section-title">Tags</h2>
-        <ol>
-        </ol>
+          <h2 class="section-title">Tags</h2>
+          <ol>
+          </ol>
         </section>
         <section>
-         <h2 class="section-title">By Year</h2>
-        <ol>
-          <li><a href="/2016/">2016 (5)</a></li>
-          <li><a href="/2015/">2015 (22)</a></li>
-          <li><a href="/2014/">2014 (26)</a></li>
-        </ol>
+          <h2 class="section-title">By Year</h2>
+          <ol>
+            <li><a href="../../../../2016/">2016 (5)</a></li>
+            <li><a href="../../../../2015/">2015 (21)</a></li>
+            <li><a href="../../../">2014 (25)</a></li>
+          </ol>
         </section>
       </aside>
     </div>
@@ -339,7 +343,7 @@ $ ./server.sh start
 	</div>
 	<div class="page-footer">
 		<div class="container">
-			<p class="help-us-improve">Make this place better, <a href="https://github.com/gocd/gocd.github.io/fork">fork</a>
+			<p class="help-us-improve">Make this place better, <a href="https://github.com/gocd/gocd.github.io">fork</a>
 			it or <a href="https://github.com/gocd/gocd.github.io/issues">suggest</a> something.</p>
 			<p>
 				GoCD is an open-source project, sponsored by <a target="_blank" href="http://www.thoughtworks.com">ThoughtWorks Inc.</a>
@@ -348,8 +352,6 @@ $ ./server.sh start
 		</div>
 	</div>
 </footer>
-<a href="#top">top</a>
-<script src="/assets/vendor/bootstrap-sass-3.3.6/assets/javascripts/bootstrap.min.js"></script>
-<script src="/assets/vendor/javascripts/enquire/2.1.2/enquire.min.js"></script>
+<a href="#top" class="back-top"><i class="fa fa-arrow-circle-up"></i></a>
   </body>
 </html>

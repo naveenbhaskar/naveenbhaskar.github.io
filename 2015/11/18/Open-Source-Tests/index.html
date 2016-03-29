@@ -1,50 +1,52 @@
 <!doctype html>
 <html>
   <head>
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
-    <meta charset="utf-8">
-    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport" />
     <title>Open Source Tests - The GoCD way</title>
-    <link href="/assets/images/favicon.ico" rel="shortcut icon">
-    <link href="/assets/vendor/stylesheets/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="/assets/stylesheets/site.css" rel="stylesheet" />
-    <script src="/assets/vendor/javascripts/jquery/1.12.0/jquery.min.js"></script>
-    <script src="/assets/javascripts/all.js"></script>
-    <script src="/assets/javascripts/main.js"></script>
-
-    <link rel="alternate" type="application/atom+xml" title="GoCD blog feed" href="/feed.xml" />
+    <link href="../../../../assets/images/favicon.ico" rel="shortcut icon" />
+    <link href="../../../../assets/vendor/stylesheets/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="../../../../assets/vendor/javascripts/jquery/1.12.0/jquery.min.js"></script>
+    <script src="../../../../assets/vendor/bootstrap-sass-3.3.6/assets/javascripts/bootstrap.min.js"></script>
+    <script src="../../../../assets/vendor/javascripts/enquire/2.1.2/enquire.min.js"></script>
+    <script src="../../../../assets/vendor/javascripts/masonry.pkgd.min.js"></script>
+    <link href="../../../../assets/stylesheets/site.css" rel="stylesheet" />
+    <script src="../../../../assets/javascripts/all.js"></script>
+    <script src="../../../../assets/javascripts/main.js"></script>
+    <link rel="alternate" type="application/atom+xml" title="GoCD blog feed" href="../../../../feed.xml" />
   </head>
 
   <body class="x2015 x2015_11 x2015_11_18 x2015_11_18_Open-Source-Tests x2015_11_18_Open-Source-Tests_index">
     <header class="top">
   <div class="container">
-    <a href="/" class="logo"><img src="/assets/images/Go_logo.png" /></a>
+    <a class="logo" href="../../../../"><img src="../../../../assets/images/Go_logo.png" /></a>
     <nav class="mainnav">
       <ul class="level0">
         <li class="dropdown">
-          <a href="/features">Features</a>
+          <a href="../../../../features/">Features</a>
           <ul>
-            <li><a href="/plugins">Plugins</a></li>
-            <li><a href="/roadmap">Roadmap</a></li>
-            <li><a href="/subscribe">Subscribe to updates</a></li>
+            <li><a href="../../../../plugins/">Plugins</a></li>
+            <li><a href="../../../../roadmap/">Roadmap</a></li>
+            <li><a href="../../../../subscribe/">Subscribe to updates</a></li>
           </ul>
         </li>
         <li class="dropdown">
-          <a href="/community">Community</a>
+          <a href="../../../../community/">Community</a>
           <ul>
-            <li><a href="/contribute">Contribute</a></li>
-            <li><a href="/cla">CLA</a></li>
-            <li><a href="/open-issues">Open Issues</a></li>
-            <li><a href="/events">Events</a></li>
-            <li><a href="/partners">Partners</a></li>
+            <li><a href="../../../../contribute/">Contribute</a></li>
+            <li><a href="../../../../cla/">CLA</a></li>
+            <li><a href="../../../../open-issues/">Open Issues</a></li>
+            <li><a href="../../../../events/">Events</a></li>
+            <li><a href="../../../../partners/">Partners</a></li>
           </ul>
         </li>
-        <li><a href="/blog">Blog</a></li>
+        <li><a href="../../../../blog/">Blog</a></li>
         <li class="dropdown">
-          <a href="/help">Help</a>
+          <a href="../../../../help/">Help</a>
           <ul>
-            <li><a href="/getting-started/part-1">Getting started</a></li>
-            <li><a href="/download">Download</a></li>
+            <li><a href="../../../../getting-started/part-1/">Getting started</a></li>
+            <li><a href="../../../../download/">Download</a></li>
           </ul>
         </li>
       </ul>
@@ -56,10 +58,14 @@
 </header>
 <span id="top"></span>
 
-    <!-- <div class="post-banner">
-  
-</div> -->
-<div class="container">
+    <div class="container blog-post">
+  <div class="post-banner">
+    <!-- pls put banner image for article here -->
+  </div>
+  <header class="blog-post-header">
+    <h2>Open Source Tests - The GoCD way</h2>
+    <h4>Rajiesh</h4>
+  </header>
   <div class="row">
     <div class="col-md-9">
       <main id="main" role="main">
@@ -76,7 +82,7 @@ However to be confident about a release we need end to end tests. To maintain th
 
 <p>Let’s take a brief tour of how GoCD does continuous testing. GoCD is built, tested and deployed using GoCD itself. Here’s a snapshot of the GoCD build pipeline.</p>
 
-<p><img src="/assets/images/go-cd-QA-pipeline.png" alt="GoCD VSM" style="width: 1000px" /></p>
+<p><img src="../../../../assets/images/go-cd-QA-pipeline.png" alt="GoCD VSM" style="width: 1000px" /></p>
 
 <p>GoCD is tested using “Server in-the-box” model. In this model we define the system under test - its scope and its boundaries.
 External dependencies for the system under test (SUT) say git or yum repo are stubbed out or built into the SUT itself.
@@ -125,13 +131,13 @@ Moving to Gauge now helps us open source these tests (Twist was a commercial pro
 
 <p>Gauge specifications are in markdown language making it more readable. Gauge specs intend to be live documents of the system behavior</p>
 
-<p><img src="/assets/images/go-gauge-specs.png" alt="Gauge specs" /></p>
+<p><img src="../../../../assets/images/go-gauge-specs.png" alt="Gauge specs" /></p>
 
 <h1 id="gauge-reports">Gauge Reports</h1>
 
 <p>Gauge produces reports in an easily readable format and provides specification execution details like steps executed, time for each spec execution, overall test execution time, steps and specs  passed, what failed and the screen shot of the failure page.</p>
 
-<p><img src="/assets/images/go-gauge-report.png" alt="Gauge reports" style="width: 1000px" /></p>
+<p><img src="../../../../assets/images/go-gauge-report.png" alt="Gauge reports" style="width: 1000px" /></p>
 
 <h1 id="conclusion">Conclusion</h1>
 
@@ -144,63 +150,63 @@ Here we have addressed functional tests, we will soon be working on the performa
     </div>
     <div class="col-md-3">
       <aside class="post-sidebar">
-      <section  class="recent-ariticles">
-        <h2 class="section-title">Recent Articles</h2>
-        <ol>
-          <li>
-          <span class="post-date">Mar 17</span>
-          <a href="/2016/03/17/writing-long-lived-code/">Writing long-lived Code</a> 
-          </li>
-          <li>
-          <span class="post-date">Mar 15</span>
-          <a href="/2016/03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops/">Are you ready for Continuous Delivery? Part 2: Feedback loops</a> 
-          </li>
-          <li>
-          <span class="post-date">Feb  8</span>
-          <a href="/2016/02/08/not-done-unless-its-done-security/">Add Security Testing to Your Deployment Pipelines</a> 
-          </li>
-          <li>
-          <span class="post-date">Jan 25</span>
-          <a href="/2016/01/25/are-you-ready-for-continuous-delivery/">Are you ready for Continuous Delivery?</a> 
-          </li>
-          <li>
-          <span class="post-date">Jan 17</span>
-          <a href="/2016/01/17/not-done-unless-its-done/">It’s not Continuous Delivery if you can’t deploy right now.</a> 
-          </li>
-          <li>
-          <span class="post-date">Dec 28</span>
-          <a href="/2015/12/28/gocd-continuous-delivery-through-pipelines/">Guest post: Go CD - Continuous delivery through pipelines</a> 
-          </li>
-          <li>
-          <span class="post-date">Dec 22</span>
-          <a href="/2015/12/22/gocd-in-2016/">GoCD in 2016</a> 
-          </li>
-          <li>
-          <span class="post-date">Nov 18</span>
-          <a href="/2015/11/18/Open-Source-Tests/">Open Source Tests - The GoCD way</a> 
-          </li>
-          <li>
-          <span class="post-date">Nov  9</span>
-          <a href="/2015/11/09/deserialization-vulnerability-commons-collections/">[Action needed] [Patch available] Vulnerability in GoCD - Java deserialization and Apache commons-collections</a> 
-          </li>
-          <li>
-          <span class="post-date">Oct 29</span>
-          <a href="/2015/10/29/go-webinar-recording/">Continuous Delivery with Go - Webinar Recording</a> 
-          </li>
-        </ol>
+        <section  class="recent-ariticles">
+          <h2 class="section-title">Recent Articles</h2>
+          <ol>
+            <li>
+              <span class="post-date">Mar 17</span>
+              <a href="../../../../2016/03/17/writing-long-lived-code/">Writing long-lived Code</a>
+            </li>
+            <li>
+              <span class="post-date">Mar 15</span>
+              <a href="../../../../2016/03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops/">Are you ready for Continuous Delivery? Part 2: Feedback loops</a>
+            </li>
+            <li>
+              <span class="post-date">Feb  8</span>
+              <a href="../../../../2016/02/08/not-done-unless-its-done-security/">Add Security Testing to Your Deployment Pipelines</a>
+            </li>
+            <li>
+              <span class="post-date">Jan 25</span>
+              <a href="../../../../2016/01/25/are-you-ready-for-continuous-delivery/">Are you ready for Continuous Delivery?</a>
+            </li>
+            <li>
+              <span class="post-date">Jan 17</span>
+              <a href="../../../../2016/01/17/not-done-unless-its-done/">It's not Continuous Delivery if you can't deploy right now.</a>
+            </li>
+            <li>
+              <span class="post-date">Dec 28</span>
+              <a href="../../../12/28/gocd-continuous-delivery-through-pipelines/">Guest post: GoCD - Continuous Delivery through pipelines</a>
+            </li>
+            <li>
+              <span class="post-date">Dec 22</span>
+              <a href="../../../12/22/gocd-in-2016/">Roadmap - GoCD in 2016</a>
+            </li>
+            <li>
+              <span class="post-date">Nov 18</span>
+              <a href="./">Open Source Tests - The GoCD way</a>
+            </li>
+            <li>
+              <span class="post-date">Nov  9</span>
+              <a href="../../09/deserialization-vulnerability-commons-collections/">Vulnerability in GoCD - Java deserialization and Apache commons-collections</a>
+            </li>
+            <li>
+              <span class="post-date">Oct 29</span>
+              <a href="../../../10/29/go-webinar-recording/">Continuous Delivery with Go - Webinar Recording</a>
+            </li>
+          </ol>
         </section>
         <section>
-        <h2 class="section-title">Tags</h2>
-        <ol>
-        </ol>
+          <h2 class="section-title">Tags</h2>
+          <ol>
+          </ol>
         </section>
         <section>
-         <h2 class="section-title">By Year</h2>
-        <ol>
-          <li><a href="/2016/">2016 (5)</a></li>
-          <li><a href="/2015/">2015 (22)</a></li>
-          <li><a href="/2014/">2014 (26)</a></li>
-        </ol>
+          <h2 class="section-title">By Year</h2>
+          <ol>
+            <li><a href="../../../../2016/">2016 (5)</a></li>
+            <li><a href="../../../">2015 (21)</a></li>
+            <li><a href="../../../../2014/">2014 (25)</a></li>
+          </ol>
         </section>
       </aside>
     </div>
@@ -241,7 +247,7 @@ Here we have addressed functional tests, we will soon be working on the performa
 	</div>
 	<div class="page-footer">
 		<div class="container">
-			<p class="help-us-improve">Make this place better, <a href="https://github.com/gocd/gocd.github.io/fork">fork</a>
+			<p class="help-us-improve">Make this place better, <a href="https://github.com/gocd/gocd.github.io">fork</a>
 			it or <a href="https://github.com/gocd/gocd.github.io/issues">suggest</a> something.</p>
 			<p>
 				GoCD is an open-source project, sponsored by <a target="_blank" href="http://www.thoughtworks.com">ThoughtWorks Inc.</a>
@@ -250,8 +256,6 @@ Here we have addressed functional tests, we will soon be working on the performa
 		</div>
 	</div>
 </footer>
-<a href="#top">top</a>
-<script src="/assets/vendor/bootstrap-sass-3.3.6/assets/javascripts/bootstrap.min.js"></script>
-<script src="/assets/vendor/javascripts/enquire/2.1.2/enquire.min.js"></script>
+<a href="#top" class="back-top"><i class="fa fa-arrow-circle-up"></i></a>
   </body>
 </html>

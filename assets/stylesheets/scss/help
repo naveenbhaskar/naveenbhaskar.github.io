@@ -75,6 +75,7 @@ Backtrace:
 /Users/naveenb/projects/gocd.refresh/.bundle/ruby/2.0.0/gems/rack-1.6.4/lib/rack/urlmap.rb:66:in `block in call'
 /Users/naveenb/projects/gocd.refresh/.bundle/ruby/2.0.0/gems/rack-1.6.4/lib/rack/urlmap.rb:50:in `each'
 /Users/naveenb/projects/gocd.refresh/.bundle/ruby/2.0.0/gems/rack-1.6.4/lib/rack/urlmap.rb:50:in `call'
+/Users/naveenb/projects/gocd.refresh/.bundle/ruby/2.0.0/gems/middleman-core-4.0.0/lib/middleman-core/middleware/inline_url_rewriter.rb:40:in `call'
 /Users/naveenb/projects/gocd.refresh/.bundle/ruby/2.0.0/gems/rack-1.6.4/lib/rack/head.rb:13:in `call'
 /Users/naveenb/projects/gocd.refresh/.bundle/ruby/2.0.0/gems/rack-1.6.4/lib/rack/lint.rb:49:in `_call'
 /Users/naveenb/projects/gocd.refresh/.bundle/ruby/2.0.0/gems/rack-1.6.4/lib/rack/lint.rb:37:in `call'
