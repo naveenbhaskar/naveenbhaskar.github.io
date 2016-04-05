@@ -24,31 +24,27 @@
     <nav class="mainnav">
       <ul class="level0">
         <li class="dropdown">
-          <a href="../features/">Features</a>
-          <ul>
-            <li><a href="../plugins/">Plugins</a></li>
-            <li><a href="../roadmap/">Roadmap</a></li>
-            <li><a href="../subscribe/">Subscribe to updates</a></li>
+          <a class="link_whygo" href="../why-go/">Why go</a>
+          <ul  class="level1">
+            <li><a class="link_subscribe" href="../subscribe/">Subscribe to updates</a></li>
           </ul>
         </li>
         <li class="dropdown">
-          <a href="../community/">Community</a>
-          <ul>
-            <li><a href="../contribute/">Contribute</a></li>
-            <li><a href="../cla/">CLA</a></li>
-            <li><a href="../open-issues/">Open Issues</a></li>
-            <li><a href="../events/">Events</a></li>
-            <li><a href="../partners/">Partners</a></li>
+          <a href="../contribute/">Community</a>
+          <ul  class="level1">
+            <li><a class="link_contribute" href="../contribute/">Contribute</a></li>
+            <li><a class="link_events" href="../events/">Events</a></li>
+            <li><a class="link_plugins" href="../plugins/">Plugins</a></li>
           </ul>
         </li>
-        <li><a href="../blog/">Blog</a></li>
+        <li><a class="link_blog" href="../blog/">Blog</a></li>
         <li class="dropdown">
-          <a href="../help/">Help</a>
-          <ul>
-            <li><a href="../getting-started/part-1/">Getting started</a></li>
-            <li><a href="./">Download</a></li>
+          <a class="link_help" href="../help/">Help</a>
+          <ul  class="level1">
+            <li><a class="link_getting-started" href="../getting-started/part-1/">Getting started</a></li>
           </ul>
         </li>
+        <li><a class="link_download" href="./">Download</a></li>
       </ul>
     </nav>
     <button class="navbtn menu collapse">
@@ -57,7 +53,6 @@
   </div>
 </header>
 <span id="top"></span>
-
     <div class="inner-banner plugins">
   <div class="container">
     <h1 class="caption"><span>Download</span></h1>
@@ -65,159 +60,209 @@
   </div>
 </div>
 <main>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-9">
-        <p>
-          <strong>You need to download both
-          the <a href="https://docs.go.cd/current/installation/installing_go_server.html">server</a> and
-          the <a href="https://docs.go.cd/current/installation/installing_go_agent.html">agent</a> in order
-          to use GoCD.</strong>
-        </p>
-        <p>
-          Scripting GoCD installations gets easier now. Both GoCD Server and Agent are now available on
-          public <a href="https://docs.go.cd/current/installation/install/server/linux.html#rpm-based-distributions-ie-redhat-centos-fedora">YUM</a>
-          and <a href="https://docs.go.cd/current/installation/install/server/linux.html#debian-based-distributions-ie-ubuntu">APT</a> repositories!
-        </p>
-        <p>
-          If you need help downloading, installing or using GoCD please join
-          the <a href="https://groups.google.com/forum/#!forum/go-cd">GoCD Users Google Group</a>. ThoughtWorks also
-          provides commercial help for GoCD. They can be reached
-          at <a href="mailto:support@thoughtworks.com">support@thoughtworks.com</a>.
-        </p>      
-      </div>
-      <div class="col-md-3">
-         <p class="note"> New! <a href="../subscribe/">Subscribe to updates</a> on new GoCD releases and more.</p>
-      </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+      <p>
+        <strong>You need to download both
+        the <a href="https://docs.go.cd/current/installation/installing_go_server.html">server</a> and
+        the <a href="https://docs.go.cd/current/installation/installing_go_agent.html">agent</a> in order
+        to use GoCD.</strong>
+      </p>
+      <p>
+        Scripting GoCD installations gets easier now. Both GoCD Server and Agent are now available on
+        public <a href="https://docs.go.cd/current/installation/install/server/linux.html#rpm-based-distributions-ie-redhat-centos-fedora">YUM</a>
+        and <a href="https://docs.go.cd/current/installation/install/server/linux.html#debian-based-distributions-ie-ubuntu">APT</a> repositories!
+      </p>
+      <p>
+        If you need help downloading, installing or using GoCD please join
+        the <a href="https://groups.google.com/forum/#!forum/go-cd">GoCD Users Google Group</a>. ThoughtWorks also
+        provides commercial help for GoCD. They can be reached
+        at <a href="mailto:support@thoughtworks.com">support@thoughtworks.com</a>.
+      </p>
+    </div>
+    <div class="col-md-3">
+      <p class="note"> New! <a href="../subscribe/">Subscribe to updates</a> on new GoCD releases and more.</p>
     </div>
   </div>
-  <div id="downloads"></div>
-    <script id="download-revisions-template" type="text/x-handlebars-template">
-      {{#*inline "show-releases-for-installer-type"}}
-        <div id="{{{tab_id}}}" class="tab_content {{{installer_type}}}">
-          <div class="releases">
-            {{#each releases}}
-            <div class="release {{go_version}}">
-              {{#with (lookup . ../installer_type)}}
-              <div class="files">
-                {{> show-file server type="server"}}
-                {{> show-file agent type="agent"}}
-              </div>
-              {{/with}}
-            </div>
-            {{/each}}
-          </div>
-        </div>
-      {{/inline}}
-
-      {{#*inline "show-tab-header"}}
-        <li rel="{{{tab_id}}}">
-          <span class="os-logo"><img src="{{{image}}}" alt="{{{desc}}}" /></span>
-          <span class="desc">{{{desc}}}</span>
-        </li>
-      {{/inline}}
-
-      {{#*inline "show-file"}}
-        <div class="{{{type}}} file">
-          <div class="name"><a href="{{{url}}}">{{{file}}}</a></div>
-          <div class="sha256sum"><small>{{{sha256sum}}}</small></div>
-          <div class="md5sum"><small>{{{md5sum}}}</small></div>
-        </div>
-      {{/inline}}
-
-      <div class="download-area">
-        <div class="container">
-          <h2 class="sub-title">Choose your OS &amp; download</h2>
-          <p class="info">Latest supported release (<span id="latest-version">{{latest_version}}</span>) |
-            <a href="../releases/#latest">See what's new</a>
-          </p>
-
-          <ul class="tabs os">
-            {{> show-tab-header tab_id="tab1" image="../assets/images/download/windows.png" desc="Windows"}}
-            {{> show-tab-header tab_id="tab2" image="../assets/images/download/osx.png" desc="OSX"}}
-            {{> show-tab-header tab_id="tab3" image="../assets/images/download/debian.png" desc="Debian"}}
-            {{> show-tab-header tab_id="tab4" image="../assets/images/download/linux.png" desc="RPM"}}
-            {{> show-tab-header tab_id="tab5" image="../assets/images/download/solaris.png" desc="Solaris"}}
-            {{> show-tab-header tab_id="tab6" image="../assets/images/download/package.png" desc="Package"}}
-          </ul>
-        </div>
-      </div>
-
-      <div class="os-tab-content">
-        <div class="container">
-          <div class="tab_container">
-           <h3 class="tab-accordion_heading" rel="tab1">Windows</h3>
-            {{> show-releases-for-installer-type installer_type="win"     heading="Windows" tab_id="tab1"}}
-             <h3 class="tab-accordion_heading" rel="tab2">OSX</h3>
-            {{> show-releases-for-installer-type installer_type="osx"     heading="OSX"     tab_id="tab2"}}
-             <h3 class="tab-accordion_heading" rel="tab3">Debian</h3>
-            {{> show-releases-for-installer-type installer_type="deb"     heading="Debian"  tab_id="tab3"}}
-             <h3 class="tab-accordion_heading" rel="tab4">RPM</h3>
-            {{> show-releases-for-installer-type installer_type="rpm"     heading="RPM"     tab_id="tab4"}}
-             <h3 class="tab-accordion_heading" rel="tab5">Solaris</h3>
-            {{> show-releases-for-installer-type installer_type="solaris" heading="Solaris" tab_id="tab5"}}
-             <h3 class="tab-accordion_heading" rel="tab6">Package</h3>
-            {{> show-releases-for-installer-type installer_type="generic" heading="Package" tab_id="tab6"}}
-          </div>
-        </div>
-      </div>
-    </script>
+</div>
+<script id="verify-checksum-message-template" type="text/x-handlebars-template">
+<div class="verify-checksum-message">
+  <div class="content">
+    <button class="close-message">X</button>
+    <p>You can verify the checksum using MD5 by doing this:</p>
+    <p>
+      Put this MD5 sum in a file (say {{filename}}.md5): {{md5sum}}.<br/>
+      Place the downloaded file in the same directory: {{filename}}.<br/>
+      Verify that the output of this command is without errors: md5sum -c {{filename}}.md5
+    </p>
+    <p>OR</p>
+    <p>
+      Run: md5sum {{filename}} Verify that the output is: {{md5sum}}
+    </p>
+    <p>You can verify the checksum using SHA256 by doing this:</p>
+    <p>
+      Put this SHA256 sum in a file (say {{filename}}.sha): {{sha256sum}}. <br/>
+      Place the downloaded file in the same directory: {{filename}}.<br/>
+      Verify that the output of this command is without errors: sha256sum -c {{filename}}.sha
+    </p>
+    <p>OR</p>
+    <p>
+      Run: sha256sum {{filename}}. Verify that the output is: {{sha256sum}}
+    </p>
   </div>
+</div>
+</script>
+<div id="downloads">
+<div class="container">
+  Please wait. Fetching information about download ...
+  </div>
+</div>
+<script id="download-revisions-template" type="text/x-handlebars-template">
+{{#*inline "show-releases-for-installer-type"}}
+<div id="{{{tab_id}}}" class="tab_content {{{installer_type}}}">
+  <div class="releases">
+    <div class="latest">
+      {{#with latest_release}}
+      <div class="release {{display_version}}">
+        <span class="version">{{display_version}}</span>
+        {{#with (lookup . ../installer_type)}}
+        <div class="files">
+          {{> show-file server type="server"}}
+          {{> show-file agent type="agent"}}
+        </div>
+        {{/with}}
+      </div>
+      {{/with}}
+    </div>
+  </div>
+  <div class="other-releases">
+    <button class="btn-release"><span>Show</span> old releases</button>
+  </div>
+  <div class="old-release">
+    {{#each all_other_releases}}
+    <div class="release {{display_version}}">
+      <span class="version">{{display_version}}</span>
+      {{#with (lookup . ../installer_type)}}
+      <div class="files">
+        {{> show-file server type="server"}}
+        {{> show-file agent type="agent"}}
+      </div>
+      {{/with}}
+    </div>
+    {{/each}}
+  </div>
+</div>
+{{/inline}}
+{{#*inline "show-tab-header"}}
+<li rel="{{{tab_id}}}">
+  <span class="os-logo"><img src="{{{image}}}" alt="{{{desc}}}" /></span>
+  <span class="desc">{{{desc}}}</span>
+</li>
+{{/inline}}
+{{#*inline "show-file"}}
+<div class="{{{type}}} file">
+  <div class="name">
+    <a href="{{{url}}}"><i class="fa fa-download"></i> </a>
+  </div>
+  <div class="verify-checksum" data-filename="{{{filename}}}" data-sha256sum="{{{sha256sum}}}" data-md5sum="{{{md5sum}}}">
+    <button class="verify">Verify checksum</button>
+  </div>
+</div>
+{{/inline}}
+<div class="download-area">
+  <div class="container">
+    <h2 class="sub-title">Choose your OS &amp; download</h2>
+    <p class="info">Latest supported release (<span id="latest-version">{{latest_version}}</span>) |
+    <a href="../releases/#latest">See what's new</a>
+  </p>
+  <ul class="tabs os">
+    {{> show-tab-header tab_id="tab1" image="../assets/images/download/windows.png" desc="Windows"}}
+    {{> show-tab-header tab_id="tab2" image="../assets/images/download/osx.png" desc="OSX"}}
+    {{> show-tab-header tab_id="tab3" image="../assets/images/download/debian.png" desc="Debian"}}
+    {{> show-tab-header tab_id="tab4" image="../assets/images/download/linux.png" desc="RPM"}}
+    {{> show-tab-header tab_id="tab5" image="../assets/images/download/solaris.png" desc="Solaris"}}
+    {{> show-tab-header tab_id="tab6" image="../assets/images/download/package.png" desc="Package"}}
+  </ul>
+</div>
+</div>
+<div class="os-tab-content">
+<div class="container">
+  <div class="tab_container">
+    <h3 class="tab-accordion_heading" rel="tab1">Windows</h3>
+    {{> show-releases-for-installer-type installer_type="win"     heading="Windows" tab_id="tab1"}}
+    <h3 class="tab-accordion_heading" rel="tab2">OSX</h3>
+    {{> show-releases-for-installer-type installer_type="osx"     heading="OSX"     tab_id="tab2"}}
+    <h3 class="tab-accordion_heading" rel="tab3">Debian</h3>
+    {{> show-releases-for-installer-type installer_type="deb"     heading="Debian"  tab_id="tab3"}}
+    <h3 class="tab-accordion_heading" rel="tab4">RPM</h3>
+    {{> show-releases-for-installer-type installer_type="rpm"     heading="RPM"     tab_id="tab4"}}
+    <h3 class="tab-accordion_heading" rel="tab5">Solaris</h3>
+    {{> show-releases-for-installer-type installer_type="solaris" heading="Solaris" tab_id="tab5"}}
+    <h3 class="tab-accordion_heading" rel="tab6">Package</h3>
+    {{> show-releases-for-installer-type installer_type="generic" heading="Package" tab_id="tab6"}}
+  </div>
+</div>
+<div id="verify-checksum-message"></div>
+</div>
+</script>
 </main>
-
 <script src="../assets/vendor/javascripts/handlebars.js/4.0.5/handlebars.min.js"></script>
 <script src="../assets/vendor/javascripts/ramda/0.19.1/ramda.min.js"></script>
 <script src="../assets/javascripts/download.js"></script>
 <script src="../assets/javascripts/tabs.js"></script>
-
 <script>
- jQuery(document).ready(function($) {
-   showDownloadLinks().then(function() { startTabContainer($); });
- });
+// <![CDATA[
+jQuery(document).ready(function($) {
+var isExperimental = R.any(R.equals('experimental=true'), window.location.search.substr(1).split('&'));
+showDownloadLinks({typeOfInstallersToShow: isExperimental ? "experimental" : "stable"}).then(function() { startTabContainer($); });
+setupShowVerifyChecksumMessage();
+});
+// ]]>
 </script>
-
     <footer>
-	<div class="join-community">
-		<div class="container">
-			<h3>Join our community</h3>
-			<ul>
-				<li>
-					<a href="#">
-						<i class="fa fa-user-plus"></i>
-						join us
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<i class="fa fa-wechat"></i>
-						Talk to us
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<i class="fa fa-binoculars"></i>
-						watch us
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<i class="fa fa-twitter"></i>
-						follow us
-					</a>
-				</li>
-			</ul>
-		</div>
-	</div>
-	<div class="page-footer">
-		<div class="container">
-			<p class="help-us-improve">Make this place better, <a href="https://github.com/gocd/gocd.github.io">fork</a>
-			it or <a href="https://github.com/gocd/gocd.github.io/issues">suggest</a> something.</p>
-			<p>
-				GoCD is an open-source project, sponsored by <a target="_blank" href="http://www.thoughtworks.com">ThoughtWorks Inc.</a>
-				under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank" title="Apache 2.0 License">Apache License, Version 2.0</a>
-			</p>
-		</div>
-	</div>
+  <div class="join-community">
+    <div class="container">
+      <h3>Join our community</h3>
+      <ul>
+        <li>
+          <a href="#">
+            <i class="fa fa-user-plus"></i>
+            join us
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-wechat"></i>
+            Talk to us
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-binoculars"></i>
+            watch us
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-twitter"></i>
+            follow us
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="container">
+      <p class="help-us-improve">Make this place better, <a href="https://github.com/gocd/gocd.github.io">fork</a>
+      it or <a href="https://github.com/gocd/gocd.github.io/issues">suggest</a> something.</p>
+      <p>
+        GoCD is an open-source project, sponsored by <a target="_blank" href="http://www.thoughtworks.com">ThoughtWorks Inc.</a>
+        under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank" title="Apache 2.0 License">Apache License, Version 2.0</a>
+      </p>
+      <span data-git-revision="70b04801e8d388c108f2c0418f7567ace525b22f"></span>
+    </div>
+  </div>
 </footer>
 <a href="#top" class="back-top"><i class="fa fa-arrow-circle-up"></i></a>
   </body>

@@ -24,31 +24,27 @@
     <nav class="mainnav">
       <ul class="level0">
         <li class="dropdown">
-          <a href="../features/">Features</a>
-          <ul>
-            <li><a href="../plugins/">Plugins</a></li>
-            <li><a href="../roadmap/">Roadmap</a></li>
-            <li><a href="../subscribe/">Subscribe to updates</a></li>
+          <a class="link_whygo" href="../why-go/">Why go</a>
+          <ul  class="level1">
+            <li><a class="link_subscribe" href="../subscribe/">Subscribe to updates</a></li>
           </ul>
         </li>
         <li class="dropdown">
-          <a href="../community/">Community</a>
-          <ul>
-            <li><a href="../contribute/">Contribute</a></li>
-            <li><a href="../cla/">CLA</a></li>
-            <li><a href="../open-issues/">Open Issues</a></li>
-            <li><a href="../events/">Events</a></li>
-            <li><a href="../partners/">Partners</a></li>
+          <a href="../contribute/">Community</a>
+          <ul  class="level1">
+            <li><a class="link_contribute" href="../contribute/">Contribute</a></li>
+            <li><a class="link_events" href="../events/">Events</a></li>
+            <li><a class="link_plugins" href="../plugins/">Plugins</a></li>
           </ul>
         </li>
-        <li><a href="./">Blog</a></li>
+        <li><a class="link_blog" href="./">Blog</a></li>
         <li class="dropdown">
-          <a href="../help/">Help</a>
-          <ul>
-            <li><a href="../getting-started/part-1/">Getting started</a></li>
-            <li><a href="../download/">Download</a></li>
+          <a class="link_help" href="../help/">Help</a>
+          <ul  class="level1">
+            <li><a class="link_getting-started" href="../getting-started/part-1/">Getting started</a></li>
           </ul>
         </li>
+        <li><a class="link_download" href="../download/">Download</a></li>
       </ul>
     </nav>
     <button class="navbtn menu collapse">
@@ -57,7 +53,6 @@
   </div>
 </header>
 <span id="top"></span>
-
     <div class="inner-banner blog-banner">
   <div class="container">
     <h1 class="caption"><span>GoCD Blog</span></h1>
@@ -65,557 +60,676 @@
     <a class="rss-feed" href="../feed.xml">RSS feed</a>
   </div>
 </div>
+
 <main class="main blog-list" >
-<div class="container">
-  <ul class="posts">
-    <li class="grid-sizer"></li>
-    <li class="blog-list-item latest-blog">
-      <div class="post-summary">
-<figure class="post-summary-image"><img src="../assets/images/blog/are-you-ready-for-continuous-delivery/woodline.jpeg" /></figure>
-<div class="blog-details">
-  <span class="post-date">Mar 17, 2016</span>
-  <h2 class="post-title"><a href="../2016/03/17/writing-long-lived-code/">Writing long-lived Code</a></h2>
-  <span class="excerpt">ThoughtWorks has been building products for 10 years. We’ve learned some hard lessons while trying to keep fairly large codebases malleable year after year.</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<figure class="post-summary-image"><img src="../assets/images/blog/are-you-ready-for-continuous-delivery/feedback_loops.jpg" /></figure>
-<div class="blog-details">
-  <span class="post-date">Mar 15, 2016</span>
-  <h2 class="post-title"><a href="../2016/03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops/">Are you ready for Continuous Delivery? Part 2: Feedback loops</a></h2>
-  <span class="excerpt">This is the second part of a series of posts about Continuous Delivery infrastructure, culture, and process. In this post, we’ll present some of the more common feedback loops your organization should have in place to determine your readiness for Continuous Delivery.</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<figure class="post-summary-image"><img src="../assets/images/blog/deploy-now/security-badge.png" /></figure>
-<div class="blog-details">
-  <span class="post-date">Feb  8, 2016</span>
-  <h2 class="post-title"><a href="../2016/02/08/not-done-unless-its-done-security/">Add Security Testing to Your Deployment Pipelines</a></h2>
-  <span class="excerpt">Releasing with confidence means including things like security tests in your deployment pipeline</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<figure class="post-summary-image"><img src="../assets/images/blog/are-you-ready-for-continuous-delivery/woodline.jpeg" /></figure>
-<div class="blog-details">
-  <span class="post-date">Jan 25, 2016</span>
-  <h2 class="post-title"><a href="../2016/01/25/are-you-ready-for-continuous-delivery/">Are you ready for Continuous Delivery?</a></h2>
-  <span class="excerpt">This is the first part of a series of posts about Continuous Delivery infrastructure, culture, and process. In this first post, we'll present questions you need to answer honestly about your own people, teams, and organization to determine your readiness for Continuous Delivery.</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<figure class="post-summary-image"><img src="../assets/images/blog/deploy-now/but_it_just_needs_oven.png" /></figure>
-<div class="blog-details">
-  <span class="post-date">Jan 17, 2016</span>
-  <h2 class="post-title"><a href="../2016/01/17/not-done-unless-its-done/">It's not Continuous Delivery if you can't deploy right now.</a></h2>
-  <span class="excerpt">I hear people say all the time that they're practicing continuous delivery. This declaration is often followed by something like, &ldquo;I can let the security team know anytime&rdquo;, or &ldquo;I just have to run the performance tests&rdquo;. If you can't push your software to production right now, you're not done with your continuous delivery journey.</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<figure class="post-summary-image"><img src="../assets/images/blog/go-cd-continuous-delivery-through-pipelines/dieamond-problem.png" /></figure>
-<div class="blog-details">
-  <span class="post-date">Dec 28, 2015</span>
-  <h2 class="post-title"><a href="../2015/12/28/gocd-continuous-delivery-through-pipelines/">Guest post: GoCD - Continuous Delivery through pipelines</a></h2>
-  <span class="excerpt">GoCD has the pipeline abstraction at its core and that is a reason why we like it. Read why we have chosen it as our build tool in SmartCat ...</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<figure class="post-summary-image"><img src="../assets/images/blog/are-you-ready-for-continuous-delivery/woodline.jpeg" /></figure>
-<div class="blog-details">
-  <span class="post-date">Dec 22, 2015</span>
-  <h2 class="post-title"><a href="../2015/12/22/gocd-in-2016/">Roadmap - GoCD in 2016</a></h2>
-  <span class="excerpt">2016 is going to be an exciting year for GoCD. Read all about what's being planned for it ...</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<figure class="post-summary-image"><img src="../assets/images/go-gauge-report.png" /></figure>
-<div class="blog-details">
-  <span class="post-date">Nov 18, 2015</span>
-  <h2 class="post-title"><a href="../2015/11/18/Open-Source-Tests/">Open Source Tests - The GoCD way</a></h2>
-  <span class="excerpt">At GoCD, we are open-sourcing our functional tests, we believe open-sourcing system tests will - improve quality through collaboration, make regression tests efficient, give the community a detailed picture of the system behavior and act as ...</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<div class="blog-details">
-  <span class="post-date">Nov  9, 2015</span>
-  <h2 class="post-title"><a href="../2015/11/09/deserialization-vulnerability-commons-collections/">Vulnerability in GoCD - Java deserialization and Apache commons-collections</a></h2>
-  <span class="excerpt">This post contains information about a security patch available for GoCD 15.2. If you're using GoCD 15.2 in production, and especially if it is available over the internet, it is highly recommended to apply this patch immediately.</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<figure class="post-summary-image"><img src="../assets/images/blog/webinar-recording/webinar-recording-5.png" /></figure>
-<div class="blog-details">
-  <span class="post-date">Oct 29, 2015</span>
-  <h2 class="post-title"><a href="../2015/10/29/go-webinar-recording/">Continuous Delivery with Go - Webinar Recording</a></h2>
-  <span class="excerpt">Every couple of weeks ThoughtWorks hosts learning sessions for people who want more information about continuous delivery with Go. This is a recording of the session from 29 Oct, 2015</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<div class="blog-details">
-  <span class="post-date">Oct 19, 2015</span>
-  <h2 class="post-title"><a href="../2015/10/19/gocd-snap-at-devops-enterprise-summit/">GoCD and Snap CI at DevOps Enterprise Summit 2015. Showcasing Innovation in Continuous Delivery.</a></h2>
-  <span class="excerpt">ThoughtWorks’ Continuous Delivery Products Snap CI and GoCD Come Together at the DevOps Enterprise Summit 2015 to Showcase Innovation in Continuous Delivery</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<figure class="post-summary-image"><img src="../assets/images/timestamps-in-console-logs-example.png" /></figure>
-<div class="blog-details">
-  <span class="post-date">Sep  1, 2015</span>
-  <h2 class="post-title"><a href="../2015/09/01/visibility-is-opportunity/">Visibility Is Opportunity: stories of improving continuous integration</a></h2>
-  <span class="excerpt">Mingle is a 9 years JRuby Rails project. We do test-driven development and continous integration. We write selenium tests to test everything since Oct 2006. For a long time, our build time was 1 to 2 hours. We thought it was a good balance of build time and resources needed...</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<figure class="post-summary-image"><img src="../assets/images/blog/pipeline-patterns/infrastructure-as-code.png" /></figure>
-<div class="blog-details">
-  <span class="post-date">Aug 28, 2015</span>
-  <h2 class="post-title"><a href="../2015/08/28/pipeline-patterns/">5 Key Deployment Pipeline Patterns</a></h2>
-  <span class="excerpt">Teams have been automating the build, test and deploy processes of their software for many years, but usually in a very specific "one off" manner. This article walks through 5 key patterns to setting up a successful deployment pipeline, including designing parallel workflows, running tests in parallel, and more.</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<figure class="post-summary-image"><img src="../assets/images/blog/sample-virtualbox/Virtualbox_logo.png" /></figure>
-<div class="blog-details">
-  <span class="post-date">Aug  5, 2015</span>
-  <h2 class="post-title"><a href="../2015/08/05/Go-Sample-Virtualbox/">Sample GoCD Virtualbox based environment</a></h2>
-  <span class="excerpt"><p>If you're interested in checking out GoCD but don't want to spend the time automating your
-own system, this might be a great option for you. We've created an environment using Vagrant and Virtualbox.
-Once it's up, you'll have a full GoCD installation...</p></span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<div class="blog-details">
-  <span class="post-date">Jul 14, 2015</span>
-  <h2 class="post-title"><a href="../2015/07/14/Go_15_2_announced/">GoCD 15.2.0 Released</a></h2>
-  <span class="excerpt"><p>We like to announce a new release of gocd. Head over to our <a href="http://www.go.cd/download/">downloads page</a> to get your hands on the latest and greatest. Read more about what's new in this release from our <a href="http://www.go.cd/releases/#latest">release notes</a>.</p>
+  <div class="container">
+        <div class="blog-list-item latest-blog">
+        <div class="post-summary">
+<a class="post-link" href="../2016/03/24/how-to-avoid-brittle-code/">  <figure class="post-summary-image"><img src="../assets/images/blog/how-to-avoid-brittle-code/how-to-avoid-brittle-code.jpg" /></figure>
 
-</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<figure class="post-summary-image"><img src="../assets/images/blog/github-integration/github-issue-link-in-compare-pipeline.png" /></figure>
-<div class="blog-details">
-  <span class="post-date">Jul  7, 2015</span>
-  <h2 class="post-title"><a href="../2015/07/07/GitHub-Integration/">Integrating GoCD with GitHub</a></h2>
-  <span class="excerpt">With the upcoming 15.2 release, we're announcing some new API endpoints that will make integrating with GoCD with GitHub easier and fun. This post is a round-up of the many GoCD plugins which work with GitHub.</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<div class="blog-details">
-  <span class="post-date">Jun 23, 2015</span>
-  <h2 class="post-title"><a href="../2015/06/23/hardly-anyone-knows-cd/">Hardly Anyone Knows Continuous Delivery</a></h2>
-  <span class="excerpt">Ken Mugrage makes a strong case that lots more people need to learn about CD. He says: "Those of us who work in or around teams doing continuous delivery often think it’s a mainstream thing. This couldn’t be further from the truth."</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<figure class="post-summary-image"><img src="../assets/images/blog/authentication-plugins/login-page.png" /></figure>
-<div class="blog-details">
-  <span class="post-date">Jun 18, 2015</span>
-  <h2 class="post-title"><a href="../2015/06/18/authentication-end-point/">Authentication end-point</a></h2>
-  <span class="excerpt">GoCD 15.2.0 exposed authentication as an end-point which can be extended using a plugin. This post explains how the GitHub OAuth Login plugin works</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<figure class="post-summary-image"><img src="../assets/images/blog/plugin-settings/configure-plugin.png" /></figure>
-<div class="blog-details">
-  <span class="post-date">Jun 18, 2015</span>
-  <h2 class="post-title"><a href="../2015/06/18/plugin-settings/">Plugin Settings</a></h2>
-  <span class="excerpt">GoCD is continously improving its plugin infrastructure. Starting 15.2.0, GoCD will support "Plugin Settings" that will allow plugins developers to accept global settings. With this feature all plugins will have one approach to accept plugins settings from user &amp; access plugin settings from GoCD Server.</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<figure class="post-summary-image"><img src="../assets/images/blog/upcoming-API-changes/summary_image.png" /></figure>
-<div class="blog-details">
-  <span class="post-date">Jun 17, 2015</span>
-  <h2 class="post-title"><a href="../2015/06/17/Upcoming-API-Changes/">Upcoming API Changes</a></h2>
-  <span class="excerpt">Announcement: With the upcoming release of GoCD 15.2, we'd like to begin unifying and improving some of the existing APIs that GoCD supports.</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<figure class="post-summary-image"><img src="../assets/images/blog/using-windows-powershell-tasks/PowerShell_5.0_icon.png" /></figure>
-<div class="blog-details">
-  <span class="post-date">Jun 13, 2015</span>
-  <h2 class="post-title"><a href="../2015/06/13/using-windows-powershell-tasks/">Guest post: Using Windows PowerShell tasks</a></h2>
-  <span class="excerpt">This guest post by Pat Mc Grath talks about some things to be aware of when using Windows PowerShell tasks on GoCD</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<figure class="post-summary-image"><img src="../assets/images/blog/webinar-recording/webinar-recording-4.png" /></figure>
-<div class="blog-details">
-  <span class="post-date">May  7, 2015</span>
-  <h2 class="post-title"><a href="../2015/05/07/go-webinar-recording/">Continuous Delivery with Go - Webinar Recording</a></h2>
-  <span class="excerpt">Every couple of weeks ThoughtWorks hosts learning sessions for people who want more information about continuous delivery with Go. This is a recording of the session from 7 May, 2015"</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<div class="blog-details">
-  <span class="post-date">May  6, 2015</span>
-  <h2 class="post-title"><a href="../2015/05/06/Getting-Started-Resources/">Get Started Using GoCD</a></h2>
-  <span class="excerpt">This post talks about resources you can use to help you get started in your journey with CD, and GoCD in particular</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<div class="blog-details">
-  <span class="post-date">Apr 29, 2015</span>
-  <h2 class="post-title"><a href="../2015/04/29/Go_15_1_announced/">GoCD 15.1.0 Released</a></h2>
-  <span class="excerpt">We would like to announce a new release of gocd. Head over to our <a href="http://www.go.cd/download/">downloads page</a> to get your hands on the latest and greatest. Read more about what's new in this release from our <a href="http://www.go.cd/releases/#latest">release notes</a>.</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<figure class="post-summary-image"><img src="../assets/images/blog/feature-branch/update-status-1.png" /></figure>
-<div class="blog-details">
-  <span class="post-date">Apr 27, 2015</span>
-  <h2 class="post-title"><a href="../2015/04/27/Feature-Branch-Support/">Feature Branch Support</a></h2>
-  <span class="excerpt">GoCD 15.1 introduced support for writing material repository plugins. This resulted in community-driven plugins developed for GoCD, to implement support for feature branches. This blog post has information specifically about GitHub Pull Request support.</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<div class="blog-details">
-  <span class="post-date">Apr 23, 2015</span>
-  <h2 class="post-title"><a href="../2015/04/23/Go_15_1_jdk7_announcement/">For GoCD 15.1 upgrade your Java/JDK to 7+</a></h2>
-  <span class="excerpt"><p>GoCD has <a href="http://www.go.cd/2014/07/09/stopping-support-for-java-jdk-6.html">stopped support JDK 6</a> for some time now. But we understand that some users were using Java 6, so we continued to support it as long as we could while helping users migrate their GoCD servers and agents to Java 7.</p>
+  <div class="blog-details">
+    <span class="post-date">Mar 24, 2016</span>
+    <h2 class="post-title">How to Avoid Brittle Code</h2>
+    <p class="excerpt">The most common problem with legacy code is brittleness. A brittle codebase is one that a team cannot change without great pain. In ThoughtWorks' 10 years of building products we've learned some hard lessons while trying to keep fairly large codebases malleable. </p>
+  </div>
+</a></div>
 
-<p>Java 6 was declared end-of...</p></span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<div class="blog-details">
-  <span class="post-date">Dec 17, 2014</span>
-  <h2 class="post-title"><a href="../2014/12/17/Go_14_4_announced/">GoCD 14.4 Released</a></h2>
-  <span class="excerpt"><p>Today we released GoCD 14.4</p>
+    </div>
 
-<p>You can download it from <a href="http://www.go.cd/download/">here</a>. Take a look at <a href="http://www.go.cd/releases/#latest">release notes</a> to see details.</p>
+    <div class="row">
+        <div class="col-sm-6 col-md-4">
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2016/03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops/">  <figure class="post-summary-image"><img src="../assets/images/blog/are-you-ready-for-continuous-delivery/feedback_loops.jpg" /></figure>
 
-<p>Sincere thanks to everyone who contributed to GoCD in form of features, ideas, issues / feature requests and much more! A special mention goes...</p></span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<figure class="post-summary-image"><img src="../assets/images/blog/webinar-recording/webinar-recording-3.png" /></figure>
-<div class="blog-details">
-  <span class="post-date">Nov 21, 2014</span>
-  <h2 class="post-title"><a href="../2014/11/21/go-webinar-recording/">Continuous Delivery with GoCD - Webinar Recording</a></h2>
-  <span class="excerpt">Every couple of weeks ThoughtWorks hosts learning sessions for people who want more information about continuous delivery with GoCD. This is a recording of the session from 21 November, 2014.</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<div class="blog-details">
-  <span class="post-date">Nov 14, 2014</span>
-  <h2 class="post-title"><a href="../2014/11/14/Go_14_3_issue_with_uploading_compressed_artifacts/">Update: Issue with uploading compressed artifacts in GoCD 14.3.0</a></h2>
-  <span class="excerpt">There was an <a href="https://github.com/gocd/gocd/issues/703">issue</a> reported with respect to artifact uploads in the 14.3.0 release of GoCD. This post talks about it and the workarounds you can use for now</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<div class="blog-details">
-  <span class="post-date">Nov 11, 2014</span>
-  <h2 class="post-title"><a href="../2014/11/11/Go_14_3_announced/">GoCD 14.3 Released</a></h2>
-  <span class="excerpt"><p>Today we released GoCD 14.3</p>
+  <div class="blog-details">
+    <span class="post-date">Mar 15, 2016</span>
+    <h2 class="post-title">Are you ready for Continuous Delivery? Part 2: Feedback loops</h2>
+    <p class="excerpt">This is the second part of a series of posts about Continuous Delivery infrastructure, culture, and process. In this post, we’ll present some of the more common feedback loops your organization should have in place to determine your readiness for Continuous Delivery. </p>
+  </div>
+</a></div>
 
-<p>You can download it from <a href="http://www.go.cd/download/">here</a>. Take a look at <a href="http://www.go.cd/releases/#latest">release notes</a> to see details.</p>
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2016/01/17/not-done-unless-its-done/">  <figure class="post-summary-image"><img src="../assets/images/blog/deploy-now/but_it_just_needs_oven.png" /></figure>
 
-<p>This release saw lot of contributions from the community. A huge callout to the following contributors (not in any particular order) for their...</p></span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<figure class="post-summary-image"><img src="../assets/images/blog/distrubuted-test-execution/summary_image.png" /></figure>
-<div class="blog-details">
-  <span class="post-date">Oct  9, 2014</span>
-  <h2 class="post-title"><a href="../2014/10/09/Distrubuted-Test-Execution/">Distributed Test Execution with GoCD + TLB</a></h2>
-  <span class="excerpt"><p>Writing tests has finally become the norm. Consequently, running tests for every commit is central to &amp; the most time consuming activity in any CI/CD setup. In a decent-sized production quality project you tend to have thousands of tests. That means...</p></span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<figure class="post-summary-image"><img src="../assets/images/blog/cloning-templates/trigger-with-options-2.png" /></figure>
-<div class="blog-details">
-  <span class="post-date">Aug 19, 2014</span>
-  <h2 class="post-title"><a href="../2014/08/19/cloning-templates/">Guest post: Continuous Delivery with GoCD - Cloning Templates</a></h2>
-  <span class="excerpt">Marius-Stefan Ciotlos' post talks about setting up a pipeline which helps to clone templates in GoCD - by using a script and the API for it</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<figure class="post-summary-image"><img src="../assets/images/blog/webinar-recording/webinar-recording-2.png" /></figure>
-<div class="blog-details">
-  <span class="post-date">Aug  7, 2014</span>
-  <h2 class="post-title"><a href="../2014/08/07/go-webinar-recording/">Continuous Delivery with GoCD - Webinar Recording</a></h2>
-  <span class="excerpt">Every couple of weeks ThoughtWorks hosts learning sessions for people who want more information about continuous delivery with GoCD. This is a recording of the session from 7 August, 2014"</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<div class="blog-details">
-  <span class="post-date">Jul  9, 2014</span>
-  <h2 class="post-title"><a href="../2014/07/09/stopping-support-for-java-jdk-6/">Stopping support for Java/JDK 6</a></h2>
-  <span class="excerpt"><p>There was a <a href="http://support.thoughtworks.com/entries/23692466-Upgrade-to-Java-7-recommended">recommendation</a>, in April 2013, that all users move their GoCD Server and GoCD Agent installations to Java 7. Oracle and OpenJDK no longer support Java 6. So it is time for GoCD to stop supporting it. 14.2.0 will be last GoCD release which...</p></span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<div class="blog-details">
-  <span class="post-date">Jul  1, 2014</span>
-  <h2 class="post-title"><a href="../2014/07/01/What-would-help-you/">What would help you get involved?</a></h2>
-  <span class="excerpt">What does it take to get involved in an open-source project? It is reasonably easy on small or new projects, and considerably harder on larger or more mature projects</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<figure class="post-summary-image"><img src="../assets/images/blog/manage-agents-with-docker/small_h.png" /></figure>
-<div class="blog-details">
-  <span class="post-date">May 18, 2014</span>
-  <h2 class="post-title"><a href="../2014/05/18/manage-agents-with-docker/">Using GoCD and Docker to manage your GoCD agents</a></h2>
-  <span class="excerpt">Ken Mugrage talks about running GoCD agents using Docker, and being able to destroy them as needed</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<figure class="post-summary-image"><img src="../assets/images/blog/set-up-a-go-dev-environment/summary_image.png" /></figure>
-<div class="blog-details">
-  <span class="post-date">May  1, 2014</span>
-  <h2 class="post-title"><a href="../2014/05/01/set-up-a-go-dev-environment/">Setting up a GoCD development environment VM</a></h2>
-  <span class="excerpt">The GoCD team has created a VirtualBox VM image to help people interested in development go get started quickly. This short video shows the process of downloading and setting up the virtual machine.</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<div class="blog-details">
-  <span class="post-date">Apr 24, 2014</span>
-  <h2 class="post-title"><a href="../2014/04/24/Go_14_1_announced/">GoCD 14.1 Released</a></h2>
-  <span class="excerpt">This is a release announcement of GoCD 14.1, which allowed task plugins, by introducing a task plugin endpoint</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<div class="blog-details">
-  <span class="post-date">Apr 24, 2014</span>
-  <h2 class="post-title"><a href="../2014/04/24/source-code-for-go-now-available/">Source code for GoCD now available</a></h2>
-  <span class="excerpt">This is an announcement about GoCD's source code's availability to the public, shared on <a href="https://github.com/gocd/gocd">GitHub</a> - this is a follow-up to going open-source</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<div class="blog-details">
-  <span class="post-date">Apr 14, 2014</span>
-  <h2 class="post-title"><a href="../2014/04/14/agent-bootstrapper-upgrade-for-plugins/">Agent-bootstrapper upgrade to enable task plugins</a></h2>
-  <span class="excerpt">Public service announcement: You need to upgrade the agent installer to 14.1 or newer, if you're planning to use task plugins</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<figure class="post-summary-image"><img src="../assets/images/blog/webinar-recording/webinar-recording-1.png" /></figure>
-<div class="blog-details">
-  <span class="post-date">Mar 10, 2014</span>
-  <h2 class="post-title"><a href="../2014/03/10/go-webinar-recording/">Continuous Delivery with Go - Webinar Recording</a></h2>
-  <span class="excerpt">Every couple of weeks ThoughtWorks hosts learning sessions for people who want more information about continuous delivery with Go. This is a recording of the session from 6 March, 2014</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<figure class="post-summary-image"><img src="../assets/images/blog/hello-world-with-go/media_1394063534943.png" /></figure>
-<div class="blog-details">
-  <span class="post-date">Mar  6, 2014</span>
-  <h2 class="post-title"><a href="../2014/03/06/hello-world-with-go/">Hello World with GoCD</a></h2>
-  <span class="excerpt">In a few steps you'll see an example of a simple one stage pipeline in GoCD. This is definitely not meant to be a definitive guide, just a basic introduction to how GoCD works</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<div class="blog-details">
-  <span class="post-date">Feb 25, 2014</span>
-  <h2 class="post-title"><a href="../2014/02/25/why-we-need-to-practice-cd/">Why we need to practice CD</a></h2>
-  <span class="excerpt">This article talks about the importance of CD vs CI, functional silos vs the DevOps movement and provides practical advice about automation practices and Continuous Delivery</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<figure class="post-summary-image"><img src="../assets/images/blog/go-moving-to-open-source/gocd-website-as-of-feb-2014-from-archive.org.png" /></figure>
-<div class="blog-details">
-  <span class="post-date">Feb 25, 2014</span>
-  <h2 class="post-title"><a href="../2014/02/25/go-moving-to-open-source/">GoCD is converting to open source!</a></h2>
-  <span class="excerpt">This is the post that declared ThoughtWorks' decision to convert GoCD to an open-source project. This is where it all (re)started. This article also talks about the reasons for the decision</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<figure class="post-summary-image"><img src="../assets/images/blog/tracingprod1.png" /></figure>
-<div class="blog-details">
-  <span class="post-date">Feb 24, 2014</span>
-  <h2 class="post-title"><a href="../2014/02/24/tracing-our-path-production/">Tracing our path to production</a></h2>
-  <span class="excerpt">Scott Turnquest writes about how the Mingle team uses GoCD's Value Stream Map to figure out the answers to many questions, including which features are deployed to their many environments</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<div class="blog-details">
-  <span class="post-date">Feb 24, 2014</span>
-  <h2 class="post-title"><a href="../2014/02/24/model-everything-fail-fast/">Model everything to fail fast</a></h2>
-  <span class="excerpt">Learn about modeling your pipelines to give you the quickest feedback fastest and other pipeline modeling tricks in this informative article by Mark Chang</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<div class="blog-details">
-  <span class="post-date">Feb 24, 2014</span>
-  <h2 class="post-title"><a href="../2014/02/24/how-peg-your-pipeline-dependency-version/">How to peg your pipeline to a dependency version</a></h2>
-  <span class="excerpt">This post discusses different ways of handling dependencies during pipeline modeling and how to decide which dependencies trigger downstream builds</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<div class="blog-details">
-  <span class="post-date">Feb 24, 2014</span>
-  <h2 class="post-title"><a href="../2014/02/24/how-implement-continuous-delivery-enterprise-java-middleware/">How to implement Continuous Delivery with enterprise java middleware?</a></h2>
-  <span class="excerpt">In this talk, you can learn about the challenges encountered while trying to use Continuous Delivery in a Java-based enterprise environment</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<div class="blog-details">
-  <span class="post-date">Feb 24, 2014</span>
-  <h2 class="post-title"><a href="../2014/02/24/go-template-permissions/">GoCD - Template Permissions</a></h2>
-  <span class="excerpt">This article introduces the concept of a template administrator role in GoCD, allowing a super administrator to delegate template editing capabilities to any user</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<div class="blog-details">
-  <span class="post-date">Feb 24, 2014</span>
-  <h2 class="post-title"><a href="../2014/02/24/deploy-package-not-just-tag-branch-or-binary/">Deploy a package, not just a tag, branch or binary</a></h2>
-  <span class="excerpt">This article lays out the benefits of using your operating system's packaging tools instead of rolling out your own installers and packages</span>
-</div>
-</div>
-    </li>
-    <li class="blog-list-item">
-      <div class="post-summary">
-<div class="blog-details">
-  <span class="post-date">Feb 24, 2014</span>
-  <h2 class="post-title"><a href="../2014/02/24/build-promotion-go/">Build promotion with Go</a></h2>
-  <span class="excerpt">Learn all about promoting your builds through different environments and promotion levels - both automatically and manually</span>
-</div>
-</div>
-    </li>
-  </ul>
-</div>
+  <div class="blog-details">
+    <span class="post-date">Jan 17, 2016</span>
+    <h2 class="post-title">It's not Continuous Delivery if you can't deploy right now.</h2>
+    <p class="excerpt">I hear people say all the time that they're practicing continuous delivery. This declaration is often followed by something like, &ldquo;I can let the security team know anytime&rdquo;, or &ldquo;I just have to run the performance tests&rdquo;. If you can't push your software to production right now, you're not done with your continuous delivery journey. </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2015/11/18/Open-Source-Tests/">  <figure class="post-summary-image"><img src="../assets/images/go-gauge-report.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Nov 18, 2015</span>
+    <h2 class="post-title">Open Source Tests - The GoCD way</h2>
+    <p class="excerpt">At GoCD, we are open-sourcing our functional tests, we believe open-sourcing system tests will - improve quality through collaboration, make regression tests efficient, give the community a detailed picture of the system behavior and act as ... </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2015/10/19/gocd-snap-at-devops-enterprise-summit/">  <figure class="post-summary-image"><img src="../assets/images/blog/gocd-snap-at-devops-enterprise-summit/summary_image.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Oct 19, 2015</span>
+    <h2 class="post-title">GoCD and Snap CI at DevOps Enterprise Summit 2015. Showcasing Innovation in Continuous Delivery.</h2>
+    <p class="excerpt">ThoughtWorks’ Continuous Delivery Products Snap CI and GoCD Come Together at the DevOps Enterprise Summit 2015 to Showcase Innovation in Continuous Delivery </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2015/08/05/Go-Sample-Virtualbox/">  <figure class="post-summary-image"><img src="../assets/images/blog/sample-virtualbox/Virtualbox_logo.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Aug  5, 2015</span>
+    <h2 class="post-title">Sample GoCD Virtualbox based environment</h2>
+    <p class="excerpt">If you're interested in checking out GoCD but don't want to spend the time automating your own system, this might be a great option for you. (Updated) </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2015/06/23/hardly-anyone-knows-cd/">  <figure class="post-summary-image"><img src="../assets/images/blog/hardly-anyone-knows-cd/01_CD_the_idea_low-res.jpg" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Jun 23, 2015</span>
+    <h2 class="post-title">Hardly Anyone Knows Continuous Delivery</h2>
+    <p class="excerpt">Ken Mugrage makes a strong case that lots more people need to learn about CD. He says: "Those of us who work in or around teams doing continuous delivery often think it’s a mainstream thing. This couldn’t be further from the truth." </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2015/06/17/Upcoming-API-Changes/">  <figure class="post-summary-image"><img src="../assets/images/blog/upcoming-API-changes/summary_image.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Jun 17, 2015</span>
+    <h2 class="post-title">Upcoming API Changes</h2>
+    <p class="excerpt">Announcement: With the upcoming release of GoCD 15.2, we'd like to begin unifying and improving some of the existing APIs that GoCD supports. </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2015/05/06/Getting-Started-Resources/">  <figure class="post-summary-image"><img src="../assets/images/blog/getting-started-resources/summary_image.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">May  6, 2015</span>
+    <h2 class="post-title">Get Started Using GoCD</h2>
+    <p class="excerpt">This post talks about resources you can use to help you get started in your journey with CD, and GoCD in particular </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2015/04/23/Go_15_1_jdk7_announcement/">  <figure class="post-summary-image"><img src="../assets/images/blog/java-announcements/Duke_Wave_Wide.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Apr 23, 2015</span>
+    <h2 class="post-title">For GoCD 15.1 upgrade your Java/JDK to 7+</h2>
+    <p class="excerpt">GoCD has stopped support JDK 6 for some time now. But we continued to support it as long as we could. You need to move to the latest Java now, to use GoCD 15.1.0 and beyond. </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2014/11/14/Go_14_3_issue_with_uploading_compressed_artifacts/">  <figure class="post-summary-image"><img src="../assets/images/blog/issues/issue.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Nov 14, 2014</span>
+    <h2 class="post-title">Update: Issue with uploading compressed artifacts in GoCD 14.3.0</h2>
+    <p class="excerpt">There was an <a href="https://github.com/gocd/gocd/issues/703">issue</a> reported with respect to artifact uploads in the 14.3.0 release of GoCD. This post talks about it and the workarounds you can use for now </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2014/08/19/cloning-templates/">  <figure class="post-summary-image"><img src="../assets/images/blog/cloning-templates/trigger-with-options-2.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Aug 19, 2014</span>
+    <h2 class="post-title">Guest post: Continuous Delivery with GoCD - Cloning Templates</h2>
+    <p class="excerpt">Marius-Stefan Ciotlos' post talks about setting up a pipeline which helps to clone templates in GoCD - by using a script and the API for it </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2014/07/01/What-would-help-you/">  <figure class="post-summary-image"><img src="../assets/images/blog/source-code-for-go-now-available/summary_image.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Jul  1, 2014</span>
+    <h2 class="post-title">What would help you get involved?</h2>
+    <p class="excerpt">What does it take to get involved in an open-source project? It is reasonably easy on small or new projects, and considerably harder on larger or more mature projects </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2014/04/24/Go_14_1_announced/">  <figure class="post-summary-image"><img src="../assets/images/blog/gocd-versions/gocd_14_1.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Apr 24, 2014</span>
+    <h2 class="post-title">GoCD 14.1 Released</h2>
+    <p class="excerpt">This is a release announcement of GoCD 14.1, which allowed task plugins, by introducing a task plugin endpoint </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2014/03/10/go-webinar-recording/">  <figure class="post-summary-image"><img src="../assets/images/blog/webinar-recording/webinar-recording-1.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Mar 10, 2014</span>
+    <h2 class="post-title">Continuous Delivery with GoCD - Webinar Recording</h2>
+    <p class="excerpt">Every couple of weeks ThoughtWorks hosts learning sessions for people who want more information about continuous delivery with GoCD. This is a recording of the session from 6 March, 2014 </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2014/02/25/go-moving-to-open-source/">  <figure class="post-summary-image"><img src="../assets/images/blog/go-moving-to-open-source/gocd-website-as-of-feb-2014-from-archive.org.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Feb 25, 2014</span>
+    <h2 class="post-title">GoCD is converting to open source!</h2>
+    <p class="excerpt">This is the post that declared ThoughtWorks' decision to convert GoCD to an open-source project. This is where it all (re)started. This article also talks about the reasons for the decision </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2014/02/24/how-peg-your-pipeline-dependency-version/">  <figure class="post-summary-image"><img src="../assets/images/blog/sriram-peg1_0.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Feb 24, 2014</span>
+    <h2 class="post-title">How to peg your pipeline to a dependency version</h2>
+    <p class="excerpt">This post discusses different ways of handling dependencies during pipeline modeling and how to decide which dependencies trigger downstream builds </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2014/02/24/deploy-package-not-just-tag-branch-or-binary/">  <figure class="post-summary-image"><img src="../assets/images/blog/sriram-package1.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Feb 24, 2014</span>
+    <h2 class="post-title">Deploy a package, not just a tag, branch or binary</h2>
+    <p class="excerpt">This article lays out the benefits of using your operating system's packaging tools instead of rolling out your own installers and packages </p>
+  </div>
+</a></div>
+
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2016/02/08/not-done-unless-its-done-security/">  <figure class="post-summary-image"><img src="../assets/images/blog/deploy-now/security-badge.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Feb  8, 2016</span>
+    <h2 class="post-title">Add Security Testing to Your Deployment Pipelines</h2>
+    <p class="excerpt">Releasing with confidence means including things like security tests in your deployment pipeline </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2015/12/28/gocd-continuous-delivery-through-pipelines/">  <figure class="post-summary-image"><img src="../assets/images/blog/go-cd-continuous-delivery-through-pipelines/dieamond-problem.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Dec 28, 2015</span>
+    <h2 class="post-title">Guest post: GoCD - Continuous Delivery through pipelines</h2>
+    <p class="excerpt">GoCD has the pipeline abstraction at its core and that is a reason why we like it. Read why we have chosen it as our build tool in SmartCat ... </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2015/11/09/deserialization-vulnerability-commons-collections/">  <figure class="post-summary-image"><img src="../assets/images/blog/issues/issue.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Nov  9, 2015</span>
+    <h2 class="post-title">Vulnerability in GoCD - Java deserialization and Apache commons-collections</h2>
+    <p class="excerpt">This post contains information about a security patch available for GoCD 15.2. If you're using GoCD 15.2 in production, and especially if it is available over the internet, it is highly recommended to apply this patch immediately. </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2015/09/01/visibility-is-opportunity/">  <figure class="post-summary-image"><img src="../assets/images/timestamps-in-console-logs-example.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Sep  1, 2015</span>
+    <h2 class="post-title">Visibility Is Opportunity: stories of improving continuous integration</h2>
+    <p class="excerpt">Mingle is a 9 years JRuby Rails project. We do test-driven development and continous integration. We write selenium tests to test everything since Oct 2006. For a long time, our build time was 1 to 2 hours. We thought it was a good balance of build time and resources needed... </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2015/07/14/Go_15_2_announced/">  <figure class="post-summary-image"><img src="../assets/images/blog/gocd-versions/gocd_15_2.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Jul 14, 2015</span>
+    <h2 class="post-title">GoCD 15.2.0 Released</h2>
+    <p class="excerpt">This is a release announcement for GoCD 15.2. Take a look at what's new in 15.2.0! </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2015/06/18/authentication-end-point/">  <figure class="post-summary-image"><img src="../assets/images/blog/authentication-plugins/login-page.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Jun 18, 2015</span>
+    <h2 class="post-title">Authentication end-point</h2>
+    <p class="excerpt">GoCD 15.2.0 exposed authentication as an end-point which can be extended using a plugin. This post explains how the GitHub OAuth Login plugin works </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2015/06/13/using-windows-powershell-tasks/">  <figure class="post-summary-image"><img src="../assets/images/blog/using-windows-powershell-tasks/PowerShell_5.0_icon.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Jun 13, 2015</span>
+    <h2 class="post-title">Guest post: Using Windows PowerShell tasks</h2>
+    <p class="excerpt">This guest post by Pat Mc Grath talks about some things to be aware of when using Windows PowerShell tasks on GoCD </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2015/04/29/Go_15_1_announced/">  <figure class="post-summary-image"><img src="../assets/images/blog/gocd-versions/gocd_15_1.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Apr 29, 2015</span>
+    <h2 class="post-title">GoCD 15.1.0 Released</h2>
+    <p class="excerpt">We would like to announce a new release of GoCD. Head over to our <a href="http://www.go.cd/download/">downloads page</a> to get your hands on the latest and greatest. Read more about what's new in this release from our <a href="http://www.go.cd/releases/#latest">release notes</a>. </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2014/12/17/Go_14_4_announced/">  <figure class="post-summary-image"><img src="../assets/images/blog/gocd-versions/gocd_14_4.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Dec 17, 2014</span>
+    <h2 class="post-title">GoCD 14.4 Released</h2>
+    <p class="excerpt">This is a release announcement for GoCD 14.4. Find out what's new in 14.4! </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2014/11/11/Go_14_3_announced/">  <figure class="post-summary-image"><img src="../assets/images/blog/gocd-versions/gocd_14_3.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Nov 11, 2014</span>
+    <h2 class="post-title">GoCD 14.3 Released</h2>
+    <p class="excerpt">This is a release announcement of GoCD 14.3. Learn about what's new in 14.3! </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2014/08/07/go-webinar-recording/">  <figure class="post-summary-image"><img src="../assets/images/blog/webinar-recording/webinar-recording-2.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Aug  7, 2014</span>
+    <h2 class="post-title">Continuous Delivery with GoCD - Webinar Recording</h2>
+    <p class="excerpt">Every couple of weeks ThoughtWorks hosts learning sessions for people who want more information about continuous delivery with GoCD. This is a recording of the session from 7 August, 2014" </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2014/05/18/manage-agents-with-docker/">  <figure class="post-summary-image"><img src="../assets/images/blog/manage-agents-with-docker/small_h.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">May 18, 2014</span>
+    <h2 class="post-title">Using GoCD and Docker to manage your GoCD agents</h2>
+    <p class="excerpt">Ken Mugrage talks about running GoCD agents using Docker, and being able to destroy them as needed </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2014/04/24/source-code-for-go-now-available/">  <figure class="post-summary-image"><img src="../assets/images/blog/source-code-for-go-now-available/summary_image.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Apr 24, 2014</span>
+    <h2 class="post-title">Source code for GoCD now available</h2>
+    <p class="excerpt">This is an announcement about GoCD's source code's availability to the public, shared on <a href="https://github.com/gocd/gocd">GitHub</a> - this is a follow-up to going open-source </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2014/03/06/hello-world-with-go/">  <figure class="post-summary-image"><img src="../assets/images/blog/hello-world-with-go/media_1394063534943.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Mar  6, 2014</span>
+    <h2 class="post-title">Hello World with GoCD</h2>
+    <p class="excerpt">In a few steps you'll see an example of a simple one stage pipeline in GoCD. This is definitely not meant to be a definitive guide, just a basic introduction to how GoCD works </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2014/02/24/tracing-our-path-production/">  <figure class="post-summary-image"><img src="../assets/images/blog/tracingprod1.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Feb 24, 2014</span>
+    <h2 class="post-title">Tracing our path to production</h2>
+    <p class="excerpt">Scott Turnquest writes about how the Mingle team uses GoCD's Value Stream Map to figure out the answers to many questions, including which features are deployed to their many environments </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2014/02/24/how-implement-continuous-delivery-enterprise-java-middleware/">  <figure class="post-summary-image"><img src="../assets/images/blog/how-implement-continuous-delivery-enterprise-java-middleware/summary_image.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Feb 24, 2014</span>
+    <h2 class="post-title">How to implement Continuous Delivery with enterprise java middleware?</h2>
+    <p class="excerpt">In this talk, you can learn about the challenges encountered while trying to use Continuous Delivery in a Java-based enterprise environment </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2014/02/24/build-promotion-go/">  <figure class="post-summary-image"><img src="../assets/images/blog/sriram-buildpromo1.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Feb 24, 2014</span>
+    <h2 class="post-title">Build promotion with GoCD</h2>
+    <p class="excerpt">Learn all about promoting your builds through different environments and promotion levels - both automatically and manually </p>
+  </div>
+</a></div>
+
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2016/01/25/are-you-ready-for-continuous-delivery/">  <figure class="post-summary-image"><img src="../assets/images/blog/are-you-ready-for-continuous-delivery/woodline.jpeg" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Jan 25, 2016</span>
+    <h2 class="post-title">Are you ready for Continuous Delivery?</h2>
+    <p class="excerpt">This is the first part of a series of posts about Continuous Delivery infrastructure, culture, and process. In this first post, we'll present questions you need to answer honestly about your own people, teams, and organization to determine your readiness for Continuous Delivery. </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2015/12/22/gocd-in-2016/">  <figure class="post-summary-image"><img src="../assets/images/blog/gocd-in-2016/summary_image.jpg" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Dec 22, 2015</span>
+    <h2 class="post-title">Roadmap - GoCD in 2016</h2>
+    <p class="excerpt">2016 is going to be an exciting year for GoCD. Read all about what's being planned for it ... </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2015/10/29/go-webinar-recording/">  <figure class="post-summary-image"><img src="../assets/images/blog/webinar-recording/webinar-recording-5.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Oct 29, 2015</span>
+    <h2 class="post-title">Continuous Delivery with GoCD - Webinar Recording</h2>
+    <p class="excerpt">Every couple of weeks ThoughtWorks hosts learning sessions for people who want more information about continuous delivery with GoCD. This is a recording of the session from 29 Oct, 2015 </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2015/08/28/pipeline-patterns/">  <figure class="post-summary-image"><img src="../assets/images/blog/pipeline-patterns/infrastructure-as-code.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Aug 28, 2015</span>
+    <h2 class="post-title">5 Key Deployment Pipeline Patterns</h2>
+    <p class="excerpt">Teams have been automating the build, test and deploy processes of their software for many years, but usually in a very specific "one off" manner. This article walks through 5 key patterns to setting up a successful deployment pipeline, including designing parallel workflows, running tests in parallel, and more. </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2015/07/07/GitHub-Integration/">  <figure class="post-summary-image"><img src="../assets/images/blog/github-integration/github-issue-link-in-compare-pipeline.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Jul  7, 2015</span>
+    <h2 class="post-title">Integrating GoCD with GitHub</h2>
+    <p class="excerpt">With the upcoming 15.2 release, we're announcing some new API endpoints that will make integrating with GoCD with GitHub easier and fun. This post is a round-up of the many GoCD plugins which work with GitHub. </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2015/06/18/plugin-settings/">  <figure class="post-summary-image"><img src="../assets/images/blog/plugin-settings/configure-plugin.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Jun 18, 2015</span>
+    <h2 class="post-title">Plugin Settings</h2>
+    <p class="excerpt">GoCD is continously improving its plugin infrastructure. Starting 15.2.0, GoCD will support "Plugin Settings" that will allow plugins developers to accept global settings. With this feature all plugins will have one approach to accept plugins settings from user &amp; access plugin settings from GoCD Server. </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2015/05/07/go-webinar-recording/">  <figure class="post-summary-image"><img src="../assets/images/blog/webinar-recording/webinar-recording-4.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">May  7, 2015</span>
+    <h2 class="post-title">Continuous Delivery with GoCD - Webinar Recording</h2>
+    <p class="excerpt">Every couple of weeks ThoughtWorks hosts learning sessions for people who want more information about continuous delivery with GoCD. This is a recording of the session from 7 May, 2015" </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2015/04/27/Feature-Branch-Support/">  <figure class="post-summary-image"><img src="../assets/images/blog/feature-branch/update-status-1.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Apr 27, 2015</span>
+    <h2 class="post-title">Feature Branch Support</h2>
+    <p class="excerpt">GoCD 15.1 introduced support for writing material repository plugins. This resulted in community-driven plugins developed for GoCD, to implement support for feature branches. This blog post has information specifically about GitHub Pull Request support. </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2014/11/21/go-webinar-recording/">  <figure class="post-summary-image"><img src="../assets/images/blog/webinar-recording/webinar-recording-3.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Nov 21, 2014</span>
+    <h2 class="post-title">Continuous Delivery with GoCD - Webinar Recording</h2>
+    <p class="excerpt">Every couple of weeks ThoughtWorks hosts learning sessions for people who want more information about continuous delivery with GoCD. This is a recording of the session from 21 November, 2014. </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2014/10/09/Distrubuted-Test-Execution/">  <figure class="post-summary-image"><img src="../assets/images/blog/distrubuted-test-execution/summary_image.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Oct  9, 2014</span>
+    <h2 class="post-title">Distributed Test Execution with GoCD + TLB</h2>
+    <p class="excerpt">This article talks about integrating TLB (Test Load Balancer) with your build, to improve test run times by distributing your tests across nodes. </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2014/07/09/stopping-support-for-java-jdk-6/">  <figure class="post-summary-image"><img src="../assets/images/blog/java-announcements/Duke_Wave_Wide.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Jul  9, 2014</span>
+    <h2 class="post-title">Stopping support for Java/JDK 6</h2>
+    <p class="excerpt">This is an announcement of deprecation of Java 6 for GoCD 14.2 and beyond. You need to upgrade to the latest Java version. </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2014/05/01/set-up-a-go-dev-environment/">  <figure class="post-summary-image"><img src="../assets/images/blog/set-up-a-go-dev-environment/summary_image.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">May  1, 2014</span>
+    <h2 class="post-title">Setting up a GoCD development environment VM</h2>
+    <p class="excerpt">The GoCD team has created a VirtualBox VM image to help people interested in development go get started quickly. This short video shows the process of downloading and setting up the virtual machine. </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2014/04/14/agent-bootstrapper-upgrade-for-plugins/">  <figure class="post-summary-image"><img src="../assets/images/blog/agent-bootstrapper-upgrade-for-plugins/summary_image.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Apr 14, 2014</span>
+    <h2 class="post-title">Agent-bootstrapper upgrade to enable task plugins</h2>
+    <p class="excerpt">Public service announcement: You need to upgrade the agent installer to 14.1 or newer, if you're planning to use task plugins </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2014/02/25/why-we-need-to-practice-cd/">  <figure class="post-summary-image"><img src="../assets/images/blog/hardly-anyone-knows-cd/01_CD_the_idea_low-res.jpg" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Feb 25, 2014</span>
+    <h2 class="post-title">Why we need to practice CD</h2>
+    <p class="excerpt">This article talks about the importance of CD vs CI, functional silos vs the DevOps movement and provides practical advice about automation practices and Continuous Delivery </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2014/02/24/model-everything-fail-fast/">  <figure class="post-summary-image"><img src="../assets/images/blog/mark-failfast1.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Feb 24, 2014</span>
+    <h2 class="post-title">Model everything to fail fast</h2>
+    <p class="excerpt">Learn about modeling your pipelines to give you the quickest feedback fastest and other pipeline modeling tricks in this informative article by Mark Chang </p>
+  </div>
+</a></div>
+
+            </div>
+            <div class="blog-list-item">
+              <div class="post-summary">
+<a class="post-link" href="../2014/02/24/go-template-permissions/">  <figure class="post-summary-image"><img src="../assets/images/blog/Pipeline1.png" /></figure>
+
+  <div class="blog-details">
+    <span class="post-date">Feb 24, 2014</span>
+    <h2 class="post-title">GoCD - Template Permissions</h2>
+    <p class="excerpt">This article introduces the concept of a template administrator role in GoCD, allowing a super administrator to delegate template editing capabilities to any user </p>
+  </div>
+</a></div>
+
+            </div>
+        </div>
+    </div>
+  </div>
 </main>
+
     <footer>
-	<div class="join-community">
-		<div class="container">
-			<h3>Join our community</h3>
-			<ul>
-				<li>
-					<a href="#">
-						<i class="fa fa-user-plus"></i>
-						join us
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<i class="fa fa-wechat"></i>
-						Talk to us
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<i class="fa fa-binoculars"></i>
-						watch us
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<i class="fa fa-twitter"></i>
-						follow us
-					</a>
-				</li>
-			</ul>
-		</div>
-	</div>
-	<div class="page-footer">
-		<div class="container">
-			<p class="help-us-improve">Make this place better, <a href="https://github.com/gocd/gocd.github.io">fork</a>
-			it or <a href="https://github.com/gocd/gocd.github.io/issues">suggest</a> something.</p>
-			<p>
-				GoCD is an open-source project, sponsored by <a target="_blank" href="http://www.thoughtworks.com">ThoughtWorks Inc.</a>
-				under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank" title="Apache 2.0 License">Apache License, Version 2.0</a>
-			</p>
-		</div>
-	</div>
+  <div class="join-community">
+    <div class="container">
+      <h3>Join our community</h3>
+      <ul>
+        <li>
+          <a href="#">
+            <i class="fa fa-user-plus"></i>
+            join us
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-wechat"></i>
+            Talk to us
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-binoculars"></i>
+            watch us
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-twitter"></i>
+            follow us
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="container">
+      <p class="help-us-improve">Make this place better, <a href="https://github.com/gocd/gocd.github.io">fork</a>
+      it or <a href="https://github.com/gocd/gocd.github.io/issues">suggest</a> something.</p>
+      <p>
+        GoCD is an open-source project, sponsored by <a target="_blank" href="http://www.thoughtworks.com">ThoughtWorks Inc.</a>
+        under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank" title="Apache 2.0 License">Apache License, Version 2.0</a>
+      </p>
+      <span data-git-revision="70b04801e8d388c108f2c0418f7567ace525b22f"></span>
+    </div>
+  </div>
 </footer>
 <a href="#top" class="back-top"><i class="fa fa-arrow-circle-up"></i></a>
   </body>

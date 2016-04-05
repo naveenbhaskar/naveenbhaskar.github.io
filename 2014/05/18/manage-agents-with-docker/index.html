@@ -24,31 +24,27 @@
     <nav class="mainnav">
       <ul class="level0">
         <li class="dropdown">
-          <a href="../../../../features/">Features</a>
-          <ul>
-            <li><a href="../../../../plugins/">Plugins</a></li>
-            <li><a href="../../../../roadmap/">Roadmap</a></li>
-            <li><a href="../../../../subscribe/">Subscribe to updates</a></li>
+          <a class="link_whygo" href="../../../../why-go/">Why go</a>
+          <ul  class="level1">
+            <li><a class="link_subscribe" href="../../../../subscribe/">Subscribe to updates</a></li>
           </ul>
         </li>
         <li class="dropdown">
-          <a href="../../../../community/">Community</a>
-          <ul>
-            <li><a href="../../../../contribute/">Contribute</a></li>
-            <li><a href="../../../../cla/">CLA</a></li>
-            <li><a href="../../../../open-issues/">Open Issues</a></li>
-            <li><a href="../../../../events/">Events</a></li>
-            <li><a href="../../../../partners/">Partners</a></li>
+          <a href="../../../../contribute/">Community</a>
+          <ul  class="level1">
+            <li><a class="link_contribute" href="../../../../contribute/">Contribute</a></li>
+            <li><a class="link_events" href="../../../../events/">Events</a></li>
+            <li><a class="link_plugins" href="../../../../plugins/">Plugins</a></li>
           </ul>
         </li>
-        <li><a href="../../../../blog/">Blog</a></li>
+        <li><a class="link_blog" href="../../../../blog/">Blog</a></li>
         <li class="dropdown">
-          <a href="../../../../help/">Help</a>
-          <ul>
-            <li><a href="../../../../getting-started/part-1/">Getting started</a></li>
-            <li><a href="../../../../download/">Download</a></li>
+          <a class="link_help" href="../../../../help/">Help</a>
+          <ul  class="level1">
+            <li><a class="link_getting-started" href="../../../../getting-started/part-1/">Getting started</a></li>
           </ul>
         </li>
+        <li><a class="link_download" href="../../../../download/">Download</a></li>
       </ul>
     </nav>
     <button class="navbtn menu collapse">
@@ -57,14 +53,12 @@
   </div>
 </header>
 <span id="top"></span>
-
     <div class="container blog-post">
-  <div class="post-banner">
-    <!-- pls put banner image for article here -->
-  </div>
+
   <header class="blog-post-header">
     <h2>Using GoCD and Docker to manage your GoCD agents</h2>
     <h4>Ken Mugrage</h4>
+    
   </header>
   <div class="row">
     <div class="col-md-9">
@@ -86,15 +80,15 @@ I can.</p>
 
 <ul>
   <li>Install Docker</li>
-  <li>Install Go server</li>
+  <li>Install GoCD server</li>
   <li>
-    <p>Install at least one Go agent if you want to use the pipeline - Yup, even though the whole idea here is to create and destroy 
+    <p>Install at least one GoCD agent if you want to use the pipeline - Yup, even though the whole idea here is to create and destroy 
 agents automatically, we have to install at least one to run the process. The server needs this to actually run the scripts.</p>
 
-    <pre><code>  Once the Go agent is installed, go to the Agents tab in your Go user interface and assign this agent a resource of "manager" if you intend to use the Go pipeline below.
+    <pre><code>  Once the GoCD agent is installed, go to the Agents tab in your GoCD user interface and assign this agent a resource of "manager" if you intend to use the GoCD pipeline below.
 </code></pre>
   </li>
-  <li>In order for Go (and anyone else) to run this without having to become root, you'll have to follow the instructions under 
+  <li>In order for GoCD (and anyone else) to run this without having to become root, you'll have to follow the instructions under 
 "Giving non-root access" at <a href="http://docs.docker.io/installation/ubuntulinux/">http://docs.docker.io/installation/ubuntulinux/</a>. 
 I make absolutely no warranties for the security of following those instructions! Again, the point here (for me) was to spike out 
 creating agents on the fly, this is not production code.</li>
@@ -110,14 +104,14 @@ Please feel free to clone / fork / send pull requests.</p>
 </ul>
 
 <p>This is the file that defines how the docker image will be created. Normally you would run the docker build
-program against this file, but I used a shell script so that I could call it from Go easier later.</p>
+program against this file, but I used a shell script so that I could call it from GoCD easier later.</p>
 
 <ul>
   <li><strong>go-agent-14.1.0-18882.deb</strong> (no longer included)</li>
 </ul>
 
 <p>Update on 22 June - The Dockerfile has been updated to use wget to download
-the Go 14.1 agent debian installer. If you need the RPM version visit 
+the GoCD 14.1 agent debian installer. If you need the RPM version visit 
 www.go.cd/download and change the Dockerfile to match your system.</p>
 
 <ul>
@@ -139,13 +133,13 @@ IP address that Docker is aware of, so probaly not the one you're used to using.
 </code></pre>
 
 <p>Because that's my address, that's what you'll see in the go-agent file. As much as I might appreciate your help in supplying
-agents for me, they won't be able to connect if you don't make this match your Go server.</p>
+agents for me, they won't be able to connect if you don't make this match your GoCD server.</p>
 
 <ul>
   <li><strong>autoregister.properties</strong></li>
 </ul>
 
-<p>This file takes advantage of the autoregister feature in Go so that I don't have to manually approve the new agents. You'll 
+<p>This file takes advantage of the autoregister feature in GoCD so that I don't have to manually approve the new agents. You'll 
 need to update the key based on the instructions at <a href="http://www.go.cd/documentation/user/current/advanced_usage/agent_auto_register.html">http://www.go.cd/documentation/user/current/advanced_usage/agent_auto_register.html</a></p>
 
 <ul>
@@ -179,14 +173,14 @@ please feel free!</p>
   <li><strong>remove_agents.rb</strong></li>
 </ul>
 
-<p>This Ruby script removes disables and removes all agents on the Go server tagged with a "docker_created"
+<p>This Ruby script removes disables and removes all agents on the GoCD server tagged with a "docker_created"
 resource.</p>
 
 <ul>
   <li><strong>go_config_xml_excerpt.txt</strong></li>
 </ul>
 
-<p>Everything above can be run from the command line just fine. Of course I wanted to have a Go pipeline manage all of this. 
+<p>Everything above can be run from the command line just fine. Of course I wanted to have a GoCD pipeline manage all of this. 
 This text file shows the pipeline definition for mine. You'll need to change the github URL to point to your own. You're welcome
 to use mine from above, but I removed it here just so your pipeline doesn't get executed with my GitHub changes if you don't
 want it to.</p>
@@ -205,44 +199,54 @@ done. Please feel free to comment / ask questions / etc.</p>
           <h2 class="section-title">Recent Articles</h2>
           <ol>
             <li>
-              <span class="post-date">Mar 17</span>
-              <a href="../../../../2016/03/17/writing-long-lived-code/">Writing long-lived Code</a>
+              <span class="post-date">Mar 24</span>
+              <span class="post-author">David Rice</span>
+              <a href="../../../../2016/03/24/how-to-avoid-brittle-code/">How to Avoid Brittle Code</a>
             </li>
             <li>
               <span class="post-date">Mar 15</span>
+              <span class="post-author">David Rice</span>
               <a href="../../../../2016/03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops/">Are you ready for Continuous Delivery? Part 2: Feedback loops</a>
             </li>
             <li>
               <span class="post-date">Feb  8</span>
+              <span class="post-author">Ken Mugrage</span>
               <a href="../../../../2016/02/08/not-done-unless-its-done-security/">Add Security Testing to Your Deployment Pipelines</a>
             </li>
             <li>
               <span class="post-date">Jan 25</span>
+              <span class="post-author">David Rice and Aravind SV</span>
               <a href="../../../../2016/01/25/are-you-ready-for-continuous-delivery/">Are you ready for Continuous Delivery?</a>
             </li>
             <li>
               <span class="post-date">Jan 17</span>
+              <span class="post-author">Ken Mugrage</span>
               <a href="../../../../2016/01/17/not-done-unless-its-done/">It's not Continuous Delivery if you can't deploy right now.</a>
             </li>
             <li>
               <span class="post-date">Dec 28</span>
+              <span class="post-author">Nenad Bozic</span>
               <a href="../../../../2015/12/28/gocd-continuous-delivery-through-pipelines/">Guest post: GoCD - Continuous Delivery through pipelines</a>
             </li>
             <li>
               <span class="post-date">Dec 22</span>
+              <span class="post-author">Aravind SV</span>
               <a href="../../../../2015/12/22/gocd-in-2016/">Roadmap - GoCD in 2016</a>
             </li>
             <li>
               <span class="post-date">Nov 18</span>
+              <span class="post-author">Rajiesh</span>
               <a href="../../../../2015/11/18/Open-Source-Tests/">Open Source Tests - The GoCD way</a>
             </li>
             <li>
               <span class="post-date">Nov  9</span>
+              <span class="post-author">GoCD Team</span>
               <a href="../../../../2015/11/09/deserialization-vulnerability-commons-collections/">Vulnerability in GoCD - Java deserialization and Apache commons-collections</a>
             </li>
             <li>
               <span class="post-date">Oct 29</span>
-              <a href="../../../../2015/10/29/go-webinar-recording/">Continuous Delivery with Go - Webinar Recording</a>
+              <span class="post-author">Ken Mugrage</span>
+              <a href="../../../../2015/10/29/go-webinar-recording/">Continuous Delivery with GoCD - Webinar Recording</a>
             </li>
           </ol>
         </section>
@@ -265,47 +269,48 @@ done. Please feel free to comment / ask questions / etc.</p>
 </div>
 
     <footer>
-	<div class="join-community">
-		<div class="container">
-			<h3>Join our community</h3>
-			<ul>
-				<li>
-					<a href="#">
-						<i class="fa fa-user-plus"></i>
-						join us
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<i class="fa fa-wechat"></i>
-						Talk to us
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<i class="fa fa-binoculars"></i>
-						watch us
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<i class="fa fa-twitter"></i>
-						follow us
-					</a>
-				</li>
-			</ul>
-		</div>
-	</div>
-	<div class="page-footer">
-		<div class="container">
-			<p class="help-us-improve">Make this place better, <a href="https://github.com/gocd/gocd.github.io">fork</a>
-			it or <a href="https://github.com/gocd/gocd.github.io/issues">suggest</a> something.</p>
-			<p>
-				GoCD is an open-source project, sponsored by <a target="_blank" href="http://www.thoughtworks.com">ThoughtWorks Inc.</a>
-				under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank" title="Apache 2.0 License">Apache License, Version 2.0</a>
-			</p>
-		</div>
-	</div>
+  <div class="join-community">
+    <div class="container">
+      <h3>Join our community</h3>
+      <ul>
+        <li>
+          <a href="#">
+            <i class="fa fa-user-plus"></i>
+            join us
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-wechat"></i>
+            Talk to us
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-binoculars"></i>
+            watch us
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-twitter"></i>
+            follow us
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="page-footer">
+    <div class="container">
+      <p class="help-us-improve">Make this place better, <a href="https://github.com/gocd/gocd.github.io">fork</a>
+      it or <a href="https://github.com/gocd/gocd.github.io/issues">suggest</a> something.</p>
+      <p>
+        GoCD is an open-source project, sponsored by <a target="_blank" href="http://www.thoughtworks.com">ThoughtWorks Inc.</a>
+        under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank" title="Apache 2.0 License">Apache License, Version 2.0</a>
+      </p>
+      <span data-git-revision="70b04801e8d388c108f2c0418f7567ace525b22f"></span>
+    </div>
+  </div>
 </footer>
 <a href="#top" class="back-top"><i class="fa fa-arrow-circle-up"></i></a>
   </body>

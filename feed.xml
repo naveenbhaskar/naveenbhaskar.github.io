@@ -5,50 +5,57 @@
   <id>https://go.cd/blog</id>
   <link href="https://go.cd/blog"/>
   <link href="https://go.cd/feed.xml" rel="self"/>
-  <updated>2016-03-17T05:30:00+05:30</updated>
+  <updated>2016-03-24T05:30:00+05:30</updated>
   <author>
     <name>GoCD Team</name>
   </author>
   <entry>
-    <title>Writing long-lived Code</title>
-    <link rel="alternate" href="https://go.cd/2016/03/17/writing-long-lived-code/"/>
-    <id>https://go.cd/2016/03/17/writing-long-lived-code/</id>
-    <published>2016-03-17T05:30:00+05:30</published>
-    <updated>2016-03-28T11:53:06+05:30</updated>
+    <title>How to Avoid Brittle Code</title>
+    <link rel="alternate" href="https://go.cd/2016/03/24/how-to-avoid-brittle-code/"/>
+    <id>https://go.cd/2016/03/24/how-to-avoid-brittle-code/</id>
+    <published>2016-03-24T05:30:00+05:30</published>
+    <updated>2016-03-30T09:52:10+05:30</updated>
     <author>
       <name>David Rice</name>
     </author>
-    <content type="html">&lt;p&gt;ThoughtWorks has been building products for 10 years. We’ve learned some hard lessons while trying to keep fairly large codebases malleable year after year. There are many great techniques for writing long-lived code. I am going to write about what we learned from our biggest challenges. And my writing these thoughts down isn’t my saying we’ve got it down cold. Like any team, we’re struggling to get better each and every day.&lt;/p&gt;
+    <content type="html">
+&lt;p&gt;The most common problem with legacy code is brittleness. A brittle codebase is one that a team cannot change without great pain. In ThoughtWorks’ 10 years of building products we’ve learned some hard lessons while trying to keep fairly large codebases malleable, year after year. In this post I'll share what we learned from our biggest challenges. One caveat: my writing down these thoughts isn’t my saying we’ve got it down cold. We still have our share of pain from legacy code. Like any team, we struggle to get better each and every day.&lt;/p&gt;
 
 &lt;h2 id="upgrade-everything-all-the-time"&gt;Upgrade everything, all the time&lt;/h2&gt;
 
-&lt;p&gt;You should aspire to upgrade your dependencies and frameworks all the time. OK, so maybe this is almost in the realm of the obvious now. But very few people thought this way 10 years ago. And I wonder whether even teams that know this is the right thing to do actually prioritize it. It just needs to be something you do all the time and not be handled via technical debt. There are a number of reasons.&lt;/p&gt;
+&lt;p&gt;You should aspire to upgrade your dependencies and frameworks all the time. OK, so maybe this is almost in the realm of the obvious now. But very few people thought so 10 years ago. And I wonder whether even teams who &lt;em&gt;know&lt;/em&gt; this is the right thing to do, &lt;em&gt;actually&lt;/em&gt; prioritize it. It just needs to be something you do all the time and not left to be handled via technical debt. Here's why:&lt;/p&gt;
 
-&lt;p&gt;The first is the obvious one. &lt;a href="http://martinfowler.com/bliki/FrequencyReducesDifficulty.html"&gt;If it hurts, do it more often&lt;/a&gt;. Upgrading can be hard. There’s very often an unpredictable cascade of broken dependencies. The amount of work is mostly unknown. Do it more often and it becomes a non-issue. But there’s more to this than simple pain avoidance.&lt;/p&gt;
-
-&lt;p&gt;A primary motivator for upgrading dependencies is fixing security vulnerabilities. One of the biggest differences in building software now versus 10 years ago is the seemingly non-stop flow of vulnerability reports against our libraries, frameworks, and applications. Fixing vulnerabilities will almost always involve upgrading some of your dependencies. The upgrades must to be easy in order to quickly ship vulnerability fixes.&lt;/p&gt;
-
-&lt;p&gt;Teams that don’t upgrade regularly typically will label the activity as technical debt. Despite the industry being much more willing to talk about technical debt than 10 years ago, it’s still a very painful conversation to convince a product manager to pay down technical debt. If your team works in an upgrade everything all the time mode, you can avoid any conversation around upgrade technical debt altogether.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;&lt;a href="http://martinfowler.com/bliki/FrequencyReducesDifficulty.html"&gt;If it hurts, do it more often&lt;/a&gt;&lt;/strong&gt;. One of the most obvious reasons to upgrade all the time is that upgrading can be hard. There’s very often an unpredictable cascade of broken dependencies. The amount of work is mostly unknown. Do it more often and it becomes a non-issue. But there’s more to this than simple pain avoidance.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Another motivator for upgrading dependencies is &lt;strong&gt;fixing security vulnerabilities&lt;/strong&gt;. One of the biggest differences in building software now versus 10 years ago is the seemingly non-stop flow of vulnerability reports against our libraries, frameworks and applications. Fixing vulnerabilities will almost always involve upgrading some of your dependencies. The upgrades must to be easy in order to quickly ship vulnerability fixes.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Teams that don’t upgrade regularly typically will label the activity as technical debt. Despite the industry being much more willing to talk about technical debt than 10 years ago, it’s still &lt;strong&gt;a very painful conversation&lt;/strong&gt; to convince a product manager to pay down technical debt. If your team works in an "upgrade everything all the time mode", you can avoid any conversation around upgrading technical debt altogether.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;h2 id="its-about-the-unit-tests"&gt;It’s about the unit tests&lt;/h2&gt;
 
-&lt;p&gt;The primary pain point for working with legacy code is how long it takes to make changes. So if you intend for you code to be long-lived you need to ensure that it will be entirely pleasurable for future developers to make changes. And there’s one thing that dominates all the others for this: an extremely fast and thorough unit test suite.&lt;/p&gt;
+&lt;p&gt;The primary pain point for working with legacy code is how long it takes to make changes. So if you intend for your code to be long-lived, you need to ensure that it will be entirely pleasurable for future developers to make changes to it. And there’s one element that dominates all others for this: an extremely fast and thorough unit test suite.&lt;/p&gt;
 
-&lt;p&gt;The cycle for adding new features, including any refactoring, is roughly: write failing test, code, get to green, make it right. If you’re doing it right, you’re executing a lot of unit tests along the way, sometimes a focused set and sometimes the entire suite. If these tests aren’t fast, the development cycle will not be enjoyable. The coding experience should not be make a couple of changes and sit around for 10 or 20 minutes while tests run. That’s a bad place to be.&lt;/p&gt;
+&lt;p&gt;The cycle for adding new features, including any refactoring, is roughly this: write failing test; code; get to green; make it right. If you’re doing it right, you’re executing a lot of unit tests along the way, sometimes a focused set and sometimes the entire suite. If these tests aren’t fast, the development cycle will not be enjoyable. The coding experience should not be: make a couple of changes and sit around for 10 or 20 minutes while tests run. That’s a bad place to be.&lt;/p&gt;
 
-&lt;p&gt;Keeping a unit suite fast isn’t just about how you design and code. Yes, you can do a lot of things to keep tests fast such as avoiding files, databases, sockets, creation of huge graphs of objects, etc. But the other key piece is picking frameworks and languages that lend themselves to fast tests. If you find yourself subverting your framework to make your tests fast, you need to consider a different framework. And, yes, you can read this as my being unlikely to use Rails the next time I'm building a traditional multi-page application.&lt;/p&gt;
+&lt;p&gt;Keeping a unit suite fast isn’t just about how you design and code. Yes, you can do a lot of things to keep tests fast, such as avoiding files, databases, sockets, creation of huge graphs of objects, etc. But the other key piece is picking frameworks and languages that lend themselves to fast tests. If you find yourself subverting your framework to make your tests fast, you need to consider a different framework. And—yes—you can read this as my being unlikely to use Rails the next time I'm building a traditional multi-page application.&lt;/p&gt;
 
-&lt;p&gt;There’s also something about the size of the application. Once a codebase is a certain size, you need to figure out how to split it up. This is the only way to keep a fairly complete understanding of a piece of software in your head. Finding the seams along which to split is not an academic modeling exercise. You will spend a lot of time playing with your code, moving things around, redesigning, refactoring. Having a fast test suite to quickly validate your work along the way will make this work several orders of magnitude easier.&lt;/p&gt;
+&lt;p&gt;There’s also a consideration about the size of the application. Once a codebase is a certain size, you need to figure out how to split it up. This is the only way to keep a fairly complete understanding of a piece of software in your head. Finding the seams along which to split a monolith is not an academic modeling exercise. You will spend a lot of time playing with your code, moving things around, redesigning, refactoring. Having a fast test suite to quickly validate your work along the way will make this work several orders of magnitude easier.&lt;/p&gt;
 
-&lt;p&gt;Actually, several orders of magnitude is likely underselling it. If you need to split up a monolith and have a painfully slow unit test suite, well… you just might be stuck. That’s learning a lesson the hard way. So do everything in your power to keep your unit tests extremely fast and able to run in a single thread on a dev machine.&lt;/p&gt;
+&lt;p&gt;Actually, "several orders of magnitude" is likely underselling it. If you need to split up a monolith and have a painfully slow unit test suite, well… you just might be stuck. That’s learning a lesson the hard way. So do everything in your power to keep your unit tests extremely fast and able to run in a single thread on a dev machine.&lt;/p&gt;
 
-&lt;h2 id="branch-by-abstraction-should-not-be-a-permanent-state"&gt;Branch by abstraction should not be a permanent state&lt;/h2&gt;
+&lt;h2 id="branch-by-abstraction-should-not-be-a-permanent-state"&gt;“Branch by Abstraction” should not be a permanent state&lt;/h2&gt;
 
 &lt;p&gt;Long-lived products are going to have a number of tech leads over the years. A certain type of tech lead will come in and start making noise about what stinks in the stack and immediately want to start swapping in new stuff. And that's OK. New shiny toys aren't always bad. For a long-lived codebase, it requires some fresh energy to generate enough momentum to swap out the parts that are no longer holding their weight. That said, I want to make two important points.&lt;/p&gt;
 
-&lt;p&gt;A new tech lead should not swap out any tech until they’ve been working on the team for 2-3 months. There’s too much context to understand. The new tech lead needs to learn empathy for the team and the codebase. The team and tech lead need to build trust and a rhythm.  Better decisions will be made with an initial pause.&lt;/p&gt;
+&lt;p&gt;A new tech lead should not swap out any tech until they’ve been working on the team for two to three months. There’s too much context to understand. The new tech lead needs to learn empathy for the team and the codebase. The team and tech lead need to build trust and a rhythm. Better decisions will be made with an initial pause.&lt;/p&gt;
 
-&lt;p&gt;The typical means of swapping out new tech (outside the absurdity of long-lived branches) is to utilize &lt;a href="http://martinfowler.com/bliki/BranchByAbstraction.html"&gt;branch by abstraction&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;The typical means of swapping out new tech (outside the absurdity of long-lived branches) is to utilize &lt;a href="http://martinfowler.com/bliki/BranchByAbstraction.html"&gt;Branch by Abstraction&lt;/a&gt;:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;An abstraction is placed in front of component X.&lt;/li&gt;
@@ -58,13 +65,13 @@
   &lt;li&gt;X is removed; the abstraction is maybe removed&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;I have many times seen this process stop at step 3 due to discovering how difficult it is to remove that final 20% of the old component. I cannot stress how painful it is to drag around multiple ways of doing things for multiple years. It slows everything down and is demoralizing. Branch by abstraction is a great pattern. It’s the only way I’d do this sort of component swapping. But it needs to be accompanied by complete commitment by the team to eliminate the old component within a specified timebox.&lt;/p&gt;
+&lt;p&gt;I have many times seen this process fail to complete due to discovering how difficult it is to remove that final 20% of the old component. I cannot stress enough how painful it is to drag around multiple ways of doing things year after year. It slows everything down and is demoralizing. Branch by Abstraction is a great pattern. It’s the only way I’d do this sort of component swapping. But it needs to be accompanied by the team's complete commitment to eliminate the old component within a specified timebox.&lt;/p&gt;
 
 &lt;h2 id="technical-debt-can-kill-you"&gt;Technical debt can kill you&lt;/h2&gt;
 
-&lt;p&gt;Just because we talk about technical debt more than we used to does not provide any guarantee that it will be paid down. Perversely, maintaining a backlog of technical debt makes it easy to never pay it down. It’s too easy for a manger to say “It’s OK to hold off on that. We’ve got this other pressing need over here. It’s logged. We can come back to it.”  And in that moment it’s probably a sound decision. But those pressing needs never go away. Urgent lists only grow longer.&lt;/p&gt;
+&lt;p&gt;Just because we talk about technical debt more than we used to does not provide any guarantee that it will be paid down. Perversely, maintaining a backlog of technical debt makes it easy to never pay it down. It’s too easy for a manger to say “It’s OK to hold off on that. We’ve got this other pressing need over here. It’s logged. We can come back to it.”  And in that moment, it’s probably a sound decision. But those pressing needs never go away. Urgent lists only grow longer.&lt;/p&gt;
 
-&lt;p&gt;And it gets worse. My experience is that there is a point when the technical debt backlog grows so large that the team will give up on wanting to pay it off. The team will feel hopeless. The developers cannot achieve flow. The business isn’t getting new value. I have a few thoughts on how to avoid insurmountable technical debt.&lt;/p&gt;
+&lt;p&gt;And the situation get worse. My experience is that there is a point when the technical debt backlog grows so onerous that the team will give up on &lt;em&gt;wanting&lt;/em&gt; to pay it off. The team will feel hopeless. The developers cannot achieve flow. The business isn’t getting new value. I have a few thoughts on how to avoid insurmountable technical debt.&lt;/p&gt;
 
 &lt;p&gt;A good development team won’t play the same technical debt card over and over again. When a team realizes it’s playing the same type of technical debt card repeatedly, it must bring the pain forward and quickly assume that work into its normal everyday way of working.&lt;/p&gt;
 
@@ -80,17 +87,11 @@
     <link rel="alternate" href="https://go.cd/2016/03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops/"/>
     <id>https://go.cd/2016/03/15/are-you-ready-for-continuous-delivery-part-2-feedback-loops/</id>
     <published>2016-03-15T05:30:00+05:30</published>
-    <updated>2016-03-28T11:53:06+05:30</updated>
+    <updated>2016-03-30T09:52:10+05:30</updated>
     <author>
       <name>David Rice</name>
     </author>
-    <content type="html">&lt;figure&gt;
-  &lt;img src="/assets/images/blog/are-you-ready-for-continuous-delivery/feedback_loops.jpg" alt="Ready for Continuous Delivery?" /&gt;
-  &lt;span class="attribution"&gt;
-    &lt;a target="_blank" href="https://www.flickr.com/photos/drainrat/14017306767/sizes/l"&gt;Attribution - Change: Cropped&lt;/a&gt;
-  &lt;/span&gt;
-&lt;/figure&gt;
-
+    <content type="html">
 &lt;p&gt;During the 10 plus years ThoughtWorks has been in the Continuous Delivery (CD) ecosystem, we've regularly come across
 people wanting to try our tools (GoCD and Snap CI) as they start their journey toward CD. Very often, in attempting to
 support teams new to CD, we suggest that they pause any tool evaluation and consider whether their organization is
@@ -264,7 +265,7 @@ Delivery.&lt;/p&gt;
     <link rel="alternate" href="https://go.cd/2016/02/08/not-done-unless-its-done-security/"/>
     <id>https://go.cd/2016/02/08/not-done-unless-its-done-security/</id>
     <published>2016-02-08T05:30:00+05:30</published>
-    <updated>2016-03-28T11:53:06+05:30</updated>
+    <updated>2016-03-30T09:52:10+05:30</updated>
     <author>
       <name>Ken Mugrage</name>
     </author>
@@ -404,15 +405,11 @@ Delivery.&lt;/p&gt;
     <link rel="alternate" href="https://go.cd/2016/01/25/are-you-ready-for-continuous-delivery/"/>
     <id>https://go.cd/2016/01/25/are-you-ready-for-continuous-delivery/</id>
     <published>2016-01-25T05:30:00+05:30</published>
-    <updated>2016-03-28T11:53:06+05:30</updated>
+    <updated>2016-03-30T09:52:10+05:30</updated>
     <author>
       <name>David Rice and Aravind SV</name>
     </author>
-    <content type="html">&lt;figure&gt;
-  &lt;img src="/assets/images/blog/are-you-ready-for-continuous-delivery/woodline.jpeg" alt="Ready for Continuous Delivery?" /&gt;
-  &lt;span class="attribution"&gt;&lt;a target="_blank" href="https://commons.wikimedia.org/wiki/File:Wood-snake(byJamesForbes).JPG"&gt;Attribution&lt;/a&gt;&lt;/span&gt;
-&lt;/figure&gt;
-
+    <content type="html">
 &lt;p&gt;During the 10 plus years ThoughtWorks has been in the Continuous Delivery ecosystem, we've regularly come across people
 wanting to try our tools GoCD and Snap CI as they start their journey toward Continuous Delivery (CD). Very often,
 in attempting to support teams new to CD, we suggest that they pause any tool evaluation and consider whether their
@@ -533,7 +530,7 @@ application design, process, and culture.&lt;/p&gt;
     <link rel="alternate" href="https://go.cd/2016/01/17/not-done-unless-its-done/"/>
     <id>https://go.cd/2016/01/17/not-done-unless-its-done/</id>
     <published>2016-01-17T05:30:00+05:30</published>
-    <updated>2016-03-28T11:53:06+05:30</updated>
+    <updated>2016-03-30T09:52:10+05:30</updated>
     <author>
       <name>Ken Mugrage</name>
     </author>
@@ -681,7 +678,7 @@ Many people feel it's not the greatest idea to have the same person writing the 
     <link rel="alternate" href="https://go.cd/2015/12/28/gocd-continuous-delivery-through-pipelines/"/>
     <id>https://go.cd/2015/12/28/gocd-continuous-delivery-through-pipelines/</id>
     <published>2015-12-28T05:30:00+05:30</published>
-    <updated>2016-03-28T11:53:06+05:30</updated>
+    <updated>2016-03-30T09:52:10+05:30</updated>
     <author>
       <name>Nenad Bozic</name>
     </author>
